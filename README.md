@@ -146,3 +146,9 @@ Halaman `#daerah/sulawesi-selatan` memakai **The_Living_Map_Sulawesi_Selatan_Saw
 Catatan tetap membedakan epos mitologis dari laporan perjalanan sejarah, serta mempertahankan keterangan bahwa **Cina adalah nama tempat dalam cerita**. Bagian lama yang menyebut episode masih menunggu materi telah diganti dengan materi yang disediakan. Rujukan ditampilkan sesuai dokumen, tanpa klaim verifikasi independen.
 
 Rekaman siswa **bahasa Inggris** ada di `assets/audio/sawerigading-english.mp3`, sekitar 1 menit 15 detik, disalin tanpa perubahan dari **Sawerigading_Sulawesi_Selatan_Narasi_English_Studio_Cinematic.mp3**. Tombol Indonesia/English mengubah bacaan, bukan bahasa rekaman. Panel naskah menyediakan kedua versi dari dokumen. Properti opsional `cultureHeading` menampilkan judul Geografi dan budaya / Geography and culture tanpa mengubah halaman daerah lain.
+
+## Materi Putri Mandalika bilingual dan audio siswa
+
+Halaman `#daerah/nusa-tenggara-barat` menggunakan **The_Living_Map_Nusa_Tenggara_Barat_Putri_Mandalika_Bilingual.docx** dari tim pameran. Materi mencakup cerita Indonesia/English, geografi dan biologi nyale, istilah Sasak, pertanyaan tantangan, dua naskah narasi, dan tiga rujukan dari dokumen. Pilihan jawaban menggunakan kutipan materi: jawaban lengkap membedakan nyale dalam legenda dari penjelasan ilmiah tentang cacing laut, reproduksi, dan siklus bulan.
+
+Penjelmaan sang putri tetap dijelaskan sebagai bagian legenda; uraian ilmiah ditempatkan terpisah. Rujukan ditampilkan sebagaimana diberikan tim, bukan klaim verifikasi independen. Rekaman di `assets/audio/putri-mandalika.mp3` disalin tanpa perubahan dari **Putri_Mandalika_Narasi_Studio_Soundtrack_Cinematic.mp3**, berdurasi sekitar 1 menit 16 detik, tanpa autoplay. Pergantian bahasa mengubah bacaan, bukan rekaman; naskah Indonesia dan English dapat dibuka pada panel naskah narasi.
