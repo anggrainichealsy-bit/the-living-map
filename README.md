@@ -138,3 +138,11 @@ Properti `contentNote`, `sources`, dan `audioTranscript` pada data daerah menduk
 Halaman `#daerah/kalimantan-barat` menggunakan dokumen **The_Living_Map_Kalimantan_Barat_Batu_Menangis_Bilingual.docx** dari tim pameran. Materinya mencakup kisah Darmi dalam Indonesia/English, penjelasan geografi, sapaan Melayu Pontianak, pertanyaan tantangan, dua naskah narasi, dan tiga rujukan sebagaimana dicantumkan dalam dokumen. Pilihan jawaban dibuat dari kutipan materi yang diberikan; jawaban lengkap menghubungkan sikap menghormati orang lain dengan perbedaan legenda dan penjelasan ilmiah pembentukan batuan.
 
 Rekaman yang dikirim tersedia di `assets/audio/batu-menangis.mp3`, sekitar 1 menit 28 detik, disalin tanpa perubahan dari **Batu_Menangis_Narasi_Studio_Soundtrack_Sinematik.mp3**. Tersedia satu berkas audio; memilih English/Indonesia mengganti bacaan, bukan bahasa rekaman. Naskah kedua bahasa dapat dibuka pada bagian **Naskah narasi siswa**. Rujukan adalah daftar yang diberikan tim, bukan hasil verifikasi independen.
+
+## Materi Sawerigading bilingual dan audio siswa
+
+Halaman `#daerah/sulawesi-selatan` memakai **The_Living_Map_Sulawesi_Selatan_Sawerigading_Bilingual.docx** dari tim pameran. Cerita Indonesia/English, sapaan Bugis, geografi dan budaya, pertanyaan, naskah narasi, serta rujukan diambil dari dokumen. Pilihan jawaban menggunakan kutipan materi; jawaban lengkap menghubungkan pelayaran dalam kisah dengan peran laut bagi masyarakat pesisir.
+
+Catatan tetap membedakan epos mitologis dari laporan perjalanan sejarah, serta mempertahankan keterangan bahwa **Cina adalah nama tempat dalam cerita**. Bagian lama yang menyebut episode masih menunggu materi telah diganti dengan materi yang disediakan. Rujukan ditampilkan sesuai dokumen, tanpa klaim verifikasi independen.
+
+Rekaman siswa **bahasa Inggris** ada di `assets/audio/sawerigading-english.mp3`, sekitar 1 menit 15 detik, disalin tanpa perubahan dari **Sawerigading_Sulawesi_Selatan_Narasi_English_Studio_Cinematic.mp3**. Tombol Indonesia/English mengubah bacaan, bukan bahasa rekaman. Panel naskah menyediakan kedua versi dari dokumen. Properti opsional `cultureHeading` menampilkan judul Geografi dan budaya / Geography and culture tanpa mengubah halaman daerah lain.

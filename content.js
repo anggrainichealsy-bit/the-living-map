@@ -178,7 +178,77 @@ window.REGIONS = [
     }
   }
 },
- {id:'sulawesi-selatan',name:'Sulawesi Selatan',island:'SULAWESI',title:'Kisah Sawerigading',tag:'Jejak kisah dalam La Galigo',icon:'≋',color:'#a5ad7d',scene:'sea',story:['Sawerigading merupakan tokoh dalam tradisi cerita La Galigo yang berasal dari masyarakat Bugis. Tradisi ini memuat kisah perjalanan, hubungan keluarga, dan dunia yang digambarkan dalam cerita.','Untuk pameran ini, kutipan atau adaptasi episode Sawerigading masih menunggu pemilihan dan peninjauan guru. Bagian ini sengaja tidak menambahkan alur atau dialog yang belum diverifikasi.','Sambil menunggu materi lengkap, kenali nama tokohnya dan diskusikan mengapa cerita dapat diwariskan melalui tulisan maupun tuturan.'],question:'Siapa tokoh yang diperkenalkan pada halaman ini?',options:['Sangkuriang','Sawerigading','Toba'],answer:1,reference:{label:'UNESCO — La Galigo',url:'https://www.unesco.org/en/memory-world/la-galigo'}},
+ {
+  "id": "sulawesi-selatan",
+  "name": "Sulawesi Selatan",
+  "island": "SULAWESI",
+  "title": "Kisah Sawerigading",
+  "tag": "Pelayaran dalam Epos La Galigo",
+  "icon": "≋",
+  "color": "#a5ad7d",
+  "scene": "sea",
+  "summary": "Sawerigading dari Luwu, perjalanan melintasi laut, dan kisah We Cudai dalam epos La Galigo.",
+  "story": [
+    "Dalam epos La Galigo masyarakat Bugis, Sawerigading adalah tokoh dari Luwu. Saudari kembarnya, We Tenriabeng, menyarankan ia mencari We Cudai di negeri Cina (nama tempat dalam cerita).",
+    "Ia menyiapkan perahu bersama rombongan dan berlayar melintasi lautan. Berbagai rintangan menghadang dalam pengembaraannya.",
+    "Sawerigading akhirnya menikahi We Cudai dan memiliki putra bernama La Galigo. Petualangan mereka menjadi bagian dari epos mitologis yang diwariskan masyarakat Bugis."
+  ],
+  "culture": "Luwu di pesisir timur Sulawesi Selatan berbatasan dengan Teluk Bone. Laut penting bagi masyarakat pesisir. Seni pembuatan perahu pinisi dari Sulawesi Selatan diakui UNESCO sebagai warisan budaya takbenda pada 2017.",
+  "cultureHeading": "Geografi dan budaya",
+  "language": "Tabe'! - Dalam bahasa Bugis berarti 'permisi', ungkapan sopan saat meminta izin atau menunjukkan rasa hormat.",
+  "question": "Mengapa laut penting bagi perjalanan Sawerigading dan masyarakat pesisir?",
+  "options": [
+    "Saudari kembarnya, We Tenriabeng, menyarankan ia mencari We Cudai di negeri Cina (nama tempat dalam cerita).",
+    "Ia menyiapkan perahu bersama rombongan dan berlayar melintasi lautan. Laut penting bagi masyarakat pesisir.",
+    "Sawerigading akhirnya menikahi We Cudai dan memiliki putra bernama La Galigo."
+  ],
+  "answer": 1,
+  "audio": "assets/audio/sawerigading-english.mp3",
+  "audioTitle": "Dengarkan Sawerigading · English",
+  "audioCaption": "Rekaman siswa berbahasa Inggris · Tekan play untuk mendengarkan.",
+  "contentNote": "Materi dari dokumen bilingual tim pameran. Kisah Sawerigading adalah warisan sastra mitologis, bukan laporan perjalanan sejarah. Cina merupakan nama tempat dalam cerita.",
+  "sources": [
+    "Arsip Nasional RI / UNESCO - La Galigo (Memory of the World, 2011)",
+    "Kemendikdasmen - Cerita Rakyat Sulawesi Selatan; Pemkab Luwu - Letak Geografis",
+    "UNESCO - Pinisi (2017); KamusDaerah - Bahasa Bugis: tabe'"
+  ],
+  "audioTranscript": {
+    "id": [
+      "Tabe’! Permisi, boleh kami mengajakmu berlayar ke Sulawesi Selatan? Pernah mendengar nama Sawerigading? Ia merupakan salah satu tokoh utama dalam La Galigo, epos besar masyarakat Bugis. Menurut kisah, Sawerigading berasal dari Luwu.",
+      "Saudari kembarnya, We Tenriabeng, menyarankan agar ia mencari We Cudai di negeri Cina, nama tempat yang disebut dalam cerita. Bersama rombongannya, Sawerigading menyiapkan perahu, lalu berlayar melintasi lautan dan menghadapi berbagai rintangan. Akhirnya, ia bertemu dan menikahi We Cudai. Mereka mempunyai putra bernama La Galigo.",
+      "Tahukah kamu? Wilayah Luwu berbatasan dengan Teluk Bone. Sulawesi Selatan juga terkenal dengan tradisi pembuatan perahu pinisi yang diakui UNESCO. Kisah Sawerigading adalah warisan sastra mitologis, bukan laporan perjalanan sejarah. Menurutmu, mengapa laut begitu penting dalam kisah ini? Terima kasih sudah menjelajah bersama kami!"
+    ],
+    "en": [
+      "Tabe’! Excuse us, and welcome to South Sulawesi! Have you heard of Sawerigading? He is a central character in La Galigo, a great epic from the Bugis literary tradition. According to the story, he came from Luwu.",
+      "His twin sister, We Tenriabeng, encouraged him to look for We Cudai in a land called Cina in the story. Sawerigading and his companions prepared a boat and sailed across the sea, facing many challenges along the way. Eventually, he met We Cudai, and they married. Their son was named La Galigo.",
+      "Did you know? The Luwu region borders the Gulf of Bone. South Sulawesi is also known for its tradition of pinisi boatbuilding, recognized by UNESCO. Sawerigading’s adventures belong to a mythological epic, not a verified historical travel record. Why do you think the sea is so important in this story? Thank you for exploring with us!"
+    ]
+  },
+  "reference": {
+    "label": "UNESCO — La Galigo",
+    "url": "https://www.unesco.org/en/memory-world/la-galigo"
+  },
+  "translations": {
+    "en": {
+      "title": "The Story of Sawerigading",
+      "tag": "A Voyage in the La Galigo Epic",
+      "story": [
+        "In the Bugis epic La Galigo, Sawerigading is a legendary figure from Luwu. His twin sister, We Tenriabeng, advised him to find We Cudai in a land called Cina in the story.",
+        "He prepared a boat with his companions and sailed across the sea. They faced many challenges along the way.",
+        "He eventually married We Cudai. Their son was named La Galigo. His adventures are part of a mythological Bugis epic preserved through oral traditions and manuscripts."
+      ],
+      "culture": "Luwu, on South Sulawesi’s eastern coast, borders the Gulf of Bone. The sea matters to coastal communities. UNESCO recognized South Sulawesi’s tradition of pinisi boatbuilding as intangible cultural heritage in 2017.",
+      "cultureHeading": "Geography and culture",
+      "language": "Tabe'! - 'Excuse me' in Bugis, used politely to ask permission or show respect.",
+      "question": "Why is the sea important to Sawerigading’s journey and coastal communities?",
+      "options": [
+        "His twin sister, We Tenriabeng, advised him to find We Cudai in a land called Cina in the story.",
+        "He prepared a boat with his companions and sailed across the sea. The sea matters to coastal communities.",
+        "He eventually married We Cudai. Their son was named La Galigo."
+      ]
+    }
+  }
+},
  {id:'nusa-tenggara-barat',name:'Nusa Tenggara Barat',island:'NUSA TENGGARA',title:'Legenda Putri Mandalika',tag:'Pilihan seorang putri',icon:'☼',color:'#d1b47a',scene:'sea',story:['Dalam salah satu versi legenda dari Lombok, Putri Mandalika dipinang oleh sejumlah pangeran. Ia khawatir pilihan terhadap salah satu dari mereka akan menimbulkan perselisihan.','Sang putri kemudian mengambil keputusan untuk terjun ke laut. Dalam legenda, kemunculan nyale dikaitkan dengan sang putri. Kisah ini adalah cerita rakyat, bukan penjelasan ilmiah tentang nyale.','Cerita ini dapat menjadi awal diskusi tentang kedamaian, kepentingan bersama, dan berbagai cara menyelesaikan perselisihan.'],question:'Apa yang dikhawatirkan Putri Mandalika dalam versi cerita ini?',options:['Terjadinya perselisihan','Hilangnya sebuah perahu','Datangnya musim hujan'],answer:0},
  {id:'papua',name:'Papua',island:'PAPUA',title:'Cerita rakyat menyusul',tag:'Ruang untuk cerita berikutnya',icon:'✺',color:'#86a488',scene:'forest',story:['Papua memiliki banyak komunitas dengan bahasa dan tradisi yang beragam. Tim pameran sedang memilih cerita dan sumber yang akan ditampilkan.','Cerita, nama bahasa, dan materi budaya belum ditambahkan agar tidak menyamaratakan tradisi atau memuat informasi yang belum diverifikasi.','Kamu tetap dapat mengunjungi ruang ini dan menyelesaikan tantangan tentang cara menghargai cerita budaya. Materi akan diperbarui setelah peninjauan guru.'],question:'Apa langkah yang tepat sebelum membagikan cerita budaya?',options:['Mengarang detail yang belum diketahui','Menganggap semua tradisi sama','Memeriksa sumber dan menghargai pemilik tradisi'],answer:2}
 ].map(r=>({...r,audio:r.audio ?? null,language:r.language ?? null,culture:r.culture ?? null,
