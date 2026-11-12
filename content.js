@@ -12,6 +12,18 @@ window.REGIONS = [
  translations: { en: null },
  // Ganti dengan path ilustrasi final dan deskripsi aksesibelnya.
  illustration: null, illustrationAlt: null,
+ // Raster artwork can be replaced independently for each display context.
+ heroImage: `assets/artwork/${r.id}.webp`,
+ cardImage: `assets/artwork/${r.id}.webp`,
+ thumbnailImage: `assets/artwork/${r.id}.webp`,
+ imageAlt: {
+  'sumatra-utara':'Lukisan imajinatif ikan emas melompat di danau luas, pulau hijau dan pegunungan berkabut.',
+  'jawa-barat':'Lukisan imajinatif pembuat perahu di tepi danau pegunungan menjelang fajar.',
+  'kalimantan-barat':'Lukisan imajinatif ibu dan anak yang mulai membatu di jalan hutan.',
+  'sulawesi-selatan':'Lukisan imajinatif kapal layar dan pelaut di laut terbuka saat senja.',
+  'nusa-tenggara-barat':'Lukisan imajinatif Putri Mandalika dengan kain tertiup angin di tebing pantai.',
+  'papua':'Lukisan imajinatif cenderawasih di hutan dengan sungai dan pegunungan berkabut.'
+ }[r.id],
  summary: {
   'sumatra-utara':'Sebuah janji, keluarga, dan asal-usul danau dalam legenda.',
   'jawa-barat':'Syarat semalam dan perahu yang menjadi bagian dari legenda.',

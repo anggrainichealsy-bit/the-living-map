@@ -1,8 +1,85 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img" aria-labelledby="title desc"><title id="title">Putri Mandalika · Cahaya pesisir</title><desc id="desc">Pantai berwarna hangat, putri di tebing, lengkungan ombak dan nyale sebagai garis warna simbolis. Ilustrasi artistik imajinatif, bukan dokumentasi tempat atau busana.</desc><defs><linearGradient id="sky" x2=".2" y2="1"><stop stop-color="#69567b"/><stop offset="1" stop-color="#f4c38e"/></linearGradient><linearGradient id="water" x2="0" y2="1"><stop stop-color="#478c8c"/><stop offset="1" stop-color="#103f53"/></linearGradient><linearGradient id="gold" x2=".6" y2="1"><stop stop-color="#ffedb3"/><stop offset="1" stop-color="#bd8748"/></linearGradient><radialGradient id="glow"><stop stop-color="#fff6cf" stop-opacity=".65"/><stop offset="1" stop-color="#fff6cf" stop-opacity="0"/></radialGradient><pattern id="paper" width="8" height="8" patternUnits="userSpaceOnUse"><circle cx="1" cy="3" r=".6" fill="#f6edcc" opacity=".13"/><circle cx="5" cy="7" r=".45" fill="#172f35" opacity=".12"/></pattern></defs><rect width="800" height="500" fill="url(#sky)"/>
-<circle cx="320" cy="154" r="150" fill="url(#glow)"/><circle cx="320" cy="154" r="64" fill="#fce0a0"/><path d="M0 272Q102 233 181 263T383 270 600 238 800 260V500H0Z" fill="#64a09d"/><path d="M0 312Q189 277 342 317T800 290V500H0Z" fill="url(#water)"/>
-<path d="M0 433Q91 353 232 390T457 394Q593 349 800 412V500H0Z" fill="#f0cf98"/><path d="M0 412Q95 332 232 369T457 373Q595 324 800 389" fill="none" stroke="#e7e6c0" stroke-width="12"/><path d="M0 401Q95 321 232 358T457 362Q595 313 800 378" fill="none" stroke="#8fc5b5" stroke-width="5"/>
-<path d="M553 296 628 260 688 272 742 228 800 238V500H655Z" fill="#665e58"/><path d="M553 296 628 260 688 272 742 228 800 238 800 266 747 260 690 304 623 288Z" fill="#8b9877"/><path d="m628 302 38 92-2 71m28-143 29 92" fill="none" stroke="#b6a07d" stroke-width="3"/>
-<g transform="translate(663 216)"><path d="M-12-43Q-26 2-46 42L-9 36 12 39 38 48Q16-3 12-43Z" fill="url(#gold)"/><path d="M-2-39Q-7 2-9 36m17-68q8 44 21 68" fill="none" stroke="#b68b57" stroke-width="2"/><circle cy="-61" r="13" fill="#e8bd88"/><path d="M-13-64Q-14-90 5-78 23-72 15-46L5-52 8-69Z" fill="#3e3441"/><path d="m-9-78 2-10 8 5 7-8 5 13" fill="#f4d38b"/><path d="M-10-37-35-19-55-25m65-13 25 16 22-9" stroke="#e9c18c" stroke-width="6" fill="none" stroke-linecap="round"/><path d="M-14-43Q-50-70-79-45-52-52-22-26" fill="#b86758"/></g>
-<g fill="none" stroke-linecap="round" stroke-width="4"><path d="M141 419q20-19 37 0t38 0m81 27q13-22 30-6t35-5m70-37q15-19 30-3t34-4" stroke="#b5777d"/><path d="M90 456q17-20 34-3t30-2m99-49q12-16 27-2t28-5m88 59q18-16 35-2t32-4" stroke="#6d9f84"/></g>
-<g transform="translate(28 500) scale(1)" fill="#254d4e"><path d="M0 0Q-28-105-76-116-79-55 0 0Q-3-109 28-153 67-81 0 0Q68-89 111-74 92-17 0 0Q-48-29-104-13-65 25 0 0Z"/><path d="M0 20V-70" stroke="#254d4e" stroke-width="5"/></g><g fill="none" stroke="#f5e8b4" stroke-width="2" opacity=".65"><path d="M510 80q12-13 24 0 12-13 24 0M575 108q8-9 16 0 8-9 16 0"/></g><g stroke="#ede1b6" fill="none"><path d="m485 87 5-13 5 13 13 5-13 5-5 13-5-13-13-5z"/></g>
-<rect width="800" height="500" fill="url(#paper)" pointer-events="none"/><path d="M18 55V18h37m690 0h37v37M18 445v37h37m690 0h37v-37" fill="none" stroke="#e9cc8b" stroke-width="1.5" opacity=".65"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img" aria-labelledby="title desc">
+<title id="title">Putri Mandalika · Cahaya pesisir</title>
+<desc id="desc">Putri Mandalika menjadi tokoh utama, berdiri anggun di tebing pantai. Kedua tangan dan kain panjang bergerak tertiup angin; cahaya senja, ombak dan garis nyale simbolis menciptakan suasana puitis. Busana merupakan rekaan artistik. Adegan artistik imajinatif; bukan dokumentasi tempat, busana, atau rekonstruksi sejarah.</desc>
+<defs>
+<linearGradient id="sky" x2=".2" y2="1">
+<stop stop-color="#69567b"/>
+<stop offset="1" stop-color="#f4c38e"/>
+</linearGradient>
+<linearGradient id="water" x2="0" y2="1">
+<stop stop-color="#478c8c"/>
+<stop offset="1" stop-color="#103f53"/>
+</linearGradient>
+<linearGradient id="gold" x2=".6" y2="1">
+<stop stop-color="#ffedb3"/>
+<stop offset="1" stop-color="#bd8748"/>
+</linearGradient>
+<radialGradient id="glow">
+<stop stop-color="#fff6cf" stop-opacity=".65"/>
+<stop offset="1" stop-color="#fff6cf" stop-opacity="0"/>
+</radialGradient>
+<pattern id="paper" width="8" height="8" patternUnits="userSpaceOnUse">
+<circle cx="1" cy="3" r=".6" fill="#f6edcc" opacity=".13"/>
+<circle cx="5" cy="7" r=".45" fill="#172f35" opacity=".12"/>
+</pattern>
+</defs>
+<rect width="800" height="500" fill="url(#sky)"/>
+<circle cx="320" cy="154" r="150" fill="url(#glow)"/>
+<circle cx="320" cy="154" r="64" fill="#fce0a0"/>
+<path d="M0 272Q102 233 181 263T383 270 600 238 800 260V500H0Z" fill="#64a09d"/>
+<path d="M0 312Q189 277 342 317T800 290V500H0Z" fill="url(#water)"/>
+<path d="M0 433Q91 353 232 390T457 394Q593 349 800 412V500H0Z" fill="#f0cf98"/>
+<path d="M0 412Q95 332 232 369T457 373Q595 324 800 389" fill="none" stroke="#e7e6c0" stroke-width="12"/>
+<path d="M0 401Q95 321 232 358T457 362Q595 313 800 378" fill="none" stroke="#8fc5b5" stroke-width="5"/>
+<path d="M553 296 628 260 688 272 742 228 800 238V500H655Z" fill="#665e58"/>
+<path d="M553 296 628 260 688 272 742 228 800 238 800 266 747 260 690 304 623 288Z" fill="#8b9877"/>
+<path d="m628 302 38 92-2 71m28-143 29 92" fill="none" stroke="#b6a07d" stroke-width="3"/>
+
+<g fill="none" stroke-linecap="round" stroke-width="4">
+<path d="M141 419q20-19 37 0t38 0m81 27q13-22 30-6t35-5m70-37q15-19 30-3t34-4" stroke="#b5777d"/>
+<path d="M90 456q17-20 34-3t30-2m99-49q12-16 27-2t28-5m88 59q18-16 35-2t32-4" stroke="#6d9f84"/>
+</g>
+<g transform="translate(28 500) scale(1)" fill="#254d4e">
+<path d="M0 0Q-28-105-76-116-79-55 0 0Q-3-109 28-153 67-81 0 0Q68-89 111-74 92-17 0 0Q-48-29-104-13-65 25 0 0Z"/>
+<path d="M0 20V-70" stroke="#254d4e" stroke-width="5"/>
+</g>
+<g fill="none" stroke="#f5e8b4" stroke-width="2" opacity=".65">
+<path d="M510 80q12-13 24 0 12-13 24 0M575 108q8-9 16 0 8-9 16 0"/>
+</g>
+<g stroke="#ede1b6" fill="none">
+<path d="m485 87 5-13 5 13 13 5-13 5-5 13-5-13-13-5z"/>
+</g>
+
+<!-- The princess is the central narrative subject; nyale are symbolic coloured ribbons. -->
+<path d="M493 343q-5 49 36 99l31 58h240V369l-98-30-56-37Z" fill="#645d58"/>
+<path d="M493 343 562 323 612 342 646 302 702 339 800 369v28l-106-31-47-30-40 35-53-25-54 20Z" fill="#a4ab7c"/>
+<g transform="translate(574 177)">
+ <path d="M-11 36Q-31 76-51 141L-70 174-10 184 37 168 75 181Q39 116 25 43Z" fill="url(#gold)" stroke="#f6dfab" stroke-width="2"/>
+ <path d="M-5 51Q-11 123-33 173m44-114q16 55 45 108M-41 148q50 15 94-2" stroke="#bd8c54" fill="none" stroke-width="2"/>
+ <path d="M-16 1Q-8-9 11-1L25 44Q7 65-17 40Z" fill="#d5b46f" stroke="#f1d796" stroke-width="2"/>
+ <path d="M-12 7-53 33-93 11M11 4 49-24 78-23" fill="none" stroke="#e2b785" stroke-width="11" stroke-linecap="round"/>
+ <path d="m-93 11-12-9m12 9-16 2M78-23l13-7m-13 7 12 2" stroke="#e5c092" fill="none" stroke-width="4" stroke-linecap="round"/>
+ <path d="M-12-5Q-58-71-120-33-93-28-69-14-44 8-21 22Z" fill="#a95d65" stroke="#e5a481" stroke-width="2"/>
+ <path d="M-60-34Q-94-6-126-18-145-30-170-14-146-44-116-40-88-39-67-49" fill="#bd7772"/>
+ <path d="M-82-28q-39-21-65-3" fill="none" stroke="#e4ab8d" stroke-width="2"/>
+ <path d="M-24-34Q-32-84 1-87 39-82 25-33L14-2-18-4Z" fill="#3f3540"/>
+ <path d="M-12-48Q-10-67 9-61L18-42 10-18-8-17Z" fill="#e2b786"/>
+ <path d="M-21-56Q-16-87 8-74L24-52 5-61-9-47Z" fill="#3f3540"/>
+ <path d="m-19-75 4-18 12 10 10-19 8 18 13-6-2 16Z" fill="#e6c77e" stroke="#ffedb1" stroke-width="1.5"/>
+ <circle cx="3" cy="-84" r="3" fill="#a5645e"/>
+ <path d="m-3-42 8-1M1-28l8-1" stroke="#775543" fill="none" stroke-width="2"/>
+ <circle cx="-14" cy="-27" r="3" fill="#f5d994"/>
+</g>
+<!-- Visual nyale motifs, not a biological diagram. -->
+<g fill="none" stroke-linecap="round" stroke-width="5">
+<path d="M196 380q-24-40-51-15t-26-9m108 48q-5-42 27-26t44-5m35 39q-11-38 22-30t40-20" stroke="#c68894"/>
+<path d="M140 442q25-31 45-7t41-3m60 18q14-32 37-13t42-7m24-17q20-26 41-7" stroke="#779f92"/>
+</g>
+<g fill="#f9e1aa">
+<path d="m356 226 3-10 3 10 10 3-10 3-3 10-3-10-10-3z"/>
+<circle cx="434" cy="270" r="2"/>
+<circle cx="379" cy="285" r="2"/>
+</g>
+<rect width="800" height="500" fill="url(#paper)" pointer-events="none"/>
+<path d="M18 55V18h37m690 0h37v37M18 445v37h37m690 0h37v-37" fill="none" stroke="#e9cc8b" stroke-width="1.5" opacity=".65"/>
+</svg>

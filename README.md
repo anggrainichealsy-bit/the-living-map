@@ -3,7 +3,7 @@
 Website pameran edukatif interaktif Open House **14 November 2026**.
 Tema: **Beragam Bahasa, Berjuta Kisah, Satu Indonesia**.
 
-HTML, CSS, JavaScript murni. Tidak membutuhkan backend, instalasi npm, atau API key. Semua ilustrasi SVG dibuat untuk situs ini dan tersimpan lokal; tidak ada font/CDN eksternal.
+HTML, CSS, JavaScript murni. Tidak membutuhkan backend, instalasi npm, atau API key. Ilustrasi tersimpan lokal; tidak ada font/CDN eksternal. Edisi painterly menggunakan gambar WebP dengan SVG sebagai fallback.
 
 ## Jalankan lokal
 
@@ -102,3 +102,25 @@ NODE_PATH=/tmp/living-map-checks/node_modules BASE_URL=http://127.0.0.1:8000/ no
 ```
 
 Tes menggunakan `/usr/bin/chromium` jika ada. Set `CHROMIUM_PATH` untuk lokasi Chromium lain; jika tidak ada, gunakan browser yang dipasang melalui Playwright. Pemeriksaan mencakup enam SVG berbeda, peta dengan keyboard/HP, progres lama, deep link, jawaban salah/benar, tanda unik, milestone tiga daerah, reload, reset, dan penyimpanan diblokir. Untuk menguji deployment pada subfolder, isi `BASE_URL` dengan alamat server yang menyajikan folder `/the-living-map/`.
+
+
+## Edisi painterly / editorial
+
+Homepage kini menggunakan headline editorial dan kolase tiga postcard (Toba, Sangkuriang, Mandalika). Atlas tetap tersedia di `#jelajah`. Kartu koleksi memakai gambar raster; hero detail menjadi gambar lebar dengan gradasi krem di belakang teks, panel audio di bawah hero, dan navigasi bagian **Cerita rakyat / Bahasa daerah / Tantangan**. Tombol bagian menggulir ke konten tanpa mengganti tautan hash daerah, sehingga tautan QR tetap utuh.
+
+Enam ilustrasi WebP di `assets/artwork/` dibuat dengan bantuan AI sebagai interpretasi artistik imajinatif. Gambar bukan dokumentasi geografi, busana autentik, atau rekonstruksi sejarah; semua materi budaya tetap perlu sumber dan peninjauan guru. Kapal Sawerigading adalah motif pelayaran, bukan klaim bentuk kapal dalam naskah. Papua tetap placeholder alam, tanpa cerita budaya tambahan. File PNG sumber disimpan di luar checkout pada lingkungan pembuatan; website hanya membutuhkan aset WebP yang sudah di-commit.
+
+### Mengganti artwork
+
+Dalam `content.js`, setiap daerah memiliki:
+
+- `heroImage`: gambar utama hero detail dan postcard utama.
+- `cardImage`: gambar kartu koleksi dan postcard pendukung.
+- `thumbnailImage`: gambar mini pada atlas.
+- `imageAlt`: deskripsi gambar dalam bahasa Indonesia untuk aksesibilitas.
+
+Ketiga slot saat ini menunjuk ke satu WebP per daerah agar cache browser dapat digunakan ulang. Anda dapat mengarahkan tiap slot ke berkas berbeda. Gunakan path relatif, misalnya `assets/artwork/toba-hero.webp`, bukan path absolut `/assets/...`, agar kompatibel dengan subfolder GitHub Pages. Disarankan gambar landscape sekitar 1600 px, subjek di sisi kanan dan ruang suasana di kiri untuk hero dengan teks. Keenam WebP saat ini sekitar 1,7 MB total; SVG tetap tersedia sebagai fallback jika slot kosong atau gambar gagal dimuat.
+
+`audio` tetap memakai path rekaman siswa seperti sebelumnya. Jika `null`, panel menampilkan status **Segera hadir** dan gelombang dekoratif tanpa tombol play palsu. Setelah file audio ditambahkan, pemutar native browser muncul otomatis, tanpa autoplay. Pilihan English tetap placeholder; tidak ada terjemahan baru yang ditambahkan.
+
+Tes browser opsional sekarang juga memeriksa navigasi bagian tanpa mengubah URL daerah, pemutaran WAV sementara di panel baru, fallback gambar yang gagal, dan layout pada 320–1920 px. WAV fixture hanya dibuat dalam memori pengujian dan tidak dipublikasikan sebagai audio siswa.

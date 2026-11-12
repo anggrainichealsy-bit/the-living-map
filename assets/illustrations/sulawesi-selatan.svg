@@ -1,6 +1,92 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img" aria-labelledby="title desc"><title id="title">Sawerigading · Cakrawala pelayaran</title><desc id="desc">Kapal layar imajinatif terinspirasi siluet phinisi, layar berlapis dan ombak melengkung di bawah langit senja. Ilustrasi artistik imajinatif, bukan dokumentasi tempat atau busana.</desc><defs><linearGradient id="sky" x2=".2" y2="1"><stop stop-color="#293b5b"/><stop offset="1" stop-color="#e4ad78"/></linearGradient><linearGradient id="water" x2="0" y2="1"><stop stop-color="#478c8c"/><stop offset="1" stop-color="#103f53"/></linearGradient><linearGradient id="gold" x2=".6" y2="1"><stop stop-color="#ffedb3"/><stop offset="1" stop-color="#bd8748"/></linearGradient><radialGradient id="glow"><stop stop-color="#fff6cf" stop-opacity=".65"/><stop offset="1" stop-color="#fff6cf" stop-opacity="0"/></radialGradient><pattern id="paper" width="8" height="8" patternUnits="userSpaceOnUse"><circle cx="1" cy="3" r=".6" fill="#f6edcc" opacity=".13"/><circle cx="5" cy="7" r=".45" fill="#172f35" opacity=".12"/></pattern></defs><rect width="800" height="500" fill="url(#sky)"/>
-<circle cx="614" cy="163" r="130" fill="url(#glow)"/><circle cx="614" cy="163" r="66" fill="#edc088"/><path d="M0 241 87 187 164 225 222 196 304 250 800 245V500H0Z" fill="#586c75"/><path d="M0 269Q185 241 400 266T800 254V500H0Z" fill="url(#water)"/>
-<g transform="translate(161 55)"><path d="M23 283Q181 318 430 265L389 337Q198 380 61 328Z" fill="#573f38" stroke="#d9ad70" stroke-width="3"/><path d="M52 304Q220 340 413 291M65 321q157 37 330-12" stroke="#a9764b" stroke-width="3" fill="none"/><path d="M167 289V0m130 293V48" stroke="#342f32" stroke-width="7"/><path d="M167 17 51 179 165 170Z" fill="#eacb8d"/><path d="M177 35 284 176 178 170Z" fill="#f7e7b6"/><path d="M161 187 53 200 163 269Z" fill="#e9cc94"/><path d="M177 186 281 198 179 275Z" fill="#f7e6b5"/><path d="M298 65 390 193 301 180Z" fill="#f2d9a4"/><path d="M298 197 400 209 302 267Z" fill="#e4c18a"/><path d="M167 22 40 289m257-215 128 204M54 181l110-8m20 2 94 4" stroke="#b89969" stroke-width="1.5" fill="none"/><path d="m168 0 46 9-46 10m130 32 36 6-36 11" fill="#a34f3d"/><path d="M3 270 458 242" stroke="#d4b17b" stroke-width="5"/><g fill="#e5c38b"><circle cx="211" cy="297" r="4"/><circle cx="236" cy="298" r="4"/><circle cx="262" cy="298" r="4"/></g></g>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img" aria-labelledby="title desc">
+<title id="title">Sawerigading · Cakrawala pelayaran</title>
+<desc id="desc">Kapal layar imajinatif terinspirasi siluet phinisi menembus ombak. Sosok pelaut di haluan menunjuk cakrawala, dengan kain tertiup angin, layar berlapis dan senja dramatis. Bukan rekonstruksi kapal atau busana dalam naskah Sawerigading. Adegan artistik imajinatif; bukan dokumentasi tempat, busana, atau rekonstruksi sejarah.</desc>
+<defs>
+<linearGradient id="sky" x2=".2" y2="1">
+<stop stop-color="#293b5b"/>
+<stop offset="1" stop-color="#e4ad78"/>
+</linearGradient>
+<linearGradient id="water" x2="0" y2="1">
+<stop stop-color="#478c8c"/>
+<stop offset="1" stop-color="#103f53"/>
+</linearGradient>
+<linearGradient id="gold" x2=".6" y2="1">
+<stop stop-color="#ffedb3"/>
+<stop offset="1" stop-color="#bd8748"/>
+</linearGradient>
+<radialGradient id="glow">
+<stop stop-color="#fff6cf" stop-opacity=".65"/>
+<stop offset="1" stop-color="#fff6cf" stop-opacity="0"/>
+</radialGradient>
+<pattern id="paper" width="8" height="8" patternUnits="userSpaceOnUse">
+<circle cx="1" cy="3" r=".6" fill="#f6edcc" opacity=".13"/>
+<circle cx="5" cy="7" r=".45" fill="#172f35" opacity=".12"/>
+</pattern>
+</defs>
+<rect width="800" height="500" fill="url(#sky)"/>
+<circle cx="614" cy="163" r="130" fill="url(#glow)"/>
+<circle cx="614" cy="163" r="66" fill="#edc088"/>
+<path d="M0 241 87 187 164 225 222 196 304 250 800 245V500H0Z" fill="#586c75"/>
+<path d="M0 269Q185 241 400 266T800 254V500H0Z" fill="url(#water)"/>
+<g transform="translate(161 55)">
+<path d="M23 283Q181 318 430 265L389 337Q198 380 61 328Z" fill="#573f38" stroke="#d9ad70" stroke-width="3"/>
+<path d="M52 304Q220 340 413 291M65 321q157 37 330-12" stroke="#a9764b" stroke-width="3" fill="none"/>
+<path d="M167 289V0m130 293V48" stroke="#342f32" stroke-width="7"/>
+<path d="M167 17 51 179 165 170Z" fill="#eacb8d"/>
+<path d="M177 35 284 176 178 170Z" fill="#f7e7b6"/>
+<path d="M161 187 53 200 163 269Z" fill="#e9cc94"/>
+<path d="M177 186 281 198 179 275Z" fill="#f7e6b5"/>
+<path d="M298 65 390 193 301 180Z" fill="#f2d9a4"/>
+<path d="M298 197 400 209 302 267Z" fill="#e4c18a"/>
+<path d="M167 22 40 289m257-215 128 204M54 181l110-8m20 2 94 4" stroke="#b89969" stroke-width="1.5" fill="none"/>
+<path d="m168 0 46 9-46 10m130 32 36 6-36 11" fill="#a34f3d"/>
+<path d="M3 270 458 242" stroke="#d4b17b" stroke-width="5"/>
+<g fill="#e5c38b">
+<circle cx="211" cy="297" r="4"/>
+<circle cx="236" cy="298" r="4"/>
+<circle cx="262" cy="298" r="4"/>
+</g>
+</g>
 <path d="M0 417q57-71 106-24t92 14q50-65 113-17t105 7q75-66 130-11t119 14q69-63 135-27v127H0Z" fill="#164d60"/>
-<g fill="none" stroke="#95c5bd" stroke-width="4"><path d="M-20 422q60-71 110-31-30-9-42 14m105 24q53-48 100-14m115 6q52-61 102-29-26-6-36 13m119 24q62-65 110-29-28-10-39 9m108 12q48-49 100-23"/></g><path d="M45 465q25-10 50 0t50 0" stroke="#d1dab7" stroke-width="1.6" fill="none" opacity=".5"/><path d="M165 479q25-10 50 0t50 0" stroke="#d1dab7" stroke-width="1.6" fill="none" opacity=".5"/><path d="M285 465q25-10 50 0t50 0" stroke="#d1dab7" stroke-width="1.6" fill="none" opacity=".5"/><path d="M405 479q25-10 50 0t50 0" stroke="#d1dab7" stroke-width="1.6" fill="none" opacity=".5"/><path d="M525 465q25-10 50 0t50 0" stroke="#d1dab7" stroke-width="1.6" fill="none" opacity=".5"/><path d="M645 479q25-10 50 0t50 0" stroke="#d1dab7" stroke-width="1.6" fill="none" opacity=".5"/><path d="M765 465q25-10 50 0t50 0" stroke="#d1dab7" stroke-width="1.6" fill="none" opacity=".5"/><g fill="none" stroke="#f5e8b4" stroke-width="2" opacity=".65"><path d="M510 80q12-13 24 0 12-13 24 0M575 108q8-9 16 0 8-9 16 0"/></g>
-<rect width="800" height="500" fill="url(#paper)" pointer-events="none"/><path d="M18 55V18h37m690 0h37v37M18 445v37h37m690 0h37v-37" fill="none" stroke="#e9cc8b" stroke-width="1.5" opacity=".65"/></svg>
+<g fill="none" stroke="#95c5bd" stroke-width="4">
+<path d="M-20 422q60-71 110-31-30-9-42 14m105 24q53-48 100-14m115 6q52-61 102-29-26-6-36 13m119 24q62-65 110-29-28-10-39 9m108 12q48-49 100-23"/>
+</g>
+<path d="M45 465q25-10 50 0t50 0" stroke="#d1dab7" stroke-width="1.6" fill="none" opacity=".5"/>
+<path d="M165 479q25-10 50 0t50 0" stroke="#d1dab7" stroke-width="1.6" fill="none" opacity=".5"/>
+<path d="M285 465q25-10 50 0t50 0" stroke="#d1dab7" stroke-width="1.6" fill="none" opacity=".5"/>
+<path d="M405 479q25-10 50 0t50 0" stroke="#d1dab7" stroke-width="1.6" fill="none" opacity=".5"/>
+<path d="M525 465q25-10 50 0t50 0" stroke="#d1dab7" stroke-width="1.6" fill="none" opacity=".5"/>
+<path d="M645 479q25-10 50 0t50 0" stroke="#d1dab7" stroke-width="1.6" fill="none" opacity=".5"/>
+<path d="M765 465q25-10 50 0t50 0" stroke="#d1dab7" stroke-width="1.6" fill="none" opacity=".5"/>
+<g fill="none" stroke="#f5e8b4" stroke-width="2" opacity=".65">
+<path d="M510 80q12-13 24 0 12-13 24 0M575 108q8-9 16 0 8-9 16 0"/>
+</g>
+
+<!-- An imagined sailor occupies the bow; the ship remains an artistic maritime motif. -->
+<g transform="translate(568 278)">
+ <path d="M-9 14-31 49-18 66-1 36 13 62 29 55 12 13Z" fill="#203a42"/>
+ <path d="m-23 56-9 9 19 0m36-9 13 7-19 3" fill="#d4ae73"/>
+ <path d="M-14-39Q4-48 17-32L16 16Q1 31-18 14Z" fill="#c0a164" stroke="#f2d19b" stroke-width="1.5"/>
+ <path d="M-9-31-31-16-51-28M13-29 41-55 64-58" stroke="#d8b37e" stroke-width="9" fill="none" stroke-linecap="round"/>
+ <path d="M-11-30-24-19m37-10 17-16" stroke="#d3b37b" stroke-width="13" fill="none"/>
+ <path d="m64-58 15-5m-15 5 8 4M-52-28l-7-10" stroke="#d8b37e" fill="none" stroke-width="3" stroke-linecap="round"/>
+ <ellipse cx="1" cy="-58" rx="13" ry="17" fill="#d9b47f"/>
+ <path d="M-14-59Q-21-83 3-85 19-80 16-62L5-70-9-59Z" fill="#263b3b"/>
+ <path d="m-14-74 29-5 3 7-31 6Z" fill="#9f5445"/>
+ <path d="M15-76Q44-94 76-73 47-81 19-64" fill="#ac5d49"/>
+ <path d="M-17-24Q-50-43-67-89-45-60-12-47Z" fill="#aa5c46" stroke="#d39962" stroke-width="1.5"/>
+ <path d="M-18 0q17 9 35-3v10q-19 14-35 3Z" fill="#8f5341"/>
+</g>
+<g fill="none" stroke="#f2d6a2" stroke-width="2" opacity=".45">
+<path d="M46 132q77-28 139-9m400-31q71-14 134 8M24 167q49-17 101-12"/>
+</g>
+<path d="M69 335q-38 7-50 38 29-13 46-1m649-41q47-1 65 29-25-9-39 7" stroke="#d5e8cd" stroke-width="3" fill="none"/>
+<g fill="#e5edcf">
+<circle cx="104" cy="361" r="3"/>
+<circle cx="128" cy="379" r="2"/>
+<circle cx="704" cy="382" r="3"/>
+<circle cx="682" cy="369" r="2"/>
+</g>
+<rect width="800" height="500" fill="url(#paper)" pointer-events="none"/>
+<path d="M18 55V18h37m690 0h37v37M18 445v37h37m690 0h37v-37" fill="none" stroke="#e9cc8b" stroke-width="1.5" opacity=".65"/>
+</svg>
