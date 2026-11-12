@@ -68,3 +68,37 @@ Revisi visual mempertahankan rute dan kunci localStorage yang sama. Homepage ter
 - `summary`: ringkasan pada kartu galeri.
 - `translations.en`: slot data terjemahan, saat ini `null`. Tombol English menjelaskan bahwa terjemahan belum tersedia; belum mengganti cerita. Jangan menambahkan terjemahan tanpa materi yang disetujui tim. Implementasi pembacaan data English merupakan langkah berikutnya setelah materinya tersedia.
 - Dukungan `audio`, pemutar asli browser, pesan gagal memuat, tantangan, dan progres paspor tetap menggunakan mekanisme sebelumnya.
+
+## Atlas ilustratif — enam adegan cerita
+
+Setiap daerah sekarang memiliki **aset SVG tersendiri** di `assets/illustrations/`. Aset yang sama muncul sebagai mini-adegan pada atlas, ilustrasi kartu galeri, dan hero besar pada halaman daerah:
+
+| Aset | Komposisi visual |
+| --- | --- |
+| `sumatra-utara.svg` | Danau luas, pulau tengah, pegunungan, ikan emas, dan perahu |
+| `jawa-barat.svg` | Gunung, kabut fajar, perahu kayu terbalik, dan pengelana |
+| `kalimantan-barat.svg` | Hutan berlapis, jalan, siluet ibu-anak, dan batu bertetes air |
+| `sulawesi-selatan.svg` | Kapal layar imajinatif terinspirasi siluet phinisi, senja, dan ombak |
+| `nusa-tenggara-barat.svg` | Putri di pesisir, tebing, ombak, dan garis nyale simbolis |
+| `papua.svg` | Cenderawasih bergaya imajinatif, hutan, sungai, dan pegunungan |
+
+Ilustrasi adalah karya vector artistik untuk pengalaman membaca, **bukan sumber fakta, rekonstruksi busana, atau bukti historis**. Kapal pada Sawerigading adalah motif visual pelayaran, bukan klaim bentuk kapal dalam naskah. Cerita Papua tetap menunggu materi resmi. Semua SVG lokal, total sekitar 24 KB; tidak memakai layanan gambar atau CDN.
+
+Ganti berkas SVG tersebut secara langsung, atau gunakan `illustration` dan `illustrationAlt` dalam `content.js`. Titik geografis dan mini-adegan sama-sama berupa tautan hash yang dapat dipakai dengan keyboard. Pada layar kecil, geser atlas mendatar atau gunakan daftar enam destinasi di bawah atlas. Kunci progres tetap `living-map-passport-v1`.
+
+`index.html` memakai penanda versi pada URL CSS/JavaScript agar browser meminta aset revisi ini setelah deployment Pages. Perbarui penanda tersebut pada rilis selanjutnya jika kedua berkas berubah.
+
+### Tes browser opsional
+
+Tidak dibutuhkan untuk menjalankan situs. Dengan Node.js, Chromium, dan Playwright yang tersedia:
+
+```sh
+# Jalankan server situs di terminal pertama:
+python3 -m http.server 8000
+
+# Terminal kedua; instal alat uji di luar checkout jika belum tersedia:
+npm install --prefix /tmp/living-map-checks --no-package-lock playwright
+NODE_PATH=/tmp/living-map-checks/node_modules BASE_URL=http://127.0.0.1:8000/ node tests/browser.cjs
+```
+
+Tes menggunakan `/usr/bin/chromium` jika ada. Set `CHROMIUM_PATH` untuk lokasi Chromium lain; jika tidak ada, gunakan browser yang dipasang melalui Playwright. Pemeriksaan mencakup enam SVG berbeda, peta dengan keyboard/HP, progres lama, deep link, jawaban salah/benar, tanda unik, milestone tiga daerah, reload, reset, dan penyimpanan diblokir. Untuk menguji deployment pada subfolder, isi `BASE_URL` dengan alamat server yang menyajikan folder `/the-living-map/`.

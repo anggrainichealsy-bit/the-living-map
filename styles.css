@@ -1165,3 +1165,187 @@ body {
 main:focus  {
    outline: none;
    }
+
+/* Illustrated expedition atlas — local scene artwork, no external services. */
+.hero {
+  background: #103b40;
+  padding: 24px 4% 0;
+}
+.hero-top {
+  position: relative;
+  max-width: 1280px;
+  padding: 0 0 4px 82px;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 45px;
+}
+.hero-compass {
+  position: absolute;
+  left: 0;
+  top: 15px;
+  color: #e4c184;
+  font: 73px/1 Georgia, serif;
+  text-shadow: 0 0 35px #dbb87930;
+}
+.hero h1 {
+  font-size: clamp(38px, 4vw, 58px);
+  margin-top: 9px;
+  line-height: 1.06;
+  color: #fff0d1;
+}
+.hero .subtitle { font-size: 25px; margin-bottom: 11px; }
+.hero-theme { font-size: 20px; max-width: 390px; }
+.hero .intro { font-size: 12px; }
+.hero-top > .eyebrow { font-size: 8px; color: #d8ba85; }
+.hero-top .button { margin-top: 0; }
+.hero-top .hero-passport { margin-left: 163px; }
+.atlas {
+  max-width: 1280px;
+  margin-top: 22px;
+  padding: 0;
+  border: 1px solid #bca06d80;
+  border-radius: 10px 10px 0 0;
+  background: #123b40;
+  box-shadow: 0 0 0 5px #c2a16c0c, 0 24px 70px #001b2440;
+}
+.atlas-heading {
+  padding: 18px 26px;
+  background: #102f34;
+  border-bottom: 1px solid #b79a633d;
+}
+.atlas-heading h2 { font-size: 29px; color: #f5e6c6; }
+.atlas-heading p { text-align: right; }
+.story-map-scroll { overflow-x: auto; overflow-y: hidden; border-radius: 0; scrollbar-color: #bfa474 #173f43; }
+.story-map { display: block; width: 100%; height: auto; }
+.atlas-geography .land {
+  fill: #75957e;
+  stroke: #d3cf9b;
+  stroke-width: 1.1;
+  filter: drop-shadow(0 7px 0 #082e36);
+}
+.atlas-geography .map-label { fill: #d0d7b6; font-size: 8px; letter-spacing: 3px; }
+.atlas-geography > text:last-child, .atlas-geography > text:nth-last-child(2) { display: none; }
+.atlas-geography .map-sea { opacity: .25; }
+.voyage-line { stroke: #d8ba81; stroke-width: 1.5; stroke-dasharray: 5 7; fill: none; opacity: .65; }
+.scene-connector { stroke: #d4c399; stroke-width: 1.1; stroke-dasharray: 3 4; opacity: .6; fill: none; }
+.scene-shadow { fill: #05292e; opacity: .7; }
+.scene-frame { fill: #e3d1a6; stroke: #a28d5d; stroke-width: 1; transition: stroke .2s, filter .2s; }
+.map-scene { cursor: pointer; }
+.map-scene:hover .scene-frame, .map-scene:focus .scene-frame { stroke: #fff1c7; stroke-width: 4; filter: drop-shadow(0 0 12px #f4d19766); }
+.map-scene:focus { outline: none; }
+.map-scene image { transition: opacity .2s; }
+.map-scene:hover image { opacity: .9; }
+.scene-region { font-family: Arial, sans-serif; font-size: 8px; font-weight: 700; letter-spacing: 1.1px; fill: #536955; }
+.scene-title { font-family: Georgia, serif; font-size: 19px; fill: #254946; }
+.geographic-pin .halo { fill: #ead19a; opacity: .2; }
+.geographic-pin .dot { fill: #e8ce97; stroke: #244d4c; stroke-width: 3; r: 12; }
+.geographic-pin .pin-index { font: bold 11px Arial, sans-serif; fill: #244d4c; stroke: none; }
+.geographic-pin:hover .dot, .geographic-pin:focus .dot { fill: #fff2cc; stroke: #fff2cc; }
+.atlas-route-index {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  border-top: 1px solid #beaa7855;
+  background: #0f3237;
+}
+.atlas-route-index a { display: flex; gap: 7px; align-items: center; padding: 12px 10px; border-right: 1px solid #b39b6433; font-size: 9px; color: #e6d8b8; }
+.atlas-route-index a:hover { background: #31564e; }
+.atlas-route-index span { font: 16px Georgia, serif; color: #bda377; }
+.atlas-route-index b { margin-left: auto; font-weight: 400; }
+.map-caption, .hero-bottom { margin-inline: 24px; }
+.collection { max-width: 1320px; padding-top: 55px; }
+.collection .section-heading h2 { font-size: 48px; }
+.region-grid { gap: 28px; }
+.region-card { border: 1px solid #cbbd9c; border-radius: 110px 110px 5px 5px; box-shadow: 0 5px 0 #ded2b9, 0 12px 20px #3d49350c; background: #fff9eb; }
+.region-card:hover { transform: translateY(-6px); box-shadow: 0 5px 0 #cbb791, 0 15px 25px #3d49351a; }
+.card-art { height: auto; aspect-ratio: 8/5; margin: 9px; border-radius: 102px 102px 3px 3px; border: 1px solid #a68f66; overflow: hidden; }
+.card-art .art { height: 100%; width: 100%; object-fit: cover; }
+.number { top: auto; bottom: 10px; left: 13px; background: #133c3ddf; color: #efd9ad; border: 1px solid #d1b38080; font-size: 8px; padding: 4px 9px; border-radius: 4px; }
+.card-content { padding: 16px 25px 22px; }
+.card-content h3 { font-size: 27px; line-height: 1.15; }
+.card-content small { font-size: 9px; color: #927749; }
+.card-summary { min-height: 42px; }
+.card-bottom { color: #877042; border-color: #dcd0b7; }
+.detail-top { background: #173e41; color: #f5e4c2; position: relative; overflow: hidden; padding: 24px 4% 24px; }
+.detail-top:before { content: ''; position: absolute; inset: 0; pointer-events: none; background: repeating-radial-gradient(ellipse at 0 0, transparent 0 40px, #a3b99c16 41px 42px, transparent 43px 80px); }
+.breadcrumb { position: relative; color: #d6ccac; margin-bottom: 24px; }
+.detail-hero { position: relative; max-width: 1360px; grid-template-columns: .7fr 1.3fr; gap: 36px; }
+.detail-hero h1 { font-size: clamp(40px, 4.5vw, 68px); color: #fae8c5; }
+.detail-hero .eyebrow { color: #d1b078; }
+.detail-hero p { color: #c7cfb7; font-size: 21px; }
+.detail-hero .art { min-height: 0; width: 100%; height: auto; aspect-ratio: 8/5; object-fit: cover; border: 6px solid #d6c499; border-radius: 90px 90px 3px 3px; outline: 1px solid #ac8b56; box-shadow: 8px 9px 0 #082e34; }
+.detail-hero .exhibit-index { color: #c4ab79; }
+.detail-hero .pill { color: #eddbb3; border-color: #8b9a7f; }
+.illustration-caption { position: relative; text-align: right; font-size: 8px; letter-spacing: 1.4px; margin: 22px auto 0; color: #b7c5ab; max-width: 1360px; }
+.story { border-radius: 3px 18px 3px 3px; border-left: 7px solid #d4c29c; box-shadow: 5px 5px 0 #e1d4b8, 8px 8px 0 #f9f0dc; }
+.story-pages { padding-top: 16px; border-top: 1px solid #e5d9c2; }
+.story-pages p { font-size: 16px; line-height: 1.95; }
+.story h2 { font-size: 34px; }
+.info-card { border-top: 3px solid #b79c68; }
+.passport-section { background: #e2e4d3; }
+@media(min-width:1500px) { .hero { padding-inline: 7%; } }
+@media(max-width:900px) {
+  .hero-top { column-gap: 25px; padding-left: 60px; }
+  .hero-compass { font-size: 52px; }
+  .hero h1 { font-size: 40px; }
+  .hero-theme { font-size: 17px; }
+  .atlas-route-index { grid-template-columns: repeat(3, 1fr); }
+  .story-map { min-width: 950px; }
+  .mobile-map-hint { display: inline; color: #d4bd88; }
+  .detail-hero { grid-template-columns: .7fr 1.3fr; gap: 23px; }
+  .detail-hero h1 { font-size: 36px; }
+  .detail-hero p { font-size: 17px; }
+  .region-grid { gap: 20px; }
+  .card-content { padding: 15px 18px 20px; }
+  .card-content h3 { font-size: 24px; }
+}
+@media(max-width:760px) {
+  .hero { padding: 23px 4% 0; }
+  .hero-top { display: block; padding-left: 0; padding-right: 0; }
+  .hero-compass { right: 0; left: auto; top: 12px; opacity: .4; font-size: 70px; }
+  .hero-top > .eyebrow { font-size: 7px; letter-spacing: 1.5px; padding-right: 60px; }
+  .hero h1 { font-size: 42px; max-width: 290px; margin-bottom: 4px; }
+  .hero .subtitle { font-size: 25px; }
+  .hero-theme { font-size: 14px; max-width: none; padding-right: 0; }
+  .hero .intro { font-size: 11px; }
+  .hero-top .button { margin: 15px 8px 0 0; font-size: 11px; }
+  .hero-top .hero-passport { margin-left: 0; }
+  .atlas { margin-top: 25px; }
+  .atlas-heading { padding: 16px; }
+  .atlas-heading h2 { font-size: 27px; }
+  .atlas-heading p { text-align: left; margin-top: 7px; font-size: 10px; }
+  .story-map { min-width: 900px; }
+  .atlas-route-index a { padding: 10px 8px; font-size: 8px; }
+  .atlas-route-index span { font-size: 13px; }
+  .map-caption, .hero-bottom { margin-inline: 14px; }
+  .map-caption { font-size: 7px; }
+  .hero-bottom { font-size: 8px; }
+  .collection .section-heading h2 { font-size: 36px; }
+  .collection { padding-top: 40px; }
+  .region-card { border-radius: 80px 80px 4px 4px; }
+  .card-art { border-radius: 72px 72px 3px 3px; margin: 7px; height: auto; }
+  .card-content { padding: 13px 16px 18px; }
+  .card-content h3 { font-size: 23px; }
+  .number { font-size: 7px; padding: 2px 5px; }
+  .detail-hero { grid-template-columns: 1fr; gap: 24px; }
+  .detail-hero h1 { font-size: 44px; max-width: 600px; }
+  .detail-hero .art { border-radius: 65px 65px 2px 2px; max-height: none; width: 100%; }
+  .detail-top { padding: 20px 6% 25px; }
+  .illustration-caption { text-align: left; line-height: 1.6; font-size: 7px; }
+  .story-pages p { font-size: 15px; }
+}
+@media(max-width:420px) {
+  .region-grid { grid-template-columns: 1fr; gap: 26px; }
+  .region-card { border-radius: 115px 115px 4px 4px; }
+  .card-art { border-radius: 108px 108px 3px 3px; height: auto; }
+  .card-content { padding: 14px 22px 20px; }
+  .card-content h3 { font-size: 28px; }
+  .number { font-size: 8px; padding: 4px 8px; }
+  .detail-hero h1 { font-size: 39px; }
+}
+@media(prefers-reduced-motion:reduce) { .map-scene image, .scene-frame { transition: none; } }
+@media(max-width:760px) {
+  .passport { grid-template-columns: minmax(0, 1fr); }
+  .passport > * { min-width: 0; }
+  .book-title { flex-wrap: wrap; gap: 7px; font-size: 9px; letter-spacing: 1.3px; }
+  .stamps { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .stamp { min-width: 0; overflow-wrap: anywhere; }
+}
