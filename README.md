@@ -132,3 +132,9 @@ Halaman `#daerah/jawa-barat` memakai materi dari dokumen **The_Living_Map_Jawa_B
 Audio siswa **berbahasa Inggris** tersedia di `assets/audio/sangkuriang-english.mp3` (sekitar 1 menit 19 detik). File disalin tanpa perubahan dari unggahan. Pemutar diberi label English dan tidak memakai autoplay. Pergantian bahasa bacaan tidak mengubah audio menjadi bahasa lain. Naskah audio Indonesia dan English dari dokumen dapat dibuka pada panel **Naskah narasi siswa**; naskah Indonesia tidak berarti rekaman Indonesianya sudah tersedia.
 
 Properti `contentNote`, `sources`, dan `audioTranscript` pada data daerah mendukung catatan materi, daftar rujukan, dan transkrip opsional. Semua cerita, geografi, bahasa daerah, serta pertanyaan bilingual tetap menggunakan mekanisme pergantian bahasa yang sama. Materi ini merupakan bahan yang diberikan tim, bukan klaim verifikasi independen atas sumber.
+
+## Materi Batu Menangis bilingual dan audio siswa
+
+Halaman `#daerah/kalimantan-barat` menggunakan dokumen **The_Living_Map_Kalimantan_Barat_Batu_Menangis_Bilingual.docx** dari tim pameran. Materinya mencakup kisah Darmi dalam Indonesia/English, penjelasan geografi, sapaan Melayu Pontianak, pertanyaan tantangan, dua naskah narasi, dan tiga rujukan sebagaimana dicantumkan dalam dokumen. Pilihan jawaban dibuat dari kutipan materi yang diberikan; jawaban lengkap menghubungkan sikap menghormati orang lain dengan perbedaan legenda dan penjelasan ilmiah pembentukan batuan.
+
+Rekaman yang dikirim tersedia di `assets/audio/batu-menangis.mp3`, sekitar 1 menit 28 detik, disalin tanpa perubahan dari **Batu_Menangis_Narasi_Studio_Soundtrack_Sinematik.mp3**. Tersedia satu berkas audio; memilih English/Indonesia mengganti bacaan, bukan bahasa rekaman. Naskah kedua bahasa dapat dibuka pada bagian **Naskah narasi siswa**. Rujukan adalah daftar yang diberikan tim, bukan hasil verifikasi independen.
