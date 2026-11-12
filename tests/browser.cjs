@@ -22,7 +22,8 @@ const answers = [0, 1, 2, 1, 0, 2];
     for (const src of images) {
       const response = await page.request.get(new URL(src, base).href);
       assert.equal(response.status(), 200);
-      assert.match(await response.text(), /<svg/);
+      assert.match(response.headers()['content-type'], /^image\//);
+      assert((await response.body()).length > 1000);
     }
     // Stored passports from the previous version must remain valid.
     await page.evaluate(() => localStorage.setItem('living-map-passport-v1', '["jawa-barat"]'));
@@ -48,6 +49,12 @@ const answers = [0, 1, 2, 1, 0, 2];
       assert.equal(await page.locator('#region-link').inputValue(), `${base}#daerah/${ids[i]}`);
       await page.reload();
       assert.match(await page.locator('.pill').innerText(), /terkumpul/);
+      await page.getByRole('button', { name: 'Bahasa daerah', exact: true }).click();
+      assert.equal(await page.getByRole('button', { name: 'Bahasa daerah', exact: true }).getAttribute('aria-pressed'), 'true');
+      assert.equal(new URL(page.url()).hash, `#daerah/${ids[i]}`);
+      await page.getByRole('button', { name: 'Tantangan', exact: true }).click();
+      assert.equal(await page.getByRole('button', { name: 'Tantangan', exact: true }).getAttribute('aria-pressed'), 'true');
+
       if (i === 2) {
         await page.getByRole('link', { name: 'Lihat paspor saya' }).click();
         await page.locator('.celebrate').waitFor();
@@ -81,7 +88,33 @@ const answers = [0, 1, 2, 1, 0, 2];
     await temporary.getByRole('link', { name: 'Lihat paspor saya' }).click();
     await temporary.locator('.stamp.earned').first().waitFor();
     assert.equal(await temporary.locator('.storage-note').count(), 1);
+    // Verify the relocated native audio player with a temporary silent WAV fixture.
+    const audioPage = await browser.newPage();
+    const wav = Buffer.alloc(1644);
+    wav.write('RIFF'); wav.writeUInt32LE(1636,4); wav.write('WAVEfmt ',8);
+    wav.writeUInt32LE(16,16); wav.writeUInt16LE(1,20); wav.writeUInt16LE(1,22);
+    wav.writeUInt32LE(8000,24); wav.writeUInt32LE(16000,28);
+    wav.writeUInt16LE(2,32); wav.writeUInt16LE(16,34); wav.write('data',36); wav.writeUInt32LE(1600,40);
+    await audioPage.route('**/test-audio.wav', route => route.fulfill({ contentType: 'audio/wav', body: wav }));
+    await audioPage.goto(base);
+    await audioPage.evaluate(() => { window.REGIONS[1].audio='test-audio.wav'; location.hash='daerah/jawa-barat'; });
+    await audioPage.waitForFunction(() => document.querySelector('audio')?.readyState >= 1);
+    assert.equal(await audioPage.locator('.audio-exhibit audio').count(), 1);
+    assert.equal(await audioPage.locator('audio').getAttribute('autoplay'), null);
+    await audioPage.locator('audio').evaluate(audio => audio.play());
+    await audioPage.waitForFunction(() => document.querySelector('audio').ended);
+    // Broken user-supplied artwork falls back to the local SVG without a reload.
+    await audioPage.route('**/missing-art.webp', route => route.fulfill({ status: 404, body: '' }));
+    await audioPage.evaluate(() => { window.REGIONS[0].heroImage='missing-art.webp'; location.hash='daerah/sumatra-utara'; });
+    await audioPage.waitForFunction(() => document.querySelector('.art-hero')?.src.endsWith('sumatra-utara.svg') && document.querySelector('.art-hero').naturalWidth > 0);
+    for (const width of [320, 390, 768, 1024, 1920]) {
+      await page.setViewportSize({ width, height: 900 });
+      for (const hash of ['', '#daerah/jawa-barat']) {
+        await page.goto(base + hash);
+        assert(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), `Overflow at ${width}px ${hash}`);
+      }
+    }
     assert.deepEqual(errors, []);
-    console.log('PASS: 6 unique SVG scenes, map keyboard/mobile navigation, legacy passport, 6 deep links, quiz, unique stamps, reload, 3-region milestone, reset, blocked storage, responsive layout, zero JS/HTTP errors.');
+    console.log('PASS: 6 unique raster scenes, map keyboard/mobile navigation, legacy passport, 6 deep links, quiz, unique stamps, reload, 3-region milestone, reset, blocked storage, responsive layout, section navigation, native audio playback, image fallback, zero JS/HTTP errors.');
   } finally { await browser.close(); }
 })().catch(error => { console.error(error); process.exitCode = 1; });
