@@ -34,13 +34,13 @@ Gunakan tombol **Salin tautan** pada halaman daerah setelah situs terbit. Buat Q
 | Kalimantan Barat | `#daerah/kalimantan-barat` |
 | Sulawesi Selatan | `#daerah/sulawesi-selatan` |
 | Nusa Tenggara Barat | `#daerah/nusa-tenggara-barat` |
-| Papua | `#daerah/papua` |
+| Papua Barat (Fakfak) | `#daerah/papua` |
 
 ## Mengganti materi pameran
 
 Edit data daerah dalam **content.js**:
 
-- `story`: paragraf cerita. Empat legenda ditulis sebagai adaptasi ringkas dengan peringatan perbedaan versi. Lengkapi sumber edisi dan tinjauan guru sebelum dipakai sebagai materi resmi. Sawerigading baru pengenalan dengan referensi UNESCO; episode lengkap dan cerita Papua masih placeholder.
+- `story`: paragraf cerita. Materi enam daerah kini mencakup cerita Indonesia dan English yang diberikan tim pameran. Pertahankan penanda perbedaan versi dan rujukan dokumen; tinjau materi bersama guru sebelum dipakai sebagai materi resmi.
 - `language`, `culture`: isi teks yang sudah diverifikasi; nilai `null` menampilkan placeholder. Cantumkan sumber/narasumber dalam teks. Jangan menyamaratakan bahasa dan tradisi satu wilayah.
 - `audio`: ganti `null` dengan `'assets/audio/sumatra-utara.mp3'`, misalnya. Buat folder `assets/audio/` dan unggah rekaman siswa berizin dengan nama yang sama. Pemutar HTML audio akan muncul otomatis. Jangan gunakan `autoplay`.
 - `question`, `options`, `answer`: pertanyaan, tiga pilihan, dan indeks jawaban benar mulai dari **0**. Sesuaikan ketika cerita diganti.
@@ -66,7 +66,7 @@ Revisi visual mempertahankan rute dan kunci localStorage yang sama. Homepage ter
 
 - `illustration`: path gambar final (misalnya `assets/ilustrasi/toba.webp`); isi `illustrationAlt` dengan deskripsi gambar. Jika kosong, SVG simbolis per cerita tampil otomatis. Motif tersebut merupakan placeholder artistik, bukan rekonstruksi sejarah atau busana budaya.
 - `summary`: ringkasan pada kartu galeri.
-- `translations.en`: slot data terjemahan, saat ini `null`. Tombol English menjelaskan bahwa terjemahan belum tersedia; belum mengganti cerita. Jangan menambahkan terjemahan tanpa materi yang disetujui tim. Implementasi pembacaan data English merupakan langkah berikutnya setelah materinya tersedia.
+- `translations.en`: data cerita, bahasa daerah, panel geografi, dan tantangan English. Keenam daerah sudah memiliki materi dari tim; tombol Indonesia/English mengganti bacaan tanpa mengubah URL daerah atau rekaman audio. Gunakan `null` untuk materi baru yang belum memiliki terjemahan.
 - Dukungan `audio`, pemutar asli browser, pesan gagal memuat, tantangan, dan progres paspor tetap menggunakan mekanisme sebelumnya.
 
 ## Atlas ilustratif — enam adegan cerita
@@ -82,7 +82,7 @@ Setiap daerah sekarang memiliki **aset SVG tersendiri** di `assets/illustrations
 | `nusa-tenggara-barat.svg` | Putri di pesisir, tebing, ombak, dan garis nyale simbolis |
 | `papua.svg` | Cenderawasih bergaya imajinatif, hutan, sungai, dan pegunungan |
 
-Ilustrasi adalah karya vector artistik untuk pengalaman membaca, **bukan sumber fakta, rekonstruksi busana, atau bukti historis**. Kapal pada Sawerigading adalah motif visual pelayaran, bukan klaim bentuk kapal dalam naskah. Cerita Papua tetap menunggu materi resmi. Semua SVG lokal, total sekitar 24 KB; tidak memakai layanan gambar atau CDN.
+Ilustrasi adalah karya vector artistik untuk pengalaman membaca, **bukan sumber fakta, rekonstruksi busana, atau bukti historis**. Kapal pada Sawerigading adalah motif visual pelayaran, bukan klaim bentuk kapal dalam naskah. Cerita Papua Barat (Fakfak) kini memakai materi Kweiya dan ibunya yang diberikan tim. Semua SVG lokal, total sekitar 24 KB; tidak memakai layanan gambar atau CDN.
 
 Ganti berkas SVG tersebut secara langsung, atau gunakan `illustration` dan `illustrationAlt` dalam `content.js`. Titik geografis dan mini-adegan sama-sama berupa tautan hash yang dapat dipakai dengan keyboard. Pada layar kecil, geser atlas mendatar atau gunakan daftar enam destinasi di bawah atlas. Kunci progres tetap `living-map-passport-v1`.
 
@@ -108,7 +108,7 @@ Tes menggunakan `/usr/bin/chromium` jika ada. Set `CHROMIUM_PATH` untuk lokasi C
 
 Homepage kini menggunakan headline editorial dan kolase tiga postcard (Toba, Sangkuriang, Mandalika). Atlas tetap tersedia di `#jelajah`. Kartu koleksi memakai gambar raster; hero detail menjadi gambar lebar dengan gradasi krem di belakang teks, panel audio di bawah hero, dan navigasi bagian **Cerita rakyat / Bahasa daerah / Tantangan**. Tombol bagian menggulir ke konten tanpa mengganti tautan hash daerah, sehingga tautan QR tetap utuh.
 
-Enam ilustrasi WebP di `assets/artwork/` dibuat dengan bantuan AI sebagai interpretasi artistik imajinatif. Gambar bukan dokumentasi geografi, busana autentik, atau rekonstruksi sejarah; semua materi budaya tetap perlu sumber dan peninjauan guru. Kapal Sawerigading adalah motif pelayaran, bukan klaim bentuk kapal dalam naskah. Papua tetap placeholder alam, tanpa cerita budaya tambahan. File PNG sumber disimpan di luar checkout pada lingkungan pembuatan; website hanya membutuhkan aset WebP yang sudah di-commit.
+Enam ilustrasi WebP di `assets/artwork/` dibuat dengan bantuan AI sebagai interpretasi artistik imajinatif. Gambar bukan dokumentasi geografi, busana autentik, atau rekonstruksi sejarah; semua materi budaya tetap perlu sumber dan peninjauan guru. Kapal Sawerigading adalah motif pelayaran, bukan klaim bentuk kapal dalam naskah. Artwork Papua menjadi ilustrasi alam pendamping kisah Kweiya dari dokumen tim, bukan rekonstruksi adegan atau busana budaya. File PNG sumber disimpan di luar checkout pada lingkungan pembuatan; website hanya membutuhkan aset WebP yang sudah di-commit.
 
 ### Mengganti artwork
 
@@ -152,3 +152,12 @@ Rekaman siswa **bahasa Inggris** ada di `assets/audio/sawerigading-english.mp3`,
 Halaman `#daerah/nusa-tenggara-barat` menggunakan **The_Living_Map_Nusa_Tenggara_Barat_Putri_Mandalika_Bilingual.docx** dari tim pameran. Materi mencakup cerita Indonesia/English, geografi dan biologi nyale, istilah Sasak, pertanyaan tantangan, dua naskah narasi, dan tiga rujukan dari dokumen. Pilihan jawaban menggunakan kutipan materi: jawaban lengkap membedakan nyale dalam legenda dari penjelasan ilmiah tentang cacing laut, reproduksi, dan siklus bulan.
 
 Penjelmaan sang putri tetap dijelaskan sebagai bagian legenda; uraian ilmiah ditempatkan terpisah. Rujukan ditampilkan sebagaimana diberikan tim, bukan klaim verifikasi independen. Rekaman di `assets/audio/putri-mandalika.mp3` disalin tanpa perubahan dari **Putri_Mandalika_Narasi_Studio_Soundtrack_Cinematic.mp3**, berdurasi sekitar 1 menit 16 detik, tanpa autoplay. Pergantian bahasa mengubah bacaan, bukan rekaman; naskah Indonesia dan English dapat dibuka pada panel naskah narasi.
+
+
+## Materi Papua Barat (Fakfak) bilingual dan audio siswa
+
+Destinasi ber-ID **papua** kini berjudul **Asal Mula Burung Cenderawasih — Kisah Kweiya dan Ibunya**, dengan label wilayah **Papua Barat (Fakfak)**. ID, tautan `#daerah/papua`, lokasi aset gambar, dan kunci tanda paspor tetap dipertahankan agar QR serta progres lama tetap berlaku. Judul mini atlas menjadi **Cenderawasih**, dan semua penanda materi Papua menyusul telah dihapus dari tampilan.
+
+Materi dari **The_Living_Map_Papua_Barat_Fakfak_Cenderawasih_Bilingual.docx** meliputi cerita Indonesia/English, istilah Iha dalam versi Fakfak, geografi dan biologi habitat cenderawasih, pertanyaan tantangan, kedua naskah narasi, serta tiga rujukan sebagaimana ditulis dalam dokumen. Tantangan memakai pilihan dari isi dokumen untuk membedakan legenda perubahan menjadi burung dari keterangan ilmiah tentang satwa nyata dan kebutuhan habitatnya. Rujukan dan istilah ditampilkan sebagai materi yang diberikan tim, bukan hasil verifikasi independen atau klaim tradisi seluruh Papua.
+
+Audio `assets/audio/papua-kweiya.mp3` disalin utuh dari **Papua_Queya_Narasi_Anak_Studio_Soundtrack_Cinematic.mp3**, sekitar 1 menit 3 detik, tanpa autoplay. Ejaan tokoh pada halaman mengikuti dokumen: **Kweiya**. Tersedia satu berkas rekaman; pilihan bahasa mengubah bacaan, bukan bahasa audio. Kedua naskah dapat dibuka di panel **Naskah narasi siswa**. Keenam destinasi sekarang memiliki bacaan bilingual dan audio siswa.

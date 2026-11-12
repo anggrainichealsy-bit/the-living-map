@@ -316,7 +316,74 @@ window.REGIONS = [
     }
   }
 },
- {id:'papua',name:'Papua',island:'PAPUA',title:'Cerita rakyat menyusul',tag:'Ruang untuk cerita berikutnya',icon:'✺',color:'#86a488',scene:'forest',story:['Papua memiliki banyak komunitas dengan bahasa dan tradisi yang beragam. Tim pameran sedang memilih cerita dan sumber yang akan ditampilkan.','Cerita, nama bahasa, dan materi budaya belum ditambahkan agar tidak menyamaratakan tradisi atau memuat informasi yang belum diverifikasi.','Kamu tetap dapat mengunjungi ruang ini dan menyelesaikan tantangan tentang cara menghargai cerita budaya. Materi akan diperbarui setelah peninjauan guru.'],question:'Apa langkah yang tepat sebelum membagikan cerita budaya?',options:['Mengarang detail yang belum diketahui','Menganggap semua tradisi sama','Memeriksa sumber dan menghargai pemilik tradisi'],answer:2}
+ {
+  "id": "papua",
+  "name": "Papua Barat (Fakfak)",
+  "island": "PAPUA",
+  "title": "Asal Mula Burung Cenderawasih",
+  "mapTitle": "Cenderawasih",
+  "tag": "Kisah Kweiya dan Ibunya",
+  "icon": "✺",
+  "color": "#86a488",
+  "scene": "forest",
+  "summary": "Kweiya dan ibunya dalam salah satu kisah asal mula cenderawasih dari Fakfak, Papua Barat.",
+  "story": [
+    "Dalam salah satu versi cerita rakyat dari Fakfak, Papua Barat, hiduplah Kweiya bersama ibu dan adik-adik tirinya. Kweiya rajin membantu keluarga, tetapi adik-adiknya merasa iri.",
+    "Setelah diperlakukan buruk oleh adik-adiknya, Kweiya memintal serat menjadi sayap. Menurut legenda, pintalan itu secara ajaib mengubahnya menjadi burung berbulu indah.",
+    "Sang ibu yang bersedih mencari Kweiya. Ia mengikuti putranya dan juga berubah menjadi burung. Cerita ini dikisahkan sebagai salah satu asal mula burung cenderawasih."
+  ],
+  "culture": "Hutan Papua merupakan habitat berbagai jenis burung cenderawasih. Burung-burung ini membutuhkan pepohonan untuk mencari makan dan beraktivitas. Kehilangan habitat dan perburuan dapat mengancam kelestariannya.",
+  "cultureHeading": "Geografi dan biologi",
+  "language": "Dalam versi cerita dari Fakfak, siangga digunakan untuk cenderawasih jantan berbulu panjang, sedangkan hanggam tombor untuk cenderawasih betina. Bahasa Iha dituturkan di Fakfak.",
+  "question": "Apa perbedaan kisah asal-usul cenderawasih menurut legenda dan penjelasan ilmiah? Mengapa hutannya perlu dijaga?",
+  "options": [
+    "Kweiya rajin membantu keluarga, tetapi adik-adiknya merasa iri.",
+    "Bahasa Iha dituturkan di Fakfak.",
+    "Menurut legenda, Kweiya berubah menjadi burung. Secara ilmiah, cenderawasih adalah burung yang hidup di hutan Papua. Hutan menyediakan tempat hidup dan sumber makanannya."
+  ],
+  "answer": 2,
+  "audio": "assets/audio/papua-kweiya.mp3",
+  "audioTitle": "Dengarkan kisah Kweiya dan Ibunya",
+  "audioCaption": "Rekaman siswa · Tekan play untuk mendengarkan. Bahasa rekaman tidak berubah saat mengganti bahasa bacaan.",
+  "contentNote": "Materi dari dokumen bilingual tim pameran, berdasarkan salah satu versi cerita dari Fakfak. Perubahan menjadi burung merupakan bagian legenda; cenderawasih adalah satwa nyata. Penjelasan geografi dan biologi ditampilkan secara terpisah.",
+  "sources": [
+    "Badan Bahasa Kemendikdasmen (2016) - Cenderawasih Si Burung Bidadari",
+    "Komunitas Sastra Papua (2021) - Asal Usul Cendrawasih (Versi Fakfak)",
+    "Peta Bahasa Kemendikdasmen - Iha (Fakfak); Ditjen KSDAE - Cenderawasih di Site Monitoring Baraway"
+  ],
+  "audioTranscript": {
+    "id": [
+      "Selamat datang di Papua Barat! Dari wilayah Fakfak, kita mengenal kisah Kweiya, seorang anak yang rajin membantu keluarganya. Namun, adik-adik tirinya merasa iri dan memperlakukannya dengan buruk.",
+      "Menurut salah satu versi legenda, Kweiya memintal serat menjadi sayap. Secara ajaib, ia berubah menjadi burung berbulu indah. Ibunya yang sedih lalu menyusul Kweiya dan juga berubah menjadi burung. Keduanya dikenang dalam kisah asal mula cenderawasih.",
+      "Tahukah kamu? Dalam bahasa Iha di Fakfak, siangga adalah sebutan bagi cenderawasih jantan berbulu panjang dalam cerita ini. Secara ilmiah, cenderawasih adalah burung yang hidup di hutan Papua. Hutan menyediakan tempat hidup dan sumber makanannya. Jadi, mengapa hutan harus kita jaga? Ayo jawab tantangan kami!"
+    ],
+    "en": [
+      "Welcome to West Papua! From Fakfak comes the story of Kweiya, a boy who worked hard to help his family. Sadly, his younger half-siblings became jealous and treated him badly.",
+      "In one version of the legend, Kweiya spun fibers into wings. Magically, he turned into a bird with beautiful feathers. His heartbroken mother followed him and also became a bird. Their story is remembered as an origin legend of the bird-of-paradise.",
+      "Did you know? In the Iha language of Fakfak, siangga is a word used in the story for a long-plumed male bird-of-paradise. In science, birds-of-paradise are real birds living in Papua’s forests. Trees give them food and shelter. Why should we protect these forests? Take our Nusantara Challenge!"
+    ]
+  },
+  "translations": {
+    "en": {
+      "title": "The Origin of the Bird-of-Paradise",
+      "tag": "The Story of Kweiya and His Mother",
+      "story": [
+        "In one version of a folktale from Fakfak, West Papua, a boy named Kweiya lived with his mother and younger half-siblings. Kweiya helped his family, but his siblings grew jealous.",
+        "After being mistreated by his siblings, Kweiya spun fibers into wings. According to the legend, the woven fibers magically transformed him into a beautiful bird.",
+        "His grieving mother searched for him. She followed her son and also became a bird. This story is one traditional explanation for the origin of birds-of-paradise."
+      ],
+      "culture": "Papua’s forests provide habitat for many birds-of-paradise. These birds depend on trees for food and daily activities. Habitat loss and hunting can threaten their survival.",
+      "cultureHeading": "Geography and biology",
+      "language": "In a Fakfak retelling, siangga refers to a long-plumed male bird-of-paradise, while hanggam tombor refers to a female. Iha is one of the languages spoken in Fakfak.",
+      "question": "How is the legend different from the scientific explanation? Why must we protect the birds’ forest habitat?",
+      "options": [
+        "Kweiya helped his family, but his siblings grew jealous.",
+        "Iha is one of the languages spoken in Fakfak.",
+        "In one version of the legend, Kweiya spun fibers into wings. Magically, he turned into a bird with beautiful feathers. In science, birds-of-paradise are real birds living in Papua’s forests. Trees give them food and shelter."
+      ]
+    }
+  }
+}
 ].map(r=>({...r,audio:r.audio ?? null,language:r.language ?? null,culture:r.culture ?? null,
  // Isi hanya dengan terjemahan yang disediakan dan disetujui tim pameran.
  translations: r.translations || { en: null },
