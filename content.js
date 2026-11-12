@@ -4,6 +4,8 @@ window.REGIONS = [
  {
   "id": "sumatra-utara",
   "audio": "assets/audio/Danau_Toba_Soundtrack_Film_Studio.mp3",
+  "audioTitle": "Dengarkan audio Danau Toba",
+  "audioCaption": "Audio pendamping cerita · Tekan play untuk mendengarkan.",
   "name": "Sumatra Utara",
   "island": "SUMATRA",
   "title": "Legenda Danau Toba",

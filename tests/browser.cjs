@@ -39,8 +39,19 @@ const answers = [0, 1, 2, 1, 0, 2];
       await page.locator('.art-hero').waitFor();
       await page.waitForFunction(() => document.querySelector('.art-hero').complete);
       assert(await page.locator('.art-hero').evaluate(img => img.naturalWidth > 0));
-      assert.equal(await page.locator('.language[aria-disabled="true"]').count(), 1);
-      assert.equal(await page.locator('.audio-placeholder').count(), 1);
+      assert.equal(await page.locator('.language[aria-disabled="true"]').count(), i === 0 ? 0 : 1);
+      assert.equal(await page.locator('.audio-placeholder').count(), i === 0 ? 0 : 1);
+      if (i === 0) {
+        await page.waitForFunction(() => document.querySelector('audio')?.readyState >= 1);
+        assert(await page.locator('audio').evaluate(audio => audio.duration > 90 && audio.duration < 100));
+        assert.equal(await page.locator('audio').getAttribute('autoplay'), null);
+        await page.locator('audio').evaluate(audio => audio.play());
+        await page.waitForFunction(() => document.querySelector('audio').currentTime > .1);
+        const pausedAt = await page.locator('audio').evaluate(audio => { audio.pause(); return audio.currentTime; });
+        await page.locator('audio').evaluate(audio => audio.play());
+        await page.waitForFunction(time => document.querySelector('audio').currentTime > time + .1, pausedAt);
+        await page.locator('audio').evaluate(audio => audio.pause());
+      }
       await page.locator(`[data-answer="${(answers[i] + 1) % 3}"]`).click();
       assert.match(await page.locator('.feedback').innerText(), /Belum tepat/);
       await page.locator(`[data-answer="${answers[i]}"]`).click();
