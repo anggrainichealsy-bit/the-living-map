@@ -161,3 +161,17 @@ Destinasi ber-ID **papua** kini berjudul **Asal Mula Burung Cenderawasih — Kis
 Materi dari **The_Living_Map_Papua_Barat_Fakfak_Cenderawasih_Bilingual.docx** meliputi cerita Indonesia/English, istilah Iha dalam versi Fakfak, geografi dan biologi habitat cenderawasih, pertanyaan tantangan, kedua naskah narasi, serta tiga rujukan sebagaimana ditulis dalam dokumen. Tantangan memakai pilihan dari isi dokumen untuk membedakan legenda perubahan menjadi burung dari keterangan ilmiah tentang satwa nyata dan kebutuhan habitatnya. Rujukan dan istilah ditampilkan sebagai materi yang diberikan tim, bukan hasil verifikasi independen atau klaim tradisi seluruh Papua.
 
 Audio `assets/audio/papua-kweiya.mp3` disalin utuh dari **Papua_Queya_Narasi_Anak_Studio_Soundtrack_Cinematic.mp3**, sekitar 1 menit 3 detik, tanpa autoplay. Ejaan tokoh pada halaman mengikuti dokumen: **Kweiya**. Tersedia satu berkas rekaman; pilihan bahasa mengubah bacaan, bukan bahasa audio. Kedua naskah dapat dibuka di panel **Naskah narasi siswa**. Keenam destinasi sekarang memiliki bacaan bilingual dan audio siswa.
+
+## Peta painterly terpadu (revisi komponen peta)
+
+Bagian `#jelajah` kini menggunakan satu gambar `assets/maps/indonesia-storybook.webp` dengan enam adegan yang menyatu di pulau dan hotspot persentase. Kartu mengambang, garis penghubung, dan poligon SVG pada komponen peta telah diganti. Hero/kolase, Koleksi Cerita, keenam detail, audio, isi bilingual, kuis, dan paspor tidak didesain ulang. Penanda versi CSS/JS di HTML diperbarui agar deployment meminta aset peta yang baru; konfigurasi GitHub Pages tidak berubah.
+
+Gambar tampil utuh tanpa crop atau gulir mendatar pada desktop maupun HP. Pada lebar sampai 760 px, enam tautan pendamping memuat nama wilayah dan judul cerita dengan target sentuh besar. Detail aset, koordinat, dan keterbatasan verifikasi kapal tersedia di [assets/maps/README.md](assets/maps/README.md).
+
+Selain tes browser umum, jalankan tes khusus peta:
+
+```sh
+NODE_PATH=/tmp/living-map-checks/node_modules BASE_URL=http://127.0.0.1:8000/ node tests/map.cjs
+```
+
+Tes khusus memeriksa enam rute lewat keyboard, lebar 320/375/390/430 px, rasio gambar tanpa distorsi/crop, tidak ada overflow peta, posisi hotspot saat resize, dan keenam tautan sentuh. Opsional: `BASELINE_URL` menunjuk situs versi sebelum perubahan untuk membandingkan HTML serta dimensi bagian homepage yang dilindungi dan HTML keenam halaman detail. `SCREENSHOT_DIR` menyimpan screenshot desktop serta empat ukuran HP. Baseline dapat disiapkan dari arsip commit tanpa membuat worktree baru.

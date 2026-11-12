@@ -1518,3 +1518,43 @@ h1, h2, h3 { text-wrap: balance; }
 .source-note { padding: 14px 0; border-block: 1px solid #e3ddc9; font-size: 11px; color: #738063; margin-top: 20px; }
 .source-note li { padding-block: 4px; }
 @media(max-width:760px) { .audio-transcripts { width: calc(100% - 48px); margin-top: -10px; }.transcript-columns { grid-template-columns: 1fr; gap: 20px; } }
+
+/* Single painted map: the canvas always shows the entire raster, with no panning. */
+.painted-map { width: 100%; min-width: 0; }
+.painted-map-figure { margin: 0; }
+.painted-map-canvas { position: relative; width: 100%; aspect-ratio: 1672 / 941; isolation: isolate; }
+.painted-map-art { display: block; width: 100%; height: auto; aspect-ratio: 1672 / 941; background: #f2e4c4; }
+.painted-map-hotspots { position: absolute; inset: 0; }
+.map-hotspot { position: absolute; left: var(--map-x); top: var(--map-y); width: 44px; height: 44px; display: grid; place-items: center; transform: translate(-50%, -50%); border-radius: 50%; z-index: 1; }
+.map-hotspot-dot { display: grid; place-items: center; width: 25px; height: 25px; border: 1.5px solid #fff3d2; border-radius: 50%; background: #244c42e8; box-shadow: 0 1px 8px #173c3b60, 0 0 0 4px #fff6de38; color: #fff0c6; font: 12px Georgia, serif; transition: transform .18s, background .18s; }
+.map-hotspot-earned .map-hotspot-dot { background: #936836; }
+.map-hotspot:hover, .map-hotspot:focus-visible { z-index: 3; }
+.map-hotspot:hover .map-hotspot-dot, .map-hotspot:focus-visible .map-hotspot-dot { transform: scale(1.12); background: #365f4b; }
+.map-hotspot:focus-visible { outline: 3px solid #fff2c0; outline-offset: 2px; background: #244c4250; }
+.map-hotspot-label { position: absolute; top: 47px; left: 50%; transform: translateX(-50%) translateY(-3px); min-width: 150px; width: max-content; max-width: 230px; pointer-events: none; text-align: center; padding: 10px 14px; background: #fff9e9f5; border: 1px solid #c5ab77; border-radius: 4px; box-shadow: 0 6px 18px #193a362b; color: #2b5143; font: 18px/1.2 Georgia, serif; opacity: 0; visibility: hidden; transition: opacity .18s, transform .18s; }
+.map-hotspot-label small { display: block; font: 9px/1.5 Arial, sans-serif; color: #7b8468; margin-bottom: 4px; }
+.map-hotspot:hover .map-hotspot-label, .map-hotspot:focus-visible .map-hotspot-label { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
+.painted-map-note { margin: 0; padding: 12px 13px 6px; font: 9px/1.7 Arial, sans-serif; color: #83856d; }
+.map-mobile-destinations { display: none; }
+@media(max-width:760px) {
+ .map-hotspot { width: 32px; height: 32px; }
+ .map-hotspot-dot { width: 17px; height: 17px; font-size: 9px; border-width: 1px; box-shadow: 0 1px 5px #173c3b50, 0 0 0 2px #fff6de50; }
+ .map-hotspot-label { display: none; }
+ .painted-map-note { font-size: 8px; padding: 9px 7px; }
+ .map-mobile-destinations { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; padding: 4px 6px 12px; }
+ .map-mobile-heading { grid-column: 1 / -1; font: 17px Georgia, serif; margin: 5px 0 4px; color: #385a45; }
+ .map-mobile-destinations a { min-width: 0; min-height: 66px; display: flex; align-items: center; gap: 9px; padding: 11px 9px; border: 1px solid #ddd6bd; border-radius: 4px; background: #f9f5e8; }
+ .map-mobile-destinations a:hover, .map-mobile-destinations a:focus-visible { background: #e9eddb; }
+ .map-mobile-number { flex-shrink: 0; width: 22px; height: 22px; display: grid; place-items: center; border: 1px solid #c6c7a9; border-radius: 50%; font: 11px Georgia, serif; color: #7d815e; }
+ .map-mobile-destinations a > span:nth-child(2) { min-width: 0; }
+ .map-mobile-destinations strong { display: block; font: 600 10px/1.5 Arial, sans-serif; color: #355b43; }
+ .map-mobile-destinations small { display: block; font: 10px/1.45 Georgia, serif; color: #7c846c; margin-top: 3px; }
+ .map-mobile-arrow { flex-shrink: 0; margin-left: auto; font-size: 12px; color: #87906d; }
+}
+@media(max-width:420px) {
+ .map-mobile-destinations { grid-template-columns: minmax(0, 1fr); }
+ .map-mobile-destinations a { min-height: 58px; padding: 10px 12px; }
+ .map-mobile-destinations strong { font-size: 11px; }
+ .map-mobile-destinations small { font-size: 11px; }
+}
+@media(prefers-reduced-motion:reduce) { .map-hotspot-dot, .map-hotspot-label { transition: none; } }
