@@ -113,7 +113,71 @@ window.REGIONS = [
     }
   }
 },
- {id:'kalimantan-barat',name:'Kalimantan Barat',island:'KALIMANTAN',title:'Legenda Batu Menangis',tag:'Tentang kasih dan pengakuan',icon:'◈',color:'#6d9a84',scene:'forest',story:['Dalam salah satu versi cerita Batu Menangis, seorang anak perempuan tinggal bersama ibunya yang bekerja keras. Suatu hari mereka berjalan bersama menuju pasar.','Karena malu pada keadaan ibunya, si anak menyangkal hubungan mereka di hadapan orang lain. Sang ibu yang terluka hatinya berdoa. Dalam kisah ini, tubuh anak tersebut perlahan berubah menjadi batu. Ia menyesal dan menangis ketika perubahan itu terjadi.','Legenda ini mengajak pembaca menghargai orang tua dan tidak menilai seseorang dari penampilannya.'],question:'Sikap apa yang diajak untuk kita renungkan?',options:['Menilai orang dari pakaiannya','Menyembunyikan keluarga','Menghargai orang yang merawat kita'],answer:2},
+ {
+  "id": "kalimantan-barat",
+  "name": "Kalimantan Barat",
+  "island": "KALIMANTAN",
+  "title": "Legenda Batu Menangis",
+  "tag": "Ketika Kesombongan Berakhir dengan Penyesalan",
+  "icon": "◈",
+  "color": "#6d9a84",
+  "scene": "forest",
+  "summary": "Darmi, ibunya, dan kisah penyesalan yang mengajarkan penghormatan kepada sesama.",
+  "story": [
+    "Di Kalimantan Barat, hiduplah Darmi bersama ibunya yang bekerja keras mencari nafkah. Darmi terkenal cantik, tetapi ia sombong dan tidak mau membantu ibunya.",
+    "Suatu hari, mereka pergi ke pasar. Ketika orang-orang bertanya tentang perempuan sederhana yang berjalan di belakangnya, Darmi mengatakan bahwa perempuan itu adalah pembantunya.",
+    "Sang ibu sangat terluka dan berdoa. Menurut legenda, Darmi perlahan berubah menjadi batu. Ia menangis dan memohon maaf, tetapi semuanya telah terlambat."
+  ],
+  "culture": "Kalimantan Barat dijuluki Provinsi Seribu Sungai. Sungai Kapuas merupakan sungai terpanjang di Indonesia. Legenda Batu Menangis adalah warisan cerita rakyat, bukan penjelasan ilmiah tentang asal-usul batuan.",
+  "language": "Ape kabar? - Ungkapan dalam bahasa Melayu Pontianak yang berarti \"Apa kabar?\". Ini merupakan salah satu ragam bahasa yang digunakan di Kalimantan Barat.",
+  "question": "Apa pesan moral kisah Batu Menangis, dan mengapa legenda berbeda dari penjelasan ilmiah?",
+  "options": [
+    "Darmi terkenal cantik, tetapi ia sombong dan tidak mau membantu ibunya.",
+    "Suatu hari, mereka pergi ke pasar.",
+    "Kisah Darmi mengajarkan kita untuk menghormati orang lain dan tidak menilai seseorang dari penampilannya. Legenda Batu Menangis adalah warisan cerita rakyat, bukan penjelasan ilmiah tentang asal-usul batuan."
+  ],
+  "answer": 2,
+  "audio": "assets/audio/batu-menangis.mp3",
+  "audioTitle": "Dengarkan kisah Batu Menangis",
+  "audioCaption": "Rekaman siswa · Tekan play untuk mendengarkan. Bahasa rekaman tidak berubah saat mengganti bahasa bacaan.",
+  "contentNote": "Materi diadaptasi dari dokumen bilingual yang disediakan tim pameran. Cerita rakyat dapat memiliki versi berbeda; penjelasan geografi ditampilkan secara terpisah.",
+  "sources": [
+    "Indonesia Kaya - Cerita Rakyat Kalimantan Barat: Legenda Batu Menangis",
+    "Kementerian PU / BWS Kalimantan I - Sungai Kapuas",
+    "Peta Bahasa Kemendikdasmen; detikKalimantan - Melayu Pontianak"
+  ],
+  "audioTranscript": {
+    "id": [
+      "Ape kabar? Selamat datang di Kalimantan Barat! Pernahkah kamu mendengar kisah tentang batu yang dapat menangis? Dalam cerita rakyat Kalimantan Barat, hiduplah seorang gadis bernama Darmi. Ibunya bekerja keras setiap hari, tetapi Darmi lebih suka bersolek dan enggan membantu.",
+      "Suatu hari, Darmi pergi ke pasar bersama ibunya. Ketika orang bertanya siapa perempuan yang berjalan di belakangnya, Darmi mengaku bahwa itu pembantunya. Sang ibu sangat sedih dan berdoa. Menurut legenda, kaki Darmi perlahan berubah menjadi batu. Ia menangis meminta maaf, tetapi sudah terlambat.",
+      "Tahukah kamu? Kalimantan Barat juga dijuluki Provinsi Seribu Sungai. Di sana mengalir Sungai Kapuas, sungai terpanjang di Indonesia. Kisah Darmi mengajarkan kita untuk menghormati orang lain dan tidak menilai seseorang dari penampilannya. Sekarang, apa pesan yang kamu dapat dari kisah ini?"
+    ],
+    "en": [
+      "Ape kabar? Welcome to West Kalimantan! Have you ever heard of a stone that could cry? In a folktale from West Kalimantan, a girl named Darmi lived with her hardworking mother. Her mother worked every day, but Darmi cared more about her appearance than helping at home.",
+      "One day, they went to the market. When people asked about the woman walking behind her, Darmi claimed that her mother was only a servant. Her mother was heartbroken and prayed. According to the legend, Darmi slowly turned into stone. She cried and begged for forgiveness, but it was too late.",
+      "Did you know? West Kalimantan is also called the Province of a Thousand Rivers. It is home to the Kapuas River, the longest river in Indonesia. Darmi’s story reminds us to treat people with respect, whatever they look like. What lesson will you take from this story?"
+    ]
+  },
+  "translations": {
+    "en": {
+      "title": "The Legend of the Crying Stone",
+      "tag": "When Pride Leads to Regret",
+      "story": [
+        "In West Kalimantan, a girl named Darmi lived with her hardworking mother. Darmi was known for her beauty, but she was proud and refused to help her mother.",
+        "One day, they went to the market. When people asked about the modestly dressed woman walking behind her, Darmi said that the woman was only her servant.",
+        "Heartbroken, her mother prayed. According to the legend, Darmi slowly turned into stone. She cried and begged for forgiveness, but it was too late."
+      ],
+      "culture": "West Kalimantan is known as the Province of a Thousand Rivers. The Kapuas River is the longest river in Indonesia. The Crying Stone is a cultural legend, not a scientific explanation of how rocks form.",
+      "language": "Ape kabar? - A Pontianak Malay expression meaning \"How are you?\". Pontianak Malay is one of the language varieties spoken in West Kalimantan.",
+      "question": "What does the Crying Stone teach us, and why is a legend different from a scientific explanation?",
+      "options": [
+        "Darmi was known for her beauty, but she was proud and refused to help her mother.",
+        "One day, they went to the market.",
+        "Darmi’s story reminds us to treat people with respect, whatever they look like. The Crying Stone is a cultural legend, not a scientific explanation of how rocks form."
+      ]
+    }
+  }
+},
  {id:'sulawesi-selatan',name:'Sulawesi Selatan',island:'SULAWESI',title:'Kisah Sawerigading',tag:'Jejak kisah dalam La Galigo',icon:'≋',color:'#a5ad7d',scene:'sea',story:['Sawerigading merupakan tokoh dalam tradisi cerita La Galigo yang berasal dari masyarakat Bugis. Tradisi ini memuat kisah perjalanan, hubungan keluarga, dan dunia yang digambarkan dalam cerita.','Untuk pameran ini, kutipan atau adaptasi episode Sawerigading masih menunggu pemilihan dan peninjauan guru. Bagian ini sengaja tidak menambahkan alur atau dialog yang belum diverifikasi.','Sambil menunggu materi lengkap, kenali nama tokohnya dan diskusikan mengapa cerita dapat diwariskan melalui tulisan maupun tuturan.'],question:'Siapa tokoh yang diperkenalkan pada halaman ini?',options:['Sangkuriang','Sawerigading','Toba'],answer:1,reference:{label:'UNESCO — La Galigo',url:'https://www.unesco.org/en/memory-world/la-galigo'}},
  {id:'nusa-tenggara-barat',name:'Nusa Tenggara Barat',island:'NUSA TENGGARA',title:'Legenda Putri Mandalika',tag:'Pilihan seorang putri',icon:'☼',color:'#d1b47a',scene:'sea',story:['Dalam salah satu versi legenda dari Lombok, Putri Mandalika dipinang oleh sejumlah pangeran. Ia khawatir pilihan terhadap salah satu dari mereka akan menimbulkan perselisihan.','Sang putri kemudian mengambil keputusan untuk terjun ke laut. Dalam legenda, kemunculan nyale dikaitkan dengan sang putri. Kisah ini adalah cerita rakyat, bukan penjelasan ilmiah tentang nyale.','Cerita ini dapat menjadi awal diskusi tentang kedamaian, kepentingan bersama, dan berbagai cara menyelesaikan perselisihan.'],question:'Apa yang dikhawatirkan Putri Mandalika dalam versi cerita ini?',options:['Terjadinya perselisihan','Hilangnya sebuah perahu','Datangnya musim hujan'],answer:0},
  {id:'papua',name:'Papua',island:'PAPUA',title:'Cerita rakyat menyusul',tag:'Ruang untuk cerita berikutnya',icon:'✺',color:'#86a488',scene:'forest',story:['Papua memiliki banyak komunitas dengan bahasa dan tradisi yang beragam. Tim pameran sedang memilih cerita dan sumber yang akan ditampilkan.','Cerita, nama bahasa, dan materi budaya belum ditambahkan agar tidak menyamaratakan tradisi atau memuat informasi yang belum diverifikasi.','Kamu tetap dapat mengunjungi ruang ini dan menyelesaikan tantangan tentang cara menghargai cerita budaya. Materi akan diperbarui setelah peninjauan guru.'],question:'Apa langkah yang tepat sebelum membagikan cerita budaya?',options:['Mengarang detail yang belum diketahui','Menganggap semua tradisi sama','Memeriksa sumber dan menghargai pemilik tradisi'],answer:2}
