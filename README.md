@@ -59,3 +59,12 @@ Jawaban benar memberikan satu tanda unik per daerah. Setelah minimal tiga daerah
 - Pindai enam QR yang menggunakan alamat situs **terbit**, bukan alamat server pengembangan.
 - Coba jawaban salah/benar, tiga tanda, reload, tombol kembali, dan reset paspor.
 - Situs dapat dipakai tanpa audio; placeholder menjelaskan materi yang belum tersedia.
+
+## Desain pameran dan persiapan bilingual
+
+Revisi visual mempertahankan rute dan kunci localStorage yang sama. Homepage terdiri dari atlas interaktif, Koleksi Cerita, paspor perjalanan, dan Tentang Pameran. Pada HP peta dapat digeser mendatar; keenam kartu juga menyediakan akses ke setiap daerah.
+
+- `illustration`: path gambar final (misalnya `assets/ilustrasi/toba.webp`); isi `illustrationAlt` dengan deskripsi gambar. Jika kosong, SVG simbolis per cerita tampil otomatis. Motif tersebut merupakan placeholder artistik, bukan rekonstruksi sejarah atau busana budaya.
+- `summary`: ringkasan pada kartu galeri.
+- `translations.en`: slot data terjemahan, saat ini `null`. Tombol English menjelaskan bahwa terjemahan belum tersedia; belum mengganti cerita. Jangan menambahkan terjemahan tanpa materi yang disetujui tim. Implementasi pembacaan data English merupakan langkah berikutnya setelah materinya tersedia.
+- Dukungan `audio`, pemutar asli browser, pesan gagal memuat, tantangan, dan progres paspor tetap menggunakan mekanisme sebelumnya.
