@@ -7,4 +7,17 @@ window.REGIONS = [
  {id:'sulawesi-selatan',name:'Sulawesi Selatan',island:'SULAWESI',title:'Kisah Sawerigading',tag:'Jejak kisah dalam La Galigo',icon:'≋',color:'#a5ad7d',scene:'sea',story:['Sawerigading merupakan tokoh dalam tradisi cerita La Galigo yang berasal dari masyarakat Bugis. Tradisi ini memuat kisah perjalanan, hubungan keluarga, dan dunia yang digambarkan dalam cerita.','Untuk pameran ini, kutipan atau adaptasi episode Sawerigading masih menunggu pemilihan dan peninjauan guru. Bagian ini sengaja tidak menambahkan alur atau dialog yang belum diverifikasi.','Sambil menunggu materi lengkap, kenali nama tokohnya dan diskusikan mengapa cerita dapat diwariskan melalui tulisan maupun tuturan.'],question:'Siapa tokoh yang diperkenalkan pada halaman ini?',options:['Sangkuriang','Sawerigading','Toba'],answer:1,reference:{label:'UNESCO — La Galigo',url:'https://www.unesco.org/en/memory-world/la-galigo'}},
  {id:'nusa-tenggara-barat',name:'Nusa Tenggara Barat',island:'NUSA TENGGARA',title:'Legenda Putri Mandalika',tag:'Pilihan seorang putri',icon:'☼',color:'#d1b47a',scene:'sea',story:['Dalam salah satu versi legenda dari Lombok, Putri Mandalika dipinang oleh sejumlah pangeran. Ia khawatir pilihan terhadap salah satu dari mereka akan menimbulkan perselisihan.','Sang putri kemudian mengambil keputusan untuk terjun ke laut. Dalam legenda, kemunculan nyale dikaitkan dengan sang putri. Kisah ini adalah cerita rakyat, bukan penjelasan ilmiah tentang nyale.','Cerita ini dapat menjadi awal diskusi tentang kedamaian, kepentingan bersama, dan berbagai cara menyelesaikan perselisihan.'],question:'Apa yang dikhawatirkan Putri Mandalika dalam versi cerita ini?',options:['Terjadinya perselisihan','Hilangnya sebuah perahu','Datangnya musim hujan'],answer:0},
  {id:'papua',name:'Papua',island:'PAPUA',title:'Cerita rakyat menyusul',tag:'Ruang untuk cerita berikutnya',icon:'✺',color:'#86a488',scene:'forest',story:['Papua memiliki banyak komunitas dengan bahasa dan tradisi yang beragam. Tim pameran sedang memilih cerita dan sumber yang akan ditampilkan.','Cerita, nama bahasa, dan materi budaya belum ditambahkan agar tidak menyamaratakan tradisi atau memuat informasi yang belum diverifikasi.','Kamu tetap dapat mengunjungi ruang ini dan menyelesaikan tantangan tentang cara menghargai cerita budaya. Materi akan diperbarui setelah peninjauan guru.'],question:'Apa langkah yang tepat sebelum membagikan cerita budaya?',options:['Mengarang detail yang belum diketahui','Menganggap semua tradisi sama','Memeriksa sumber dan menghargai pemilik tradisi'],answer:2}
-].map(r=>({...r,audio:null,language:null,culture:null}));
+].map(r=>({...r,audio:null,language:null,culture:null,
+ // Isi hanya dengan terjemahan yang disediakan dan disetujui tim pameran.
+ translations: { en: null },
+ // Ganti dengan path ilustrasi final dan deskripsi aksesibelnya.
+ illustration: null, illustrationAlt: null,
+ summary: {
+  'sumatra-utara':'Sebuah janji, keluarga, dan asal-usul danau dalam legenda.',
+  'jawa-barat':'Syarat semalam dan perahu yang menjadi bagian dari legenda.',
+  'kalimantan-barat':'Kisah penyesalan yang mengajak kita menghargai orang tua.',
+  'sulawesi-selatan':'Berkenalan dengan tokoh dalam tradisi cerita La Galigo.',
+  'nusa-tenggara-barat':'Sebuah pilihan dan harapan untuk menghindari perselisihan.',
+  'papua':'Ruang cerita berikutnya, menunggu pemilihan dan tinjauan guru.'
+ }[r.id]
+}));
