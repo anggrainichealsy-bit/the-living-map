@@ -14,11 +14,11 @@ const answers = [0, 1, 2, 1, 0, 2];
     page.on('pageerror', e => errors.push(e.message));
     page.on('response', r => { if (r.status() >= 400) errors.push(`${r.status()} ${r.url()}`); });
     await page.goto(base);
-    assert.equal(await page.locator('.map-scene').count(), 6);
-    assert.equal(await page.locator('.geographic-pin').count(), 6);
+    assert.equal(await page.locator('.map-hotspot').count(), 6);
+    assert.equal(new Set(await page.locator('.map-hotspot').evaluateAll(nodes => nodes.map(n => n.getAttribute('href')))).size, 6);
     assert.equal(await page.locator('.region-card').count(), 6);
-    const images = await page.locator('.story-map image').evaluateAll(nodes => nodes.map(n => n.getAttribute('href')));
-    assert.equal(new Set(images).size, 6, 'Each scene must have a distinct illustration');
+    const images = await page.locator('.painted-map-art').evaluateAll(nodes => nodes.map(n => n.getAttribute('src')));
+    assert.equal(images.length, 1, 'The map must use one integrated artwork');
     for (const src of images) {
       const response = await page.request.get(new URL(src, base).href);
       assert.equal(response.status(), 200);
@@ -29,7 +29,7 @@ const answers = [0, 1, 2, 1, 0, 2];
     await page.evaluate(() => localStorage.setItem('living-map-passport-v1', '["jawa-barat"]'));
     await page.reload();
     assert.equal(await page.locator('#nav-count').innerText(), '1/6');
-    await page.locator('.map-scene').first().focus();
+    await page.locator('.map-hotspot').first().focus();
     await page.keyboard.press('Enter');
     await page.waitForURL('**/#daerah/sumatra-utara');
     await page.evaluate(() => localStorage.removeItem('living-map-passport-v1'));
@@ -82,8 +82,8 @@ const answers = [0, 1, 2, 1, 0, 2];
     await page.setViewportSize({ width: 390, height: 844 });
     await page.goto(base);
     assert(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
-    await page.locator('.story-map-scroll').evaluate(el => { el.scrollLeft = el.scrollWidth; });
-    await page.locator('.map-scene').last().click();
+    assert(await page.locator('.painted-map-canvas').evaluate(el => el.scrollWidth <= el.clientWidth));
+    await page.locator('.map-hotspot').last().click();
     await page.waitForURL('**/#daerah/papua');
     assert(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
     await page.setViewportSize({ width: 320, height: 844 });
@@ -272,7 +272,7 @@ const answers = [0, 1, 2, 1, 0, 2];
     assert.match(await papuaCard.innerText(), /Papua Barat|PAPUA BARAT/);
     assert.match(await papuaCard.innerText(), /Asal Mula Burung Cenderawasih/);
     assert(!(await papuaCard.innerText()).includes('Materi dalam persiapan'));
-    assert.match(await papua.locator('.map-scene[href="#daerah/papua"]').textContent(), /Cenderawasih/);
+    assert.match(await papua.locator('.map-hotspot[href="#daerah/papua"]').textContent(), /Cenderawasih/);
     // Verify the relocated native audio player with a temporary silent WAV fixture.
     const audioPage = await browser.newPage();
     const wav = Buffer.alloc(1644);
@@ -292,7 +292,7 @@ const answers = [0, 1, 2, 1, 0, 2];
     await audioPage.route('**/missing-art.webp', route => route.fulfill({ status: 404, body: '' }));
     await audioPage.evaluate(() => { window.REGIONS[0].heroImage='missing-art.webp'; location.hash='daerah/sumatra-utara'; });
     await audioPage.waitForFunction(() => document.querySelector('.art-hero')?.src.endsWith('sumatra-utara.svg') && document.querySelector('.art-hero').naturalWidth > 0);
-    for (const width of [320, 390, 768, 1024, 1920]) {
+    for (const width of [320, 375, 390, 430, 768, 1024, 1920]) {
       await page.setViewportSize({ width, height: 900 });
       for (const hash of ['', '#daerah/jawa-barat']) {
         await page.goto(base + hash);
@@ -300,6 +300,6 @@ const answers = [0, 1, 2, 1, 0, 2];
       }
     }
     assert.deepEqual(errors, []);
-    console.log('PASS: 6 unique raster scenes, map keyboard/mobile navigation, legacy passport, 6 deep links, quiz, unique stamps, reload, 3-region milestone, reset, blocked storage, responsive layout, section navigation, native audio playback, image fallback, zero JS/HTTP errors.');
+    console.log('PASS: one integrated painted map, six hotspots, keyboard/mobile navigation, legacy passport, 6 deep links, quiz, unique stamps, reload, 3-region milestone, reset, blocked storage, responsive layout, section navigation, native audio playback, image fallback, zero JS/HTTP errors.');
   } finally { await browser.close(); }
 })().catch(error => { console.error(error); process.exitCode = 1; });
