@@ -1510,3 +1510,11 @@ h1, h2, h3 { text-wrap: balance; }
 .audio-exhibit .waveform { display: flex; align-items: center; gap: 4px; width: 270px; height: 45px; }
 .audio-exhibit .waveform i { display: block; width: 3px; min-width: 2px; border-radius: 2px; background: #b9c6a6; flex-shrink: 0; }
 @media(max-width:760px) { .audio-exhibit .waveform { height: 35px; gap: 3px; }.audio-exhibit .waveform i { transform: scaleY(.7); } }
+.audio-transcripts { max-width: 1280px; width: calc(100% - 120px); margin: -20px auto 28px; padding: 15px 20px; border: 1px solid #d9ddc7; border-radius: 5px; background: #fcfaef; color: #64765b; font-size: 12px; }
+.audio-transcripts summary, .source-note summary { cursor: pointer; }
+.transcript-columns { display: grid; grid-template-columns: 1fr 1fr; gap: 35px; padding-top: 20px; }
+.transcript-columns h3 { font: 22px Georgia, serif; }
+.transcript-columns p { font-size: 13px; line-height: 1.9; }
+.source-note { padding: 14px 0; border-block: 1px solid #e3ddc9; font-size: 11px; color: #738063; margin-top: 20px; }
+.source-note li { padding-block: 4px; }
+@media(max-width:760px) { .audio-transcripts { width: calc(100% - 48px); margin-top: -10px; }.transcript-columns { grid-template-columns: 1fr; gap: 20px; } }
