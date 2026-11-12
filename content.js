@@ -3,7 +3,7 @@
 window.REGIONS = [
  {
   "id": "sumatra-utara",
-  "audio": "assets/audio/danau-toba-soundtrack-film-studio.mp3",
+  "audio": "assets/audio/Danau_Toba_Soundtrack_Film_Studio.mp3",
   "name": "Sumatra Utara",
   "island": "SUMATRA",
   "title": "Legenda Danau Toba",
