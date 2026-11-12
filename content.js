@@ -249,7 +249,73 @@ window.REGIONS = [
     }
   }
 },
- {id:'nusa-tenggara-barat',name:'Nusa Tenggara Barat',island:'NUSA TENGGARA',title:'Legenda Putri Mandalika',tag:'Pilihan seorang putri',icon:'☼',color:'#d1b47a',scene:'sea',story:['Dalam salah satu versi legenda dari Lombok, Putri Mandalika dipinang oleh sejumlah pangeran. Ia khawatir pilihan terhadap salah satu dari mereka akan menimbulkan perselisihan.','Sang putri kemudian mengambil keputusan untuk terjun ke laut. Dalam legenda, kemunculan nyale dikaitkan dengan sang putri. Kisah ini adalah cerita rakyat, bukan penjelasan ilmiah tentang nyale.','Cerita ini dapat menjadi awal diskusi tentang kedamaian, kepentingan bersama, dan berbagai cara menyelesaikan perselisihan.'],question:'Apa yang dikhawatirkan Putri Mandalika dalam versi cerita ini?',options:['Terjadinya perselisihan','Hilangnya sebuah perahu','Datangnya musim hujan'],answer:0},
+ {
+  "id": "nusa-tenggara-barat",
+  "name": "Nusa Tenggara Barat",
+  "island": "NUSA TENGGARA",
+  "title": "Legenda Putri Mandalika",
+  "tag": "Kisah di Balik Tradisi Bau Nyale",
+  "icon": "☼",
+  "color": "#d1b47a",
+  "scene": "sea",
+  "summary": "Putri Mandalika, harapan perdamaian, dan kisah di balik tradisi Bau Nyale di Lombok.",
+  "story": [
+    "Menurut cerita rakyat masyarakat Sasak di Lombok, Putri Mandalika dikenal berhati baik. Banyak pangeran ingin menikahinya, dan persaingan mereka mengancam kedamaian.",
+    "Agar tidak terjadi pertikaian, Mandalika mengundang para pelamar ke tepi laut. Menurut legenda, ia kemudian terjun ke laut dan menghilang.",
+    "Tak lama, masyarakat menemukan nyale, cacing laut yang dipercaya sebagai jelmaan sang putri. Kisah ini dikenang melalui tradisi Bau Nyale di pesisir Lombok."
+  ],
+  "culture": "Pantai Seger berada di pesisir selatan Lombok, Nusa Tenggara Barat. Nyale adalah cacing laut kelompok Polychaeta. Kemunculannya secara massal berkaitan dengan reproduksi dan siklus bulan.",
+  "cultureHeading": "Geografi dan biologi",
+  "language": "Bau berarti “menangkap”; nyale berarti “cacing laut”. Istilah Bau Nyale merujuk pada tradisi masyarakat Sasak menangkap cacing laut.",
+  "question": "Apa perbedaan nyale menurut legenda dan menurut penjelasan ilmiah?",
+  "options": [
+    "Tak lama, masyarakat menemukan nyale, cacing laut yang dipercaya sebagai jelmaan sang putri. Nyale adalah cacing laut kelompok Polychaeta. Kemunculannya secara massal berkaitan dengan reproduksi dan siklus bulan.",
+    "Pantai Seger berada di pesisir selatan Lombok, Nusa Tenggara Barat.",
+    "Bau berarti “menangkap”; nyale berarti “cacing laut”."
+  ],
+  "answer": 0,
+  "audio": "assets/audio/putri-mandalika.mp3",
+  "audioTitle": "Dengarkan kisah Putri Mandalika",
+  "audioCaption": "Rekaman siswa · Tekan play untuk mendengarkan. Bahasa rekaman tidak berubah saat mengganti bahasa bacaan.",
+  "contentNote": "Materi dari dokumen bilingual tim pameran. Penjelmaan Putri Mandalika merupakan bagian legenda; nyale adalah hewan laut yang nyata. Penjelasan geografi dan biologi ditampilkan secara terpisah.",
+  "sources": [
+    "Kementerian Pariwisata RI (2026) - Menyambut Festival Bau Nyale 2026",
+    "Pemkab Lombok Tengah (2026) - Festival Bau Nyale: The Power of a Legend",
+    "Bachtiar & Bachtiar (2019) - Biodiversitas 20:971-977, doi:10.13057/biodiv/d200406"
+  ],
+  "audioTranscript": {
+    "id": [
+      "Selamat datang di Nusa Tenggara Barat! Di Pulau Lombok, masyarakat Sasak mewariskan kisah Putri Mandalika, seorang putri yang dikenal baik hati. Banyak pangeran ingin menikahinya, tetapi persaingan mereka mengancam kedamaian.",
+      "Menurut legenda, Mandalika mengundang para pangeran ke tepi laut. Ia memilih terjun ke laut dan menghilang. Setelah itu, muncul nyale, cacing laut yang dipercaya masyarakat sebagai jelmaan sang putri. Kisah ini dikenang melalui tradisi Bau Nyale.",
+      "Dalam bahasa Sasak, bau berarti menangkap. Tahukah kamu? Secara ilmiah, nyale adalah cacing laut yang muncul bersama-sama saat berkembang biak, dan waktunya berkaitan dengan siklus bulan. Jadi, mana bagian legenda dan mana penjelasan ilmiah? Ayo jawab tantangan kami!"
+    ],
+    "en": [
+      "Welcome to West Nusa Tenggara! On Lombok Island, the Sasak people tell a story about Princess Mandalika, a kind-hearted princess. Many princes wanted to marry her, but their rivalry threatened peace.",
+      "According to the legend, Mandalika gathered the princes by the sea. She jumped into the ocean and disappeared. Afterwards, marine worms called nyale appeared. People believed they were the princess in another form, and her story became connected to the Bau Nyale tradition.",
+      "In Sasak, bau means ‘to catch’. But did you know? Science explains that nyale are marine worms that gather to reproduce. Their timing is linked to the lunar cycle. Can you tell the difference between the legend and the scientific explanation? Take our Nusantara Challenge!"
+    ]
+  },
+  "translations": {
+    "en": {
+      "title": "The Legend of Princess Mandalika",
+      "tag": "The Story Behind Bau Nyale",
+      "story": [
+        "In Sasak folklore from Lombok, Princess Mandalika was known for her kindness. Many princes wanted to marry her, and their rivalry threatened peace in the kingdom.",
+        "To prevent conflict, Mandalika gathered her suitors by the sea. According to the legend, she then jumped into the ocean and disappeared.",
+        "Soon afterward, people found nyale, marine worms believed to be the princess in another form. Her story lives on through the coastal Bau Nyale tradition."
+      ],
+      "culture": "Seger Beach lies on the southern coast of Lombok, West Nusa Tenggara. Nyale are marine polychaete worms; their mass appearance is linked to reproduction and the lunar cycle.",
+      "cultureHeading": "Geography and marine biology",
+      "language": "Bau means “to catch”; nyale means “marine worms”. Together, Bau Nyale refers to the Sasak tradition of catching sea worms.",
+      "question": "How does the meaning of nyale in the legend differ from the scientific explanation?",
+      "options": [
+        "Soon afterward, people found nyale, marine worms believed to be the princess in another form. Nyale are marine polychaete worms; their mass appearance is linked to reproduction and the lunar cycle.",
+        "Seger Beach lies on the southern coast of Lombok, West Nusa Tenggara.",
+        "Bau means “to catch”; nyale means “marine worms”."
+      ]
+    }
+  }
+},
  {id:'papua',name:'Papua',island:'PAPUA',title:'Cerita rakyat menyusul',tag:'Ruang untuk cerita berikutnya',icon:'✺',color:'#86a488',scene:'forest',story:['Papua memiliki banyak komunitas dengan bahasa dan tradisi yang beragam. Tim pameran sedang memilih cerita dan sumber yang akan ditampilkan.','Cerita, nama bahasa, dan materi budaya belum ditambahkan agar tidak menyamaratakan tradisi atau memuat informasi yang belum diverifikasi.','Kamu tetap dapat mengunjungi ruang ini dan menyelesaikan tantangan tentang cara menghargai cerita budaya. Materi akan diperbarui setelah peninjauan guru.'],question:'Apa langkah yang tepat sebelum membagikan cerita budaya?',options:['Mengarang detail yang belum diketahui','Menganggap semua tradisi sama','Memeriksa sumber dan menghargai pemilik tradisi'],answer:2}
 ].map(r=>({...r,audio:r.audio ?? null,language:r.language ?? null,culture:r.culture ?? null,
  // Isi hanya dengan terjemahan yang disediakan dan disetujui tim pameran.
