@@ -1,0 +1,134 @@
+/* Shared endpaper theme. Decorative assets never intercept clicks or change layout. */
+:root {
+ --paper-base: #faf5e7;
+ --paper-raised: #fffbf0;
+ --paper-inset: #f1eddf;
+ --paper-rule: #ded4bb;
+ --paper-grain: url('assets/backgrounds/paper-grain.svg');
+ --paper-filigree: url('assets/backgrounds/paper-filigree.svg');
+ --wave-corner: url('assets/backgrounds/blue-wave-corner.webp');
+ --wave-opacity: .25;
+ --wave-size: clamp(280px, 24vw, 430px);
+}
+body {
+ isolation: isolate;
+ background-color: var(--paper-base);
+ background-image: var(--paper-grain), var(--paper-filigree), radial-gradient(ellipse at 50% 15%, #fffdf7a0, transparent 70%);
+ background-size: 180px 180px, 240px 240px, 100% 100%;
+ background-repeat: repeat, repeat, no-repeat;
+}
+body::before, body::after {
+ content: '';
+ position: fixed;
+ z-index: -1;
+ pointer-events: none;
+ width: var(--wave-size);
+ height: var(--wave-size);
+ background-image: var(--wave-corner);
+ background-size: contain;
+ background-position: top left;
+ background-repeat: no-repeat;
+ opacity: var(--wave-opacity);
+}
+body::before {
+ left: 0;
+ top: 76px;
+ -webkit-mask-image: linear-gradient(90deg, #000 0, #000 10%, transparent 78%);
+ mask-image: linear-gradient(90deg, #000 0, #000 10%, transparent 78%);
+}
+body::after {
+ right: 0;
+ bottom: 0;
+ transform: rotate(180deg);
+ -webkit-mask-image: linear-gradient(90deg, #000 0, #000 12%, transparent 78%);
+ mask-image: linear-gradient(90deg, #000 0, #000 12%, transparent 78%);
+}
+/* Open pages expose the endpaper; reading panels provide a quiet paper surface. */
+.header {
+ background-color: var(--paper-base);
+ background-image: var(--paper-grain);
+ background-size: 180px 180px;
+ border-bottom-color: var(--paper-rule);
+}
+.editorial-hero, .collection, .about, .detail-top, .detail-body {
+ background-color: transparent;
+}
+.atlas, .atlas-heading, .region-card, .story, .audio-exhibit, .audio-transcripts {
+ background-color: var(--paper-raised);
+ background-image: var(--paper-grain);
+ background-size: 180px 180px;
+ border-color: var(--paper-rule);
+}
+.atlas {
+ box-shadow: 0 0 0 4px #e8dfc21a, 0 12px 30px #57665b0c;
+}
+.region-card {
+ box-shadow: 0 8px 24px #6d654d12;
+}
+.postcard {
+ background-color: var(--paper-raised);
+ background-image: var(--paper-grain);
+ background-size: 180px 180px;
+}
+.passport-section {
+ background-color: #f2efdf;
+ background-image: var(--paper-grain), var(--paper-filigree), radial-gradient(ellipse at 85% 30%, #dce7e166, transparent 70%);
+ background-size: 180px 180px, 240px 240px, 100% 100%;
+ border-block-color: var(--paper-rule);
+}
+.passport-book {
+ background-image: var(--paper-grain);
+ background-size: 180px 180px;
+}
+.info-card, .quiz, .map-mobile-destinations a {
+ background-color: var(--paper-inset);
+ background-image: var(--paper-grain);
+ background-size: 180px 180px;
+ border-color: #d9d1b9;
+}
+.option, .share-input, .audio-placeholder {
+ background-color: #fffdf4;
+ border-color: #d6d3bf;
+}
+.option.correct { background-color: #d5e7ce; border-color: #618b59; }
+.option.incorrect { background-color: #f4e2d9; border-color: #b78870; }
+.audio-exhibit .audio-placeholder { background-color: transparent; }
+.detail-hero { background-color: var(--paper-inset); }
+.detail-hero::after {
+ background-image: linear-gradient(90deg, #faf5e7 1%, #faf5e7ed 20%, #faf5e79c 38%, #faf5e715 64%, transparent 85%);
+}
+.detail-sections { background-color: transparent; border-bottom-color: #d5d2ba; }
+.detail-title .pill { background-color: #fcf8ecce; border-color: #aeb69c; }
+.audio-exhibit { box-shadow: 0 12px 30px #6e775711; }
+.source-note, .reading-toolbar, .story-pages, .card-bottom, .exhibition-note {
+ border-color: var(--paper-rule);
+}
+footer {
+ background-color: #f5efdecc;
+ background-image: var(--paper-grain);
+ background-size: 180px 180px;
+ border-top-color: var(--paper-rule);
+}
+/* Text uses the existing ink palette; opaque paper protects it from edge ornaments. */
+@media(max-width:760px) {
+ :root { --wave-size: 155px; --wave-opacity: .14; }
+ body { background-image: var(--paper-grain), radial-gradient(ellipse at 50% 10%, #fffdf766, transparent 70%); background-size: 180px 180px, 100% 100%; }
+ body::before { top: 70px; -webkit-mask-image: linear-gradient(90deg, #000, transparent 65%); mask-image: linear-gradient(90deg, #000, transparent 65%); }
+ body::after { -webkit-mask-image: linear-gradient(90deg, #000, transparent 65%); mask-image: linear-gradient(90deg, #000, transparent 65%); }
+ .passport-section { background-image: var(--paper-grain); background-size: 180px 180px; }
+ .detail-title { background-color: var(--paper-base); background-image: var(--paper-grain); background-size: 180px 180px; }
+}
+@media(prefers-reduced-motion:reduce) {
+ body::before, body::after { animation: none; transition: none; }
+}
+@media print {
+ body::before, body::after { display: none; }
+}
+:root { --paper-muted: #5f6f5c; }
+.editorial-intro, .section-heading > p, .card-summary, .passport p,
+.info-card p, footer p, footer small, .audio-copy p, .translation-note,
+.exhibition-note p, .how p, .audio-state, .source-note, .painted-map-note {
+ color: var(--paper-muted);
+}
+.story .notice { color: var(--paper-muted) !important; }
+.region-card .card-summary { color: var(--paper-muted); }
