@@ -124,3 +124,11 @@ Ketiga slot saat ini menunjuk ke satu WebP per daerah agar cache browser dapat d
 `audio` tetap memakai path rekaman siswa seperti sebelumnya. Jika `null`, panel menampilkan status **Segera hadir** dan gelombang dekoratif tanpa tombol play palsu. Setelah file audio ditambahkan, pemutar native browser muncul otomatis, tanpa autoplay. Pilihan English tetap placeholder; tidak ada terjemahan baru yang ditambahkan.
 
 Tes browser opsional sekarang juga memeriksa navigasi bagian tanpa mengubah URL daerah, pemutaran WAV sementara di panel baru, fallback gambar yang gagal, dan layout pada 320–1920 px. WAV fixture hanya dibuat dalam memori pengujian dan tidak dipublikasikan sebagai audio siswa.
+
+## Materi Sangkuriang bilingual dan audio siswa
+
+Halaman `#daerah/jawa-barat` memakai materi dari dokumen **The_Living_Map_Jawa_Barat_Sangkuriang_Bilingual.docx** yang disediakan tim pameran: tiga paragraf cerita Indonesia/English, penjelasan geografi, sapaan Sunda, serta pertanyaan tantangan. Pilihan jawaban kuis disusun dari perbandingan legenda dan vulkanisme dalam dokumen; dokumen aslinya menyediakan pertanyaan terbuka. Rujukan ditampilkan sesuai nama yang tercantum di dokumen, tanpa mengarang URL sumber.
+
+Audio siswa **berbahasa Inggris** tersedia di `assets/audio/sangkuriang-english.mp3` (sekitar 1 menit 19 detik). File disalin tanpa perubahan dari unggahan. Pemutar diberi label English dan tidak memakai autoplay. Pergantian bahasa bacaan tidak mengubah audio menjadi bahasa lain. Naskah audio Indonesia dan English dari dokumen dapat dibuka pada panel **Naskah narasi siswa**; naskah Indonesia tidak berarti rekaman Indonesianya sudah tersedia.
+
+Properti `contentNote`, `sources`, dan `audioTranscript` pada data daerah mendukung catatan materi, daftar rujukan, dan transkrip opsional. Semua cerita, geografi, bahasa daerah, serta pertanyaan bilingual tetap menggunakan mekanisme pergantian bahasa yang sama. Materi ini merupakan bahan yang diberikan tim, bukan klaim verifikasi independen atas sumber.

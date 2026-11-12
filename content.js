@@ -48,7 +48,71 @@ window.REGIONS = [
    }
   }
  },
- {id:'jawa-barat',name:'Jawa Barat',island:'JAWA',title:'Legenda Sangkuriang',tag:'Sebuah perahu, sebuah kisah',icon:'△',color:'#b4b577',scene:'mountain',story:['Dalam salah satu versi legenda, Sangkuriang terpisah dari ibunya, Dayang Sumbi. Bertahun-tahun kemudian, ia kembali dan hendak menikahi seorang perempuan tanpa mengetahui bahwa perempuan itu adalah ibunya.','Dayang Sumbi mengenalinya dan mengajukan syarat: membangun bendungan dan perahu dalam satu malam. Ketika pekerjaan hampir selesai, Dayang Sumbi membuat suasana menyerupai fajar. Sangkuriang yang marah menendang perahu itu hingga terbalik.','Dalam legenda, perahu terbalik tersebut dikaitkan dengan Gunung Tangkuban Parahu. Cerita ini mengundang percakapan tentang amarah dan menerima kenyataan.'],question:'Apa yang ditendang Sangkuriang dalam cerita ini?',options:['Sebuah rumah','Sebuah perahu','Sebuah pohon'],answer:1},
+ {
+  "id": "jawa-barat",
+  "name": "Jawa Barat",
+  "island": "JAWA",
+  "title": "Legenda Sangkuriang",
+  "tag": "Asal-Usul Tangkuban Parahu",
+  "icon": "△",
+  "color": "#b4b577",
+  "scene": "mountain",
+  "summary": "Dayang Sumbi, syarat satu malam, dan kisah perahu terbalik dalam legenda Tangkuban Parahu.",
+  "story": [
+    "Di tanah Sunda, hiduplah Dayang Sumbi bersama putranya, Sangkuriang. Setelah sebuah perselisihan, Sangkuriang pergi dan baru kembali bertahun-tahun kemudian sebagai pemuda dewasa.",
+    "Sangkuriang tidak mengenali Dayang Sumbi, tetapi Dayang Sumbi mengenali putranya. Untuk menolak keinginan Sangkuriang menikahinya, ia memberikan syarat: membuat danau serta perahu dalam satu malam.",
+    "Ketika pekerjaan itu gagal selesai sebelum fajar, Sangkuriang menendang perahunya hingga terbalik. Menurut legenda, perahu tersebut menjadi Gunung Tangkuban Parahu."
+  ],
+  "culture": "Gunung Tangkuban Parahu merupakan gunung api aktif di wilayah Kabupaten Bandung Barat dan Kabupaten Subang, Jawa Barat. Gunung ini memiliki beberapa kawah, termasuk Kawah Ratu dan Kawah Upas. Bentang alamnya terbentuk melalui proses vulkanisme.",
+  "language": "Wilujeng sumping! — Ungkapan bahasa Sunda yang berarti “selamat datang”.",
+  "question": "Bagaimana legenda dan ilmu geografi menjelaskan asal-usul Gunung Tangkuban Parahu?",
+  "options": [
+    "Legenda: proses vulkanisme. Geografi: perahu terbalik.",
+    "Legenda: perahu terbalik. Geografi: proses vulkanisme.",
+    "Keduanya menjelaskan perahu berubah menjadi gunung."
+  ],
+  "answer": 1,
+  "audio": "assets/audio/sangkuriang-english.mp3",
+  "audioTitle": "Dengarkan Sangkuriang · English",
+  "audioCaption": "Rekaman siswa berbahasa Inggris · Tekan play untuk mendengarkan.",
+  "contentNote": "Materi diadaptasi dari dokumen bilingual yang disediakan tim pameran. Cerita rakyat dapat memiliki versi berbeda; penjelasan geografi ditampilkan secara terpisah.",
+  "sources": [
+    "Kemdikdasmen - Sejarah Pertumbuhan Sastra Indonesia di Jawa Barat",
+    "Badan Geologi - Aktivitas Gunungapi Tangkuban Parahu (2025)",
+    "Kamus Sunda - Wilujeng Sumping"
+  ],
+  "audioTranscript": {
+    "id": [
+      "Wilujeng sumping! Selamat datang di Jawa Barat! Pernahkah kamu melihat gunung yang bentuknya menyerupai perahu terbalik? Masyarakat Sunda mempunyai legenda tentang asal-usul Gunung Tangkuban Parahu. Dahulu, Dayang Sumbi hidup bersama putranya, Sangkuriang. Suatu peristiwa membuat mereka berpisah, dan Sangkuriang pergi meninggalkan rumah.",
+      "Bertahun-tahun kemudian, Sangkuriang kembali. Ia tidak mengenali Dayang Sumbi, tetapi ibunya mengenalinya. Ketika Sangkuriang ingin menikahi Dayang Sumbi, ia diberi syarat: membuat danau dan perahu dalam satu malam. Menjelang fajar, pekerjaannya belum selesai. Sangkuriang marah dan menendang perahu itu hingga terbalik. Menurut legenda, perahu tersebut menjadi Gunung Tangkuban Parahu.",
+      "Lalu, bagaimana penjelasan ilmiahnya? Tangkuban Parahu adalah gunung api aktif yang terbentuk melalui proses vulkanisme. Gunung ini memiliki kawah seperti Kawah Ratu dan Kawah Upas. Satu tempat menyimpan kisah budaya dan penjelasan geografi. Sekarang giliranmu: apa perbedaan keduanya? Hatur nuhun!"
+    ],
+    "en": [
+      "Wilujeng sumping! Welcome to West Java! Have you ever seen a mountain shaped like an upside-down boat? The Sundanese people have a legend about Mount Tangkuban Parahu. Long ago, Dayang Sumbi lived with her son, Sangkuriang. After a conflict, Sangkuriang left home and returned many years later.",
+      "Sangkuriang no longer recognized Dayang Sumbi, but she recognized him. When he wanted to marry her, she gave him a difficult task: build a lake and a boat in just one night. Before he could finish, dawn arrived. Furious, Sangkuriang kicked the boat until it overturned. According to the legend, that boat became Mount Tangkuban Parahu.",
+      "But what does science tell us? Tangkuban Parahu is an active volcano shaped by volcanic processes. It has craters such as Kawah Ratu and Kawah Upas. One place, two ways of understanding it: through cultural tradition and through geography. Can you tell us the difference? Hatur nuhun—thank you!"
+    ]
+  },
+  "translations": {
+    "en": {
+      "title": "The Legend of Sangkuriang",
+      "tag": "The Origin of Tangkuban Parahu",
+      "story": [
+        "In Sundanese folklore, Dayang Sumbi lived with her son, Sangkuriang. Following a conflict, Sangkuriang left home and returned many years later as a grown man.",
+        "Sangkuriang did not recognize Dayang Sumbi, but she recognized her son. To prevent him from marrying her, she challenged him to build a lake and a boat in a single night.",
+        "Unable to finish before dawn, Sangkuriang angrily kicked the boat until it overturned. According to the legend, the overturned boat became Mount Tangkuban Parahu."
+      ],
+      "culture": "Mount Tangkuban Parahu is an active volcano in West Bandung and Subang, West Java. It has several craters, including Kawah Ratu and Kawah Upas. The landscape was formed by volcanic processes.",
+      "language": "Wilujeng sumping! — A Sundanese greeting meaning “welcome”.",
+      "question": "How do the legend and geography explain the origin of Mount Tangkuban Parahu?",
+      "options": [
+        "Legend: volcanic processes. Geography: an overturned boat.",
+        "Legend: an overturned boat. Geography: volcanic processes.",
+        "Both explain that a boat turned into a mountain."
+      ]
+    }
+  }
+},
  {id:'kalimantan-barat',name:'Kalimantan Barat',island:'KALIMANTAN',title:'Legenda Batu Menangis',tag:'Tentang kasih dan pengakuan',icon:'◈',color:'#6d9a84',scene:'forest',story:['Dalam salah satu versi cerita Batu Menangis, seorang anak perempuan tinggal bersama ibunya yang bekerja keras. Suatu hari mereka berjalan bersama menuju pasar.','Karena malu pada keadaan ibunya, si anak menyangkal hubungan mereka di hadapan orang lain. Sang ibu yang terluka hatinya berdoa. Dalam kisah ini, tubuh anak tersebut perlahan berubah menjadi batu. Ia menyesal dan menangis ketika perubahan itu terjadi.','Legenda ini mengajak pembaca menghargai orang tua dan tidak menilai seseorang dari penampilannya.'],question:'Sikap apa yang diajak untuk kita renungkan?',options:['Menilai orang dari pakaiannya','Menyembunyikan keluarga','Menghargai orang yang merawat kita'],answer:2},
  {id:'sulawesi-selatan',name:'Sulawesi Selatan',island:'SULAWESI',title:'Kisah Sawerigading',tag:'Jejak kisah dalam La Galigo',icon:'≋',color:'#a5ad7d',scene:'sea',story:['Sawerigading merupakan tokoh dalam tradisi cerita La Galigo yang berasal dari masyarakat Bugis. Tradisi ini memuat kisah perjalanan, hubungan keluarga, dan dunia yang digambarkan dalam cerita.','Untuk pameran ini, kutipan atau adaptasi episode Sawerigading masih menunggu pemilihan dan peninjauan guru. Bagian ini sengaja tidak menambahkan alur atau dialog yang belum diverifikasi.','Sambil menunggu materi lengkap, kenali nama tokohnya dan diskusikan mengapa cerita dapat diwariskan melalui tulisan maupun tuturan.'],question:'Siapa tokoh yang diperkenalkan pada halaman ini?',options:['Sangkuriang','Sawerigading','Toba'],answer:1,reference:{label:'UNESCO — La Galigo',url:'https://www.unesco.org/en/memory-world/la-galigo'}},
  {id:'nusa-tenggara-barat',name:'Nusa Tenggara Barat',island:'NUSA TENGGARA',title:'Legenda Putri Mandalika',tag:'Pilihan seorang putri',icon:'☼',color:'#d1b47a',scene:'sea',story:['Dalam salah satu versi legenda dari Lombok, Putri Mandalika dipinang oleh sejumlah pangeran. Ia khawatir pilihan terhadap salah satu dari mereka akan menimbulkan perselisihan.','Sang putri kemudian mengambil keputusan untuk terjun ke laut. Dalam legenda, kemunculan nyale dikaitkan dengan sang putri. Kisah ini adalah cerita rakyat, bukan penjelasan ilmiah tentang nyale.','Cerita ini dapat menjadi awal diskusi tentang kedamaian, kepentingan bersama, dan berbagai cara menyelesaikan perselisihan.'],question:'Apa yang dikhawatirkan Putri Mandalika dalam versi cerita ini?',options:['Terjadinya perselisihan','Hilangnya sebuah perahu','Datangnya musim hujan'],answer:0},
