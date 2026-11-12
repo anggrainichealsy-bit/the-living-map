@@ -175,3 +175,15 @@ NODE_PATH=/tmp/living-map-checks/node_modules BASE_URL=http://127.0.0.1:8000/ no
 ```
 
 Tes khusus memeriksa enam rute lewat keyboard, lebar 320/375/390/430 px, rasio gambar tanpa distorsi/crop, tidak ada overflow peta, posisi hotspot saat resize, dan keenam tautan sentuh. Opsional: `BASELINE_URL` menunjuk situs versi sebelum perubahan untuk membandingkan HTML serta dimensi bagian homepage yang dilindungi dan HTML keenam halaman detail. `SCREENSHOT_DIR` menyimpan screenshot desktop serta empat ukuran HP. Baseline dapat disiapkan dari arsip commit tanpa membuat worktree baru.
+
+## Sistem background artistik
+
+`backgrounds.css` menerapkan parchment terang, serat kertas halus, motif abstrak samar, serta ornamen ombak biru pada tepi layar di seluruh website. Panel baca tetap tenang dan tekstur tidak ditimpa ke artwork. Tema ini terpisah dari stylesheet utama, tidak memerlukan JavaScript baru, dan dapat dilepas dengan menghapus link stylesheet-nya dari `index.html`. Pengaturan warna, mobile, aset, dan provenance ada di [assets/backgrounds/README.md](assets/backgrounds/README.md).
+
+Tes khusus tema (opsional):
+
+```sh
+NODE_PATH=/tmp/living-map-checks/node_modules BASE_URL=http://127.0.0.1:8000/ node tests/backgrounds.cjs
+```
+
+`BASELINE_URL` dapat menunjuk arsip situs sebelum perubahan untuk membandingkan DOM dan geometri layout. `SCREENSHOT_DIR` dapat diisi folder output preview. Tema telah diuji tanpa mengubah struktur homepage atau keenam halaman detail.
