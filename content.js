@@ -457,3 +457,14 @@ window.REGIONS.forEach(region => {
     region.translations.en.story = [...region.audioTranscript.en];
   }
 });
+
+// NARRATOR_CREDITS — pengisi suara siswa sebagaimana diberikan tim pameran.
+const voiceCredits = {
+  "sumatra-utara": "Brian Zuriel",
+  "jawa-barat": "Kimberly Wongso",
+  "kalimantan-barat": "Brian Zuriel",
+  "sulawesi-selatan": "Kimberly Wongso",
+  "nusa-tenggara-barat": "Brian Zuriel",
+  "papua": "Kimberly Wongso"
+};
+window.REGIONS.forEach(region => { region.narrator = voiceCredits[region.id] || ''; });
