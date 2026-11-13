@@ -2029,3 +2029,89 @@ h1, h2, h3 { text-wrap: balance; }
 @media(prefers-reduced-motion:reduce){
  .passport-mission-list li { transition: none; }
 }
+
+
+/* Student narration credits — storybook exhibition acknowledgement */
+.audio-narrator-credit {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  column-gap: 12px;
+  row-gap: 2px;
+  margin: 9px 0 7px !important;
+  color: #6e6754 !important;
+  font-size: 12px !important;
+  line-height: 1.5;
+}
+.audio-narrator-credit span { font-size: 10px; letter-spacing: .04em; }
+.audio-narrator-credit strong {
+  font: 600 clamp(18px, 2vw, 23px)/1.2 "Cormorant Garamond", Georgia, serif;
+  color: #355c4c;
+  letter-spacing: .01em;
+}
+.narrator-credits-section {
+  width: min(1280px, calc(100% - 80px));
+  margin: 28px auto 55px;
+  padding: clamp(24px, 4vw, 48px);
+  border: 1px solid #d0bc9c;
+  border-radius: 8px;
+  background: linear-gradient(125deg,#fff9ed,#f6ecda 68%,#e8ebdb);
+  box-shadow: 5px 6px 0 #d4c5a755;
+}
+.narrator-credits-heading { max-width: 680px; margin: 0 0 24px; }
+.narrator-credits-heading h2 {
+  font: 600 clamp(34px, 4vw, 54px)/1.1 "Cormorant Garamond", Georgia, serif;
+  color: #2f5946;
+  margin: 10px 0 11px;
+}
+.narrator-credits-heading p {
+  font: 14px/1.75 "Lora",Georgia,serif;
+  color: #677265;
+}
+.narrator-credits-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 14px; }
+.narrator-credit-item {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  min-width: 0;
+  padding: 20px 17px;
+  border: 1px solid #e0d3b9;
+  border-radius: 6px;
+  text-decoration: none;
+  background: #fffdf5;
+  color: #305144;
+  box-shadow: 0 3px 9px #3c463c10;
+}
+.narrator-credit-item:hover,.narrator-credit-item:focus-visible {
+  border-color: #a18e67;
+  box-shadow: 0 5px 14px #3c463c20;
+}
+.narrator-credit-item:focus-visible { outline: 3px solid #b09c6c; outline-offset: 3px; }
+.narrator-credit-region {
+  color: #897b63;
+  text-transform: uppercase;
+  font-size: 10px;
+  letter-spacing: .11em;
+}
+.narrator-credit-title {
+  font: 600 25px/1.13 "Cormorant Garamond",Georgia,serif;
+}
+.narrator-credit-voice {
+  margin-top: auto;
+  padding-top: 8px;
+  border-top: 1px solid #e6dcc9;
+  font: 600 13px/1.5 "Lora",Georgia,serif;
+  color: #557660;
+}
+@media(max-width:760px) {
+  .narrator-credits-section {width:calc(100% - 28px);padding:23px 17px;margin:24px auto 35px}
+  .narrator-credits-grid {grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+  .narrator-credit-item {padding:14px 12px}
+  .narrator-credit-title {font-size:22px}
+  .narrator-credit-voice {font-size:11px}
+  .audio-narrator-credit {display:block}
+  .audio-narrator-credit span {display:block}
+}
+@media(max-width:380px) {
+  .narrator-credits-grid {grid-template-columns:minmax(0,1fr)}
+}
