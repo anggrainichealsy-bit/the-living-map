@@ -62,8 +62,13 @@ function map() {
   return `<a href="#daerah/${region.id}"><span class="map-mobile-number" aria-hidden="true">${completed.includes(region.id)?'✓':String(index+1).padStart(2,'0')}</span><span><strong>${escapeHTML(region.name)}</strong><small>${escapeHTML(region.title)}</small></span><span class="map-mobile-arrow" aria-hidden="true">→</span></a>`;
  }).join('')}</nav></div>`;
 }
+// Use the six original painted stamps (one 3x2 image). Keep existing SVGs as fallback.
+const originalStamps = new Image();
+originalStamps.addEventListener('load', () => document.documentElement.classList.add('original-stamps-loaded'));
+originalStamps.src = 'assets/stamps/Prangko_Cerita_Nusantara_Asli.webp';
 function stampImage(r, context = 'passport') {
- return `<img class="travel-stamp-art" src="assets/stamps/${r.id}.svg" alt="Stempel perjalanan ${escapeHTML(r.name)} — ${escapeHTML(r.title)}" loading="lazy" width="180" height="180" decoding="async">`;
+ const index = regions.indexOf(r);
+ return `<span class="travel-stamp-layer" role="img" aria-label="Prangko cerita ${escapeHTML(r.name)} — ${escapeHTML(r.title)}"><img class="travel-stamp-art" src="assets/stamps/${r.id}.svg" alt="" loading="lazy" width="180" height="180" decoding="async"><span class="travel-stamp-original travel-stamp-pos-${index}" aria-hidden="true"></span></span>`;
 }
 function stamps() {
  return regions.map(r => {
