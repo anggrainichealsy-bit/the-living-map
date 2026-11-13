@@ -195,7 +195,7 @@ function beginMissionTracking(r) {
    const box=story.getBoundingClientRect();
    const vh=window.innerHeight;
    if (box.top<vh*.85 && box.bottom>vh*.15) {
-     if (first.getBoundingClientRect().top<vh*.9) m.started=true;
+     if (first.getBoundingClientRect().bottom>vh*.12 && first.getBoundingClientRect().top<vh*.9) m.started=true;
      if (last.getBoundingClientRect().top<vh*.85) m.reachedEnd=true;
      if (m.started) m.readSec=(Number(m.readSec)||0)+1;
      if (m.started && m.reachedEnd && m.readSec>=READING_SECONDS) {
