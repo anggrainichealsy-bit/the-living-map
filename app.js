@@ -76,30 +76,144 @@ function stamps() {
   return `<a class="stamp ${earned?'earned':'unearned'}" href="#daerah/${r.id}" aria-label="${escapeHTML(r.name)}: ${earned?'stempel sudah terkumpul':'stempel belum terkumpul, buka cerita untuk mendapatkannya'}"><span class="stamp-art-wrap">${stampImage(r)}</span><span class="stamp-region">${escapeHTML(r.name)}</span><span class="stamp-status">${earned?'✓ Stempel terkumpul':'○ Belum dijelajahi'}</span></a>`;
  }).join('');
 }
-function collectStamp(r, origin = 'reading') {
- if (completed.includes(r.id)) return false;
- completed.push(r.id);
- save();
- updateCount();
- document.querySelector('.pill') && (document.querySelector('.pill').textContent = '✓ Tanda eksplorasi terkumpul');
- const panel = document.querySelector('#reading-stamp-panel');
- if (panel) {
-  panel.classList.add('collected');
-  const button = panel.querySelector('#collect-stamp');
-  if (button) { button.disabled = true; button.textContent = '✓ Stempel sudah terkumpul'; }
-  const status = panel.querySelector('#reading-stamp-status');
-  if (status) status.textContent = 'Stempel berhasil ditambahkan ke Nusantara Explorer Passport!';
+
+/* Three required passport missions per region.
+   Existing earned stamps remain in localStorage; new stamps require all three tasks.
+   This is a visitor experience feature, not tamper-proof attendance verification. */
+const MISSION_KEY = 'living-map-passport-missions-v1';
+const AUDIO_FRACTION = 0.75;
+const READING_SECONDS = 25;
+let missionProgress = {};
+try {
+ const savedMissions = JSON.parse(localStorage.getItem(MISSION_KEY) || '{}');
+ if (savedMissions && typeof savedMissions === 'object' && !Array.isArray(savedMissions)) missionProgress = savedMissions;
+} catch { storageAvailable = false; }
+let activeReadingTimer = null;
+function missionFor(r) {
+ if (!missionProgress[r.id] || typeof missionProgress[r.id] !== 'object') {
+   missionProgress[r.id] = {audio:false, reading:false, quiz:false, played:0, readSec:0, started:false, reachedEnd:false};
  }
+ return missionProgress[r.id];
+}
+function saveMissions() {
+ try { localStorage.setItem(MISSION_KEY, JSON.stringify(missionProgress)); }
+ catch { storageAvailable = false; }
+}
+function missionCount(m) { return Number(!!m.audio) + Number(!!m.reading) + Number(!!m.quiz); }
+function missionChecklist(r) {
+ const m = missionFor(r);
+ return '<ol class="passport-mission-list">' +
+   [['audio','🎧','Dengarkan suara anak','Listen to the narration'],
+    ['reading','📖','Baca dan gulir hingga akhir','Read and scroll to the end'],
+    ['quiz','✦','Jawab kuis dengan benar','Answer the quiz correctly']].map(([key,symbol,id,en]) =>
+      '<li data-mission="' + key + '" class="' + (m[key]?'done':'') +
+      '"><span class="mission-symbol" aria-hidden="true">' + symbol +
+      '</span><span class="mission-name" data-id="' + id + '" data-en="' + en + '">' +
+      id + '</span><span class="mission-check" aria-hidden="true">' +
+      (m[key]?'✓':'○')+'</span></li>').join('') + '</ol>';
+}
+function refreshMissionPanel(r, language = document.documentElement.lang) {
+ const panel = document.getElementById('reading-stamp-panel');
+ if (!panel || !panel.isConnected) return;
+ const m = missionFor(r), en = language === 'en', count = missionCount(m), earned = completed.includes(r.id);
+ panel.classList.toggle('collected',earned);
+ const title = panel.querySelector('#stamp-panel-title');
+ const description = panel.querySelector('#stamp-panel-description');
+ const counter = panel.querySelector('#mission-counter');
+ const bar = panel.querySelector('#mission-progress');
+ const status = panel.querySelector('#reading-stamp-status');
+ if (title) title.textContent = en ? 'Complete 3 Missions, Collect 1 Stamp' : 'Selesaikan 3 Misi, Dapatkan 1 Stempel';
+ if (description) description.textContent = en
+   ? 'Listen to at least 75% of the narration, read the story to the end for at least 25 seconds, and answer the quiz correctly. Your stamp will appear automatically when all three are complete.'
+   : 'Dengarkan minimal 75% narasi anak, jelajahi bacaan sampai akhir selama minimal 25 detik, dan jawab kuis dengan benar. Ketika tiga misi selesai, stempel masuk otomatis!';
+ if (counter) counter.textContent = (en?'Missions completed: ':'Misi selesai: ') + count + '/3';
+ if (bar) { bar.value = count; bar.setAttribute('aria-label',en?'Mission progress':'Progres misi'); }
+ panel.querySelectorAll('[data-mission]').forEach(item => {
+   const key=item.dataset.mission, done=!!m[key];
+   item.classList.toggle('done',done);
+   item.querySelector('.mission-check').textContent=done?'✓':'○';
+   const name=item.querySelector('.mission-name');
+   if (name) name.textContent=en?name.dataset.en:name.dataset.id;
+ });
+ if (status) {
+   if (earned && count < 3) {
+     status.textContent = en?'Your stamp was already collected under the earlier passport rules.':'Stempel ini sudah terkumpul dengan aturan paspor sebelumnya.';
+   } else if (earned) {
+     status.textContent = en?'✦ All missions complete. Your stamp is in the passport!':'✦ Semua misi selesai! Stempel otomatis masuk ke paspormu.';
+   } else if (!m.audio) {
+     status.textContent = en?'Audio: listen to at least 75% (without skipping).':'Audio: dengarkan minimal 75% tanpa melompat ke depan.';
+   } else if (!m.reading) {
+     const secs = Math.max(0,READING_SECONDS - Math.floor(Number(m.readSec)||0));
+     status.textContent = en?'Reading: scroll through the story and spend '+secs+' more seconds reading.':'Membaca: telusuri cerita sampai akhir dan baca '+secs+' detik lagi.';
+   } else if (!m.quiz) {
+     status.textContent = en?'Almost there! Answer the challenge correctly.':'Sedikit lagi! Jawab tantangannya dengan benar.';
+   }
+ }
+}
+function awardStampIfReady(r) {
+ const m=missionFor(r);
+ if (!m.audio || !m.reading || !m.quiz || completed.includes(r.id)) return false;
+ completed.push(r.id); save(); updateCount();
+ document.querySelector('.pill') && (document.querySelector('.pill').textContent = '✓ Tanda eksplorasi terkumpul');
  if(completed.length===3) toast('✺ Selamat! Kamu menjadi Penjelajah Nusantara.');
- else toast(`✦ Stempel ${r.name} terkumpul!`);
+ else toast('✦ CAP! Stempel '+r.name+' otomatis terkumpul!');
+ refreshMissionPanel(r);
  return true;
 }
+function stopMissionTracking() {
+ if (activeReadingTimer) { clearInterval(activeReadingTimer); activeReadingTimer=null; }
+}
+function beginMissionTracking(r) {
+ stopMissionTracking();
+ const m=missionFor(r), audio=document.querySelector('.audio-exhibit audio');
+ if (audio) {
+   let lastTime=Number(audio.currentTime)||0;
+   audio.addEventListener('play',()=>{ lastTime=Number(audio.currentTime)||0; });
+   audio.addEventListener('seeking',()=>{ lastTime=Number(audio.currentTime)||0; });
+   audio.addEventListener('seeked',()=>{ lastTime=Number(audio.currentTime)||0; });
+   audio.addEventListener('timeupdate',()=>{
+     if (m.audio) return;
+     const now=Number(audio.currentTime)||0, delta=now-lastTime;
+     lastTime=now;
+     if (audio.paused || audio.seeking || document.hidden || delta<=0 || delta>1.5) return;
+     m.played=Math.max(0,Number(m.played)||0)+delta;
+     if (Number.isFinite(audio.duration) && audio.duration>0 &&
+          m.played/audio.duration>=AUDIO_FRACTION) m.audio=true;
+     saveMissions(); if (m.audio) { awardStampIfReady(r); refreshMissionPanel(r); }
+   });
+   audio.addEventListener('loadedmetadata',()=>{
+     if (!m.audio && audio.duration>0 && (Number(m.played)||0)/audio.duration>=AUDIO_FRACTION) {
+       m.audio=true; saveMissions(); awardStampIfReady(r); refreshMissionPanel(r);
+     }
+   });
+ }
+ activeReadingTimer=setInterval(()=>{
+   const story=document.querySelector('.story-pages');
+   if (!story || !story.isConnected || document.hidden || m.reading) return;
+   const first=story.firstElementChild, last=story.lastElementChild;
+   if (!first || !last) return;
+   const box=story.getBoundingClientRect();
+   const vh=window.innerHeight;
+   if (box.top<vh*.85 && box.bottom>vh*.15) {
+     if (first.getBoundingClientRect().top<vh*.9) m.started=true;
+     if (last.getBoundingClientRect().top<vh*.85) m.reachedEnd=true;
+     if (m.started) m.readSec=(Number(m.readSec)||0)+1;
+     if (m.started && m.reachedEnd && m.readSec>=READING_SECONDS) {
+       m.reading=true; awardStampIfReady(r);
+     }
+     saveMissions();
+     if (m.reading || Math.round(m.readSec)%5===0) refreshMissionPanel(r);
+   }
+ },1000);
+ refreshMissionPanel(r);
+}
 function home(){
+ stopMissionTracking();
  destroyComments();
  document.documentElement.lang='id';
  document.title='The Living Map — Indonesia Bercerita';
- main.innerHTML=`<section class="editorial-hero"><div class="editorial-copy"><div class="eyebrow">THE LIVING MAP · INDONESIA BERCERITA</div><h1>Satu peta.<br><em>Berjuta cerita.</em></h1><p class="editorial-intro">Dari danau yang menyimpan legenda hingga pesisir yang penuh kisah. Mari mengenal Indonesia, satu cerita pada satu waktu.</p><div class="hero-actions"><a class="button" href="#jelajah">Mulai Jelajah <span aria-hidden="true">↗</span></a><a class="text-link" href="#paspor">Lihat Paspor →</a></div><p class="exhibition-meta"><span>● &nbsp; 6 daerah pilihan</span><span>14 November 2026</span></p><p class="editorial-theme">Beragam Bahasa, Berjuta Kisah, Satu Indonesia.</p></div>${postcards()}</section><section class="atlas" id="jelajah" aria-labelledby="atlas-title"><div class="atlas-heading"><div><div class="eyebrow">BUKA ATLASNYA. TEMUKAN KISAHNYA.</div><h2 id="atlas-title">Jelajah Nusantara</h2></div><p>Sentuh penanda untuk membuka kisah di pulau pilihanmu.<br><span class="mobile-map-hint">Atau pilih salah satu dari enam destinasi di bawah peta.</span></p></div>${map()}<div class="map-caption"><span>✧ ENAM PINTU MENUJU DUNIA CERITA</span><span>PETA SKEMATIS · BUKAN UNTUK NAVIGASI</span></div><div class="hero-bottom"><span>01 — 06 &nbsp; DESTINASI CERITA</span><strong>Beragam Bahasa, Berjuta Kisah, Satu Indonesia.</strong><span>JELAJAHI DENGAN RASA INGIN TAHU ↘</span></div></section><section class="section collection" id="koleksi"><div class="section-heading"><div><div class="eyebrow">GALERI CERITA NUSANTARA</div><h2>Koleksi Cerita</h2></div><p>Dari danau hingga pesisir, ikuti jejak kisah Nusantara. Ke mana kita pergi hari ini?</p></div><div class="region-grid">${regions.map((r,i)=>`<a class="region-card" href="#daerah/${r.id}"><div class="card-art">${art(r)}<span class="number">0${i+1} / ${r.island}</span></div><div class="card-content"><small>${r.name.toUpperCase()}</small><h3>${r.title}</h3><p class="card-summary">${escapeHTML(r.summary || r.tag)}</p><div class="card-bottom"><span class="stamp-label">${completed.includes(r.id)?'✓ Tanda terkumpul':'Buka cerita'}</span><span aria-hidden="true">↗</span></div></div></a>`).join('')}</div></section><section class="passport-section" id="paspor"><div class="section passport"><div><div class="eyebrow">NUSANTARA EXPLORER PASSPORT</div><h2>Langkah kecil.<br>Penemuan besar.</h2><p>Baca cerita sampai selesai, kemudian tekan tombol Kumpulkan Stempel di halaman daerah. Kamu juga bisa menjawab tantangan. Kumpulkan tiga stempel untuk menjadi Penjelajah Nusantara!</p><p>Progres tersimpan di browser perangkat ini. Tidak perlu akun.</p>${!storageAvailable?'<p class="storage-note">Penyimpanan browser tidak tersedia. Progres hanya bertahan selama halaman ini terbuka.</p>':''}${completed.length>=3?'<p class="celebrate" role="status">✺ Selamat, Penjelajah Nusantara! Kamu sudah menyelesaikan tiga daerah atau lebih. Teruskan perjalananmu!</p>':''}<a href="#jelajah" class="button outline">${completed.length?'Lanjutkan perjalanan':'Kumpulkan tanda pertama'} <span>↗</span></a>${completed.length?'<br><button class="reset" id="reset">Atur ulang paspor perangkat ini</button>':''}</div><div class="passport-book"><div class="book-spine" aria-hidden="true"></div><div class="book-title"><span>✺ &nbsp; PASPOR NUSANTARA</span><span>EXPLORER / 2026</span></div><p class="passport-instruction">Enam prangko cerita yang kamu kumpulkan setelah menjelajah. Ketuk prangko untuk membuka kisahnya.</p><div class="stamps">${stamps()}</div><label class="progress-copy" for="progress"><span>JEJAK PERJALANANMU</span><span>${completed.length} dari 6 daerah</span></label><progress id="progress" max="6" value="${completed.length}">${completed.length} / 6</progress></div></div></section><section class="section about" id="tentang"><div class="exhibition-note"><span class="exhibit-seal" aria-hidden="true">✺</span><div><div class="eyebrow">OPEN HOUSE · 14 NOVEMBER 2026</div><h2>Tentang Pameran</h2><p>The Living Map adalah ruang pameran edukatif untuk menjelajahi cerita Nusantara melalui peta, bacaan, dan karya suara siswa. Setiap daerah menjadi pintu percakapan tentang bahasa, kisah, dan keberagaman Indonesia.</p><p>Enam daerah menghadirkan materi Indonesia dan English serta narasi siswa. Rujukan materi yang disertakan ditampilkan di ruang cerita.</p></div></div><div class="section-heading"><div><div class="eyebrow">CARA MENJELAJAH</div><h2>Biarkan rasa ingin tahu memandu.</h2></div></div><div class="how"><article><b>01</b><h3>Pilih sebuah daerah</h3><p>Sentuh titik pada peta, pilih kartu cerita, atau pindai QR di stan pameran.</p></article><article><b>02</b><h3>Temukan kisahnya</h3><p>Baca cerita, jelajahi materi dua bahasa, dan dengarkan narasi siswa pada setiap daerah.</p></article><article><b>03</b><h3>Tinggalkan jejakmu</h3><p>Usai membaca, tekan Kumpulkan Stempel. Tantangan bisa kamu mainkan sebagai bonus.</p></article></div></section>`;
- document.querySelector('#reset')?.addEventListener('click',()=>{if(confirm('Hapus seluruh tanda eksplorasi pada perangkat ini?')){completed=[];save();render();toast('Paspor telah diatur ulang.');}});
+ main.innerHTML=`<section class="editorial-hero"><div class="editorial-copy"><div class="eyebrow">THE LIVING MAP · INDONESIA BERCERITA</div><h1>Satu peta.<br><em>Berjuta cerita.</em></h1><p class="editorial-intro">Dari danau yang menyimpan legenda hingga pesisir yang penuh kisah. Mari mengenal Indonesia, satu cerita pada satu waktu.</p><div class="hero-actions"><a class="button" href="#jelajah">Mulai Jelajah <span aria-hidden="true">↗</span></a><a class="text-link" href="#paspor">Lihat Paspor →</a></div><p class="exhibition-meta"><span>● &nbsp; 6 daerah pilihan</span><span>14 November 2026</span></p><p class="editorial-theme">Beragam Bahasa, Berjuta Kisah, Satu Indonesia.</p></div>${postcards()}</section><section class="atlas" id="jelajah" aria-labelledby="atlas-title"><div class="atlas-heading"><div><div class="eyebrow">BUKA ATLASNYA. TEMUKAN KISAHNYA.</div><h2 id="atlas-title">Jelajah Nusantara</h2></div><p>Sentuh penanda untuk membuka kisah di pulau pilihanmu.<br><span class="mobile-map-hint">Atau pilih salah satu dari enam destinasi di bawah peta.</span></p></div>${map()}<div class="map-caption"><span>✧ ENAM PINTU MENUJU DUNIA CERITA</span><span>PETA SKEMATIS · BUKAN UNTUK NAVIGASI</span></div><div class="hero-bottom"><span>01 — 06 &nbsp; DESTINASI CERITA</span><strong>Beragam Bahasa, Berjuta Kisah, Satu Indonesia.</strong><span>JELAJAHI DENGAN RASA INGIN TAHU ↘</span></div></section><section class="section collection" id="koleksi"><div class="section-heading"><div><div class="eyebrow">GALERI CERITA NUSANTARA</div><h2>Koleksi Cerita</h2></div><p>Dari danau hingga pesisir, ikuti jejak kisah Nusantara. Ke mana kita pergi hari ini?</p></div><div class="region-grid">${regions.map((r,i)=>`<a class="region-card" href="#daerah/${r.id}"><div class="card-art">${art(r)}<span class="number">0${i+1} / ${r.island}</span></div><div class="card-content"><small>${r.name.toUpperCase()}</small><h3>${r.title}</h3><p class="card-summary">${escapeHTML(r.summary || r.tag)}</p><div class="card-bottom"><span class="stamp-label">${completed.includes(r.id)?'✓ Tanda terkumpul':'Buka cerita'}</span><span aria-hidden="true">↗</span></div></div></a>`).join('')}</div></section><section class="passport-section" id="paspor"><div class="section passport"><div><div class="eyebrow">NUSANTARA EXPLORER PASSPORT</div><h2>Langkah kecil.<br>Penemuan besar.</h2><p>Dengarkan minimal 75% narasi siswa, baca cerita sampai akhir, lalu jawab kuis dengan benar. Jika ketiganya selesai, prangko langsung tercap otomatis! Kumpulkan tiga stempel untuk menjadi Penjelajah Nusantara!</p><p>Progres tersimpan di browser perangkat ini. Tidak perlu akun.</p>${!storageAvailable?'<p class="storage-note">Penyimpanan browser tidak tersedia. Progres hanya bertahan selama halaman ini terbuka.</p>':''}${completed.length>=3?'<p class="celebrate" role="status">✺ Selamat, Penjelajah Nusantara! Kamu sudah menyelesaikan tiga daerah atau lebih. Teruskan perjalananmu!</p>':''}<a href="#jelajah" class="button outline">${completed.length?'Lanjutkan perjalanan':'Kumpulkan tanda pertama'} <span>↗</span></a>${completed.length?'<br><button class="reset" id="reset">Atur ulang paspor perangkat ini</button>':''}</div><div class="passport-book"><div class="book-spine" aria-hidden="true"></div><div class="book-title"><span>✺ &nbsp; PASPOR NUSANTARA</span><span>EXPLORER / 2026</span></div><p class="passport-instruction">Enam prangko dongeng Nusantara. Selesaikan tiga misi di tiap daerah untuk mendapatkannya otomatis. Ketuk prangko untuk membuka kisahnya.</p><div class="stamps">${stamps()}</div><label class="progress-copy" for="progress"><span>JEJAK PERJALANANMU</span><span>${completed.length} dari 6 daerah</span></label><progress id="progress" max="6" value="${completed.length}">${completed.length} / 6</progress></div></div></section><section class="section about" id="tentang"><div class="exhibition-note"><span class="exhibit-seal" aria-hidden="true">✺</span><div><div class="eyebrow">OPEN HOUSE · 14 NOVEMBER 2026</div><h2>Tentang Pameran</h2><p>The Living Map adalah ruang pameran edukatif untuk menjelajahi cerita Nusantara melalui peta, bacaan, dan karya suara siswa. Setiap daerah menjadi pintu percakapan tentang bahasa, kisah, dan keberagaman Indonesia.</p><p>Enam daerah menghadirkan materi Indonesia dan English serta narasi siswa. Rujukan materi yang disertakan ditampilkan di ruang cerita.</p></div></div><div class="section-heading"><div><div class="eyebrow">CARA MENJELAJAH</div><h2>Biarkan rasa ingin tahu memandu.</h2></div></div><div class="how"><article><b>01</b><h3>Pilih sebuah daerah</h3><p>Sentuh titik pada peta, pilih kartu cerita, atau pindai QR di stan pameran.</p></article><article><b>02</b><h3>Temukan kisahnya</h3><p>Baca cerita, jelajahi materi dua bahasa, dan dengarkan narasi siswa pada setiap daerah.</p></article><article><b>03</b><h3>Tinggalkan jejakmu</h3><p>Dengarkan narasi, baca hingga akhir, dan jawab tantangan dengan benar. Stempel muncul otomatis!</p></article></div></section>`;
+ document.querySelector('#reset')?.addEventListener('click',()=>{if(confirm('Hapus seluruh tanda eksplorasi pada perangkat ini?')){completed=[];missionProgress={};save();saveMissions();render();toast('Paspor dan seluruh progres misi telah diatur ulang.');}});
 }
 
 // FastComments guestbook. One stable thread per destination, regardless of query strings
@@ -152,16 +266,15 @@ function mountComments(r) {
 }
 
 function detail(r){
+ stopMissionTracking();
  destroyComments();
  document.documentElement.lang = 'id';
  document.documentElement.lang='id';
  document.title=`${r.title} — The Living Map`;
  const next=regions[(regions.indexOf(r)+1)%regions.length];
- main.innerHTML=`<section class="detail-top"><div class="breadcrumb"><a href="#jelajah">← Kembali ke peta cerita</a><span>DESTINASI 0${regions.indexOf(r)+1} / 06</span></div><div class="detail-hero">${art(r, 'hero')}<div class="detail-title"><div class="eyebrow">${r.name.toUpperCase()}</div><h1 id="detail-title">${r.title}</h1><p id="detail-tag">${r.tag}</p><div class="exhibit-index">ARSIP CERITA / 0${regions.indexOf(r)+1}</div><span class="pill">${completed.includes(r.id)?'✓ Tanda eksplorasi terkumpul':'Baca · Renungkan · Jelajahi'}</span><button class="read-story" data-section="story-section">Baca kisahnya <span aria-hidden="true">↓</span></button></div><span class="region-medallion" aria-hidden="true"><b>0${regions.indexOf(r)+1}</b><small>${r.island}</small></span></div><p class="illustration-caption">ILUSTRASI CERITA IMAJINATIF · BUKAN DOKUMENTASI TEMPAT ATAU BUSANA</p></section>${audioPanel(r)}${transcripts(r)}<nav class="detail-sections" aria-label="Bagian cerita"><button class="active" data-section="story-section" aria-pressed="true">Cerita rakyat</button><button data-section="culture-section" aria-pressed="false">Bahasa daerah</button><button data-section="challenge-section" aria-pressed="false">Tantangan</button></nav><div class="section detail-body"><article class="story" id="story-section"><div class="reading-toolbar"><div class="eyebrow" id="reading-label">BUKU CERITA / BACAAN INDONESIA</div><div class="language-switch" role="group" aria-label="Bahasa cerita"><button class="language active" data-lang="id" aria-pressed="true" type="button">Indonesia</button><button class="language" data-lang="en" ${r.translations?.en ? 'aria-pressed="false"' : 'aria-disabled="true" aria-describedby="translation-note"'} type="button">English ${r.translations?.en ? '' : '<span>Segera</span>'}</button></div></div><p id="translation-note" class="translation-note">${r.translations?.en ? 'Pilih bahasa untuk membaca cerita, fakta, dan tantangan.' : 'Terjemahan English belum tersedia. Cerita ditampilkan dalam bahasa Indonesia.'}</p><div class="eyebrow">RUANG CERITA</div><h2>Dengarkan kisah dari Nusantara</h2><p class="notice">${r.contentNote?escapeHTML(r.contentNote):['papua','sulawesi-selatan'].includes(r.id)?'Materi lengkap menunggu peninjauan guru.':'Adaptasi ringkas untuk pembelajaran, bukan kutipan naskah asli. Versi cerita dapat berbeda. Sumber edisi dan peninjauan guru belum dilengkapi.'}</p><div class="story-pages">${r.story.map(p=>`<p>${p}</p>`).join('')}</div><section class="reading-stamp-panel ${completed.includes(r.id)?'collected':''}" id="reading-stamp-panel" aria-labelledby="stamp-panel-title"><div class="reading-stamp-preview">${stampImage(r, 'detail')}</div><div class="reading-stamp-copy"><div class="eyebrow">NUSANTARA EXPLORER PASSPORT</div><h3 id="stamp-panel-title">Selesai membaca kisah ${escapeHTML(r.name)}?</h3><p id="stamp-panel-description">Setelah membaca cerita ini, tekan tombol di bawah untuk mengumpulkan stempel ${escapeHTML(r.name)} di paspor digitalmu. Setiap daerah punya satu prangko unik. Kumpulkan minimal tiga untuk menjadi Penjelajah Nusantara!</p><button id="collect-stamp" class="button collect-stamp-button" type="button" ${completed.includes(r.id)?'disabled':''}>${completed.includes(r.id)?'✓ Stempel sudah terkumpul':'✦ Selesai Membaca — Kumpulkan Stempel'}</button><p id="reading-stamp-status" class="reading-stamp-status" role="status" aria-live="polite">${completed.includes(r.id)?'Stempel daerah ini sudah ada di paspormu.':'Stempel tersimpan di browser perangkat ini, tanpa perlu akun.'}</p><a href="#paspor" class="text-link">Lihat Nusantara Explorer Passport →</a></div></section>${r.reference?`<a class="text-link" href="${r.reference.url}" target="_blank" rel="noopener noreferrer">Sumber pengenalan: ${r.reference.label} ↗</a>`:''}${r.sources?`<details class="source-note"><summary>Rujukan materi dalam dokumen pameran</summary><ul>${r.sources.map(source=>`<li>${escapeHTML(source)}</li>`).join('')}</ul></details>`:''}<section class="quiz" id="challenge-section" aria-labelledby="quiz-title"><div class="eyebrow">TANTANGAN PENJELAJAH</div><h3 id="quiz-title">${escapeHTML(r.question)}</h3><p class="notice">Tantangan tambahan! Pilih jawaban yang tepat untuk menguji pemahamanmu. Jika belum mengumpulkan stempel setelah membaca, jawaban benar juga akan menambahkannya ke paspor.</p><div class="options">${r.options.map((o,i)=>`<button class="option" data-answer="${i}"><span aria-hidden="true">${String.fromCharCode(65+i)}.</span> <span class="option-label">${escapeHTML(o)}</span></button>`).join('')}</div><p class="feedback" role="status" aria-live="polite">${completed.includes(r.id)?'✓ Kamu sudah mendapatkan tanda daerah ini. Boleh mencoba lagi!':''}</p><a class="text-link" href="#paspor">Lihat paspor saya →</a></section><div class="next-region"><a href="#jelajah" class="text-link">← Semua daerah</a><a class="button" href="#daerah/${next.id}">${next.name} →</a></div></article><aside aria-label="Materi pendamping"><section class="info-card" id="culture-section"><div class="eyebrow">PANEL MUSEUM / CATATAN DAERAH</div><h3>Mengenal lebih dekat</h3><p><strong>Wilayah dalam pameran</strong><br>${r.name} · ${r.island}</p><p class="panel-caption">Penanda lokasi mengikuti peta skematis pameran, bukan batas administratif.</p>${r.language?`<p id="region-language">${escapeHTML(r.language)}</p>`:'<p><strong>Bahasa daerah</strong><br>Materi dan pelafalan menunggu verifikasi guru atau narasumber.</p>'}${r.culture?`<p id="region-culture"><strong>${escapeHTML(r.cultureHeading || 'Penjelasan geografi / Geography')}</strong><br>${escapeHTML(r.culture)}</p>`:'<p><strong>Fakta budaya</strong><br>Materi bersumber sedang dipersiapkan. Kami tidak menambahkan fakta yang belum diverifikasi.</p>'}</section><section class="info-card"><div class="eyebrow">BAGIKAN PERJALANAN</div><h3>Satu tautan, satu daerah</h3><label for="region-link" class="placeholder-label">Tautan untuk QR stan</label><input id="region-link" class="share-input" readonly aria-label="Tautan langsung daerah"><button id="copy" class="button">Salin tautan ↗</button><p>Gunakan tautan ini pada pembuat QR pilihan sekolah. QR akan langsung membuka daerah ini.</p></section></aside></div><section class="guestbook-section" aria-labelledby="guestbook-title"><div class="guestbook-intro"><div class="eyebrow">BUKU KESAN PENGUNJUNG · ${escapeHTML(r.name.toUpperCase())}</div><h2 id="guestbook-title">Tinggalkan Jejak Ceritamu ✦</h2><p id="guestbook-caption">Apa kesanmu setelah membaca atau mendengarkan ${escapeHTML(r.title)}? Tulis pesan dengan nama panggilan. Pesan yang disetujui pengelola dapat dibaca penjelajah lainnya.</p><p class="guestbook-privacy">Jangan tulis nama lengkap siswa, nomor telepon, email, atau informasi pribadi. Gunakan bahasa yang sopan.</p></div><div class="guestbook-paper"><div id="fastcomments-widget"></div><p id="guestbook-status" class="guestbook-status" role="status">Memuat buku kesan pengunjung…</p></div></section>`;
+ main.innerHTML=`<section class="detail-top"><div class="breadcrumb"><a href="#jelajah">← Kembali ke peta cerita</a><span>DESTINASI 0${regions.indexOf(r)+1} / 06</span></div><div class="detail-hero">${art(r, 'hero')}<div class="detail-title"><div class="eyebrow">${r.name.toUpperCase()}</div><h1 id="detail-title">${r.title}</h1><p id="detail-tag">${r.tag}</p><div class="exhibit-index">ARSIP CERITA / 0${regions.indexOf(r)+1}</div><span class="pill">${completed.includes(r.id)?'✓ Tanda eksplorasi terkumpul':'Baca · Renungkan · Jelajahi'}</span><button class="read-story" data-section="story-section">Baca kisahnya <span aria-hidden="true">↓</span></button></div><span class="region-medallion" aria-hidden="true"><b>0${regions.indexOf(r)+1}</b><small>${r.island}</small></span></div><p class="illustration-caption">ILUSTRASI CERITA IMAJINATIF · BUKAN DOKUMENTASI TEMPAT ATAU BUSANA</p></section>${audioPanel(r)}${transcripts(r)}<nav class="detail-sections" aria-label="Bagian cerita"><button class="active" data-section="story-section" aria-pressed="true">Cerita rakyat</button><button data-section="culture-section" aria-pressed="false">Bahasa daerah</button><button data-section="challenge-section" aria-pressed="false">Tantangan</button></nav><div class="section detail-body"><article class="story" id="story-section"><div class="reading-toolbar"><div class="eyebrow" id="reading-label">BUKU CERITA / BACAAN INDONESIA</div><div class="language-switch" role="group" aria-label="Bahasa cerita"><button class="language active" data-lang="id" aria-pressed="true" type="button">Indonesia</button><button class="language" data-lang="en" ${r.translations?.en ? 'aria-pressed="false"' : 'aria-disabled="true" aria-describedby="translation-note"'} type="button">English ${r.translations?.en ? '' : '<span>Segera</span>'}</button></div></div><p id="translation-note" class="translation-note">${r.translations?.en ? 'Pilih bahasa untuk membaca cerita, fakta, dan tantangan.' : 'Terjemahan English belum tersedia. Cerita ditampilkan dalam bahasa Indonesia.'}</p><div class="eyebrow">RUANG CERITA</div><h2>Dengarkan kisah dari Nusantara</h2><p class="notice">${r.contentNote?escapeHTML(r.contentNote):['papua','sulawesi-selatan'].includes(r.id)?'Materi lengkap menunggu peninjauan guru.':'Adaptasi ringkas untuk pembelajaran, bukan kutipan naskah asli. Versi cerita dapat berbeda. Sumber edisi dan peninjauan guru belum dilengkapi.'}</p><div class="story-pages">${r.story.map(p=>`<p>${p}</p>`).join('')}</div><section class="reading-stamp-panel ${completed.includes(r.id)?'collected':''}" id="reading-stamp-panel" aria-labelledby="stamp-panel-title"><div class="reading-stamp-preview">${stampImage(r,'detail')}</div><div class="reading-stamp-copy"><div class="eyebrow">NUSANTARA EXPLORER PASSPORT</div><h3 id="stamp-panel-title">Selesaikan 3 Misi, Dapatkan 1 Stempel</h3><p id="stamp-panel-description">Dengarkan minimal 75% narasi anak, jelajahi bacaan sampai akhir selama minimal 25 detik, dan jawab kuis dengan benar. Ketika tiga misi selesai, stempel masuk otomatis!</p><p id="mission-counter" class="mission-counter" aria-live="polite">Misi selesai: ${missionCount(missionFor(r))}/3</p><progress id="mission-progress" class="mission-progress" max="3" value="${missionCount(missionFor(r))}" aria-label="Progres misi"></progress>${missionChecklist(r)}<p id="reading-stamp-status" class="reading-stamp-status" role="status" aria-live="polite">Selesaikan misi untuk membuka stempel otomatis.</p><a href="#paspor" class="text-link">Lihat Nusantara Explorer Passport →</a></div></section>${r.reference?`<a class="text-link" href="${r.reference.url}" target="_blank" rel="noopener noreferrer">Sumber pengenalan: ${r.reference.label} ↗</a>`:''}${r.sources?`<details class="source-note"><summary>Rujukan materi dalam dokumen pameran</summary><ul>${r.sources.map(source=>`<li>${escapeHTML(source)}</li>`).join('')}</ul></details>`:''}<section class="quiz" id="challenge-section" aria-labelledby="quiz-title"><div class="eyebrow">TANTANGAN PENJELAJAH</div><h3 id="quiz-title">${escapeHTML(r.question)}</h3><p class="notice">Misi 3 dari 3: jawab pertanyaan dengan benar. Stempel hanya akan terkumpul otomatis setelah audio, bacaan, dan kuis selesai semuanya.</p><div class="options">${r.options.map((o,i)=>`<button class="option" data-answer="${i}"><span aria-hidden="true">${String.fromCharCode(65+i)}.</span> <span class="option-label">${escapeHTML(o)}</span></button>`).join('')}</div><p class="feedback" role="status" aria-live="polite">${completed.includes(r.id)?'✓ Kamu sudah mendapatkan tanda daerah ini. Boleh mencoba lagi!':''}</p><a class="text-link" href="#paspor">Lihat paspor saya →</a></section><div class="next-region"><a href="#jelajah" class="text-link">← Semua daerah</a><a class="button" href="#daerah/${next.id}">${next.name} →</a></div></article><aside aria-label="Materi pendamping"><section class="info-card" id="culture-section"><div class="eyebrow">PANEL MUSEUM / CATATAN DAERAH</div><h3>Mengenal lebih dekat</h3><p><strong>Wilayah dalam pameran</strong><br>${r.name} · ${r.island}</p><p class="panel-caption">Penanda lokasi mengikuti peta skematis pameran, bukan batas administratif.</p>${r.language?`<p id="region-language">${escapeHTML(r.language)}</p>`:'<p><strong>Bahasa daerah</strong><br>Materi dan pelafalan menunggu verifikasi guru atau narasumber.</p>'}${r.culture?`<p id="region-culture"><strong>${escapeHTML(r.cultureHeading || 'Penjelasan geografi / Geography')}</strong><br>${escapeHTML(r.culture)}</p>`:'<p><strong>Fakta budaya</strong><br>Materi bersumber sedang dipersiapkan. Kami tidak menambahkan fakta yang belum diverifikasi.</p>'}</section><section class="info-card"><div class="eyebrow">BAGIKAN PERJALANAN</div><h3>Satu tautan, satu daerah</h3><label for="region-link" class="placeholder-label">Tautan untuk QR stan</label><input id="region-link" class="share-input" readonly aria-label="Tautan langsung daerah"><button id="copy" class="button">Salin tautan ↗</button><p>Gunakan tautan ini pada pembuat QR pilihan sekolah. QR akan langsung membuka daerah ini.</p></section></aside></div><section class="guestbook-section" aria-labelledby="guestbook-title"><div class="guestbook-intro"><div class="eyebrow">BUKU KESAN PENGUNJUNG · ${escapeHTML(r.name.toUpperCase())}</div><h2 id="guestbook-title">Tinggalkan Jejak Ceritamu ✦</h2><p id="guestbook-caption">Apa kesanmu setelah membaca atau mendengarkan ${escapeHTML(r.title)}? Tulis pesan dengan nama panggilan. Pesan yang disetujui pengelola dapat dibaca penjelajah lainnya.</p><p class="guestbook-privacy">Jangan tulis nama lengkap siswa, nomor telepon, email, atau informasi pribadi. Gunakan bahasa yang sopan.</p></div><div class="guestbook-paper"><div id="fastcomments-widget"></div><p id="guestbook-status" class="guestbook-status" role="status">Memuat buku kesan pengunjung…</p></div></section>`;
  mountComments(r);
- document.querySelector('#collect-stamp')?.addEventListener('click', () => {
-  collectStamp(r, 'reading');
- });
+ beginMissionTracking(r);
  document.querySelectorAll('[data-section]').forEach(button => button.addEventListener('click', () => {
   const target=document.getElementById(button.dataset.section);
   target?.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth',block:'start'});
@@ -208,14 +321,7 @@ function detail(r){
   const guestbookCaption = document.querySelector('#guestbook-caption');
   if (guestbookLabel) guestbookLabel.textContent = language === 'en' ? 'Leave Your Story Footprint ✦' : 'Tinggalkan Jejak Ceritamu ✦';
   if (guestbookCaption) guestbookCaption.textContent = language === 'en' ? 'What did you think of this story? Use a nickname and leave a kind message. Comments approved by the organizer may be seen by other visitors.' : `Apa kesanmu setelah membaca atau mendengarkan ${r.title}? Tulis pesan dengan nama panggilan. Pesan yang disetujui pengelola dapat dibaca penjelajah lainnya.`;
-  const stampHeading = document.querySelector('#stamp-panel-title');
-  const stampDescription = document.querySelector('#stamp-panel-description');
-  const stampButton = document.querySelector('#collect-stamp');
-  const stampStatus = document.querySelector('#reading-stamp-status');
-  if (stampHeading) stampHeading.textContent = language === 'en' ? `Finished reading the story from ${r.name}?` : `Selesai membaca kisah ${r.name}?`;
-  if (stampDescription) stampDescription.textContent = language === 'en' ? 'After reading, collect this region’s illustrated stamp in your Nusantara Explorer Passport. Collect at least three stamps to become a Nusantara Explorer!' : `Setelah membaca cerita ini, kumpulkan stempel ${r.name} di paspor digitalmu. Kumpulkan minimal tiga stempel untuk menjadi Penjelajah Nusantara!`;
-  if (stampButton) stampButton.textContent = completed.includes(r.id) ? (language === 'en' ? '✓ Stamp collected' : '✓ Stempel sudah terkumpul') : (language === 'en' ? '✦ Finished Reading — Collect Stamp' : '✦ Selesai Membaca — Kumpulkan Stempel');
-  if (stampStatus) stampStatus.textContent = completed.includes(r.id) ? (language === 'en' ? 'Your stamp is in your passport.' : 'Stempel daerah ini sudah ada di paspormu.') : (language === 'en' ? 'Stamps are saved on this device, without an account.' : 'Stempel tersimpan di browser perangkat ini, tanpa perlu akun.');
+  refreshMissionPanel(r,language);
   document.querySelectorAll('.option').forEach(el=>{el.classList.remove('correct','incorrect');el.removeAttribute('aria-pressed')});
   document.querySelectorAll('.language').forEach(el=>{const active=el.dataset.lang===language;el.classList.toggle('active',active);el.setAttribute('aria-pressed',String(active));});
  }));
@@ -228,8 +334,12 @@ function detail(r){
   btn.classList.add(correct?'correct':'incorrect');btn.setAttribute('aria-pressed','true');
   const feedback=document.querySelector('.feedback');
   if(!correct){feedback.textContent='Belum tepat. Baca kembali ceritanya, lalu coba lagi.';return;}
-  const newlyEarned=collectStamp(r, 'quiz');
-  feedback.textContent=completed.length>=3?'✺ Jawaban tepat! Kamu sudah menjelajah tiga daerah atau lebih. Lihat koleksimu di paspor.':newlyEarned?'✓ Jawaban tepat! Stempel baru masuk ke paspormu.':'✓ Jawaban tepat! Stempel daerah ini sudah ada di paspormu.';
+  const m=missionFor(r);
+  m.quiz=true;
+  saveMissions();
+  const newlyEarned=awardStampIfReady(r);
+  refreshMissionPanel(r);
+  feedback.textContent=newlyEarned?'✦ Tepat! Ketiga misi selesai dan stempel otomatis masuk ke paspormu!':completed.includes(r.id)?'✓ Jawaban tepat! Stempel sudah ada di paspormu.':'✓ Jawaban tepat! Misi kuis selesai. Lengkapi audio dan bacaan untuk mendapatkan stempel.';
   if(!storageAvailable) feedback.textContent+=' Penyimpanan browser tidak tersedia; progres hanya tersimpan selama halaman terbuka.';
  }));
 }
