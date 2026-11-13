@@ -316,7 +316,9 @@ function detail(r){
   }
   document.querySelector('#quiz-title').textContent=data.question || r.question;
   document.querySelectorAll('.option-label').forEach((el,i) => {el.textContent=(data.options || r.options)[i] || '';});
-  document.querySelector('.feedback').textContent=completed.includes(r.id) ? (language === 'en' ? '✓ Your stamp is already collected.' : '✓ Tanda daerah ini sudah terkumpul.') : '';
+  const quizFeedback=document.querySelector('.feedback');
+  quizFeedback.textContent=completed.includes(r.id) ? (language === 'en' ? '✓ Your stamp is already collected.' : '✓ Tanda daerah ini sudah terkumpul.') : '';
+  quizFeedback.classList.remove('quiz-feedback-correct','quiz-feedback-incorrect');
   const guestbookLabel = document.querySelector('#guestbook-title');
   const guestbookCaption = document.querySelector('#guestbook-caption');
   if (guestbookLabel) guestbookLabel.textContent = language === 'en' ? 'Leave Your Story Footprint ✦' : 'Tinggalkan Jejak Ceritamu ✦';
@@ -333,14 +335,28 @@ function detail(r){
   document.querySelectorAll('[data-answer]').forEach(b=>{b.classList.remove('incorrect','correct');b.removeAttribute('aria-pressed');});
   btn.classList.add(correct?'correct':'incorrect');btn.setAttribute('aria-pressed','true');
   const feedback=document.querySelector('.feedback');
-  if(!correct){feedback.textContent='Belum tepat. Baca kembali ceritanya, lalu coba lagi.';return;}
+  const selectedIndex=Number(btn.dataset.answer);
+  const language=document.documentElement.lang==='en'?'en':'id';
+  const explanations=language==='en'?r.translations?.en?.quizExplanations:r.quizExplanations;
+  const explanation=explanations?.[selectedIndex] || (correct?'Jawaban tepat.':'Pilihan ini belum menjawab pertanyaan. Coba lagi.');
+  feedback.classList.toggle('quiz-feedback-correct',correct);
+  feedback.classList.toggle('quiz-feedback-incorrect',!correct);
+  if(!correct){
+    feedback.textContent=(language==='en'?'Not quite. ':'Belum tepat. ')+explanation+' '+(language==='en'?'Try another answer.':'Coba pilihan lain.');
+    return;
+  }
   const m=missionFor(r);
   m.quiz=true;
   saveMissions();
   const newlyEarned=awardStampIfReady(r);
   refreshMissionPanel(r);
-  feedback.textContent=newlyEarned?'✦ Tepat! Ketiga misi selesai dan stempel otomatis masuk ke paspormu!':completed.includes(r.id)?'✓ Jawaban tepat! Stempel sudah ada di paspormu.':'✓ Jawaban tepat! Misi kuis selesai. Lengkapi audio dan bacaan untuk mendapatkan stempel.';
-  if(!storageAvailable) feedback.textContent+=' Penyimpanan browser tidak tersedia; progres hanya tersimpan selama halaman terbuka.';
+  const missionStatus=newlyEarned
+    ?(language==='en'?'All three missions are complete. Your stamp was automatically added to the passport!':'Ketiga misi sudah selesai dan stempel otomatis masuk ke paspormu!')
+    :completed.includes(r.id)
+      ?(language==='en'?'Your stamp is already in the passport.':'Stempel sudah ada di paspormu.')
+      :(language==='en'?'Quiz mission complete. Finish the audio and reading missions to collect the stamp.':'Misi kuis selesai. Lengkapi audio dan bacaan untuk mendapatkan stempel.');
+  feedback.textContent=explanation+' '+missionStatus;
+  if(!storageAvailable) feedback.textContent+=language==='en'?' Progress is only available while this page is open.':' Progres hanya tersedia selama halaman ini terbuka.';
  }));
 }
 function save(){try{localStorage.setItem(KEY,JSON.stringify(completed));}catch{storageAvailable=false;}}
