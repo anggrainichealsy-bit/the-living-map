@@ -1880,3 +1880,31 @@ h1, h2, h3 { text-wrap: balance; }
 @media(prefers-reduced-motion:reduce) {
   .passport-section .stamp, .travel-stamp-art { transition: none; }
 }
+
+
+/* Exact six original prangko artworks from the supplied 3x2 image.
+   SVG illustrations remain visible if the image has not been uploaded yet. */
+.travel-stamp-layer {
+  position: relative; display: block; width: 100%; aspect-ratio: 1 / 1;
+}
+.travel-stamp-layer > .travel-stamp-art {
+  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain;
+}
+.travel-stamp-original {
+  display: none; position: absolute; inset: 0; width: 100%; height: 100%;
+  background-image: url("assets/stamps/Prangko_Cerita_Nusantara_Asli.webp");
+  background-repeat: no-repeat;
+  background-size: 300% 200%;
+}
+.original-stamps-loaded .travel-stamp-original { display: block; }
+.original-stamps-loaded .travel-stamp-layer > .travel-stamp-art { opacity: 0; }
+.travel-stamp-pos-0 { background-position: 0% 0%; }
+.travel-stamp-pos-1 { background-position: 50% 0%; }
+.travel-stamp-pos-2 { background-position: 100% 0%; }
+.travel-stamp-pos-3 { background-position: 0% 100%; }
+.travel-stamp-pos-4 { background-position: 50% 100%; }
+.travel-stamp-pos-5 { background-position: 100% 100%; }
+.passport-section .stamp.unearned .travel-stamp-layer { filter: grayscale(1); opacity: .34; }
+.passport-section .stamp.earned .travel-stamp-layer { filter: none; opacity: 1; }
+.reading-stamp-panel .reading-stamp-preview .travel-stamp-layer { filter: grayscale(.8); opacity: .48; }
+.reading-stamp-panel.collected .reading-stamp-preview .travel-stamp-layer { filter: none; opacity: 1; }
