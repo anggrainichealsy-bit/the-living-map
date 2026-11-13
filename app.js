@@ -24,6 +24,9 @@ function audioPanel(r) {
 }
 function transcripts(r) {
  if (!r.audioTranscript) return '';
+ // When the full narration is already the main reading, don't repeat it below the audio player.
+ if (JSON.stringify(r.story) === JSON.stringify(r.audioTranscript.id) &&
+     JSON.stringify(r.translations?.en?.story) === JSON.stringify(r.audioTranscript.en)) return '';
  return `<details class="audio-transcripts"><summary>Naskah narasi siswa · Indonesia / English</summary><div class="transcript-columns">${[['id','Bahasa Indonesia'],['en','English']].map(([language,label])=>`<section lang="${language}"><h3>${label}</h3>${(r.audioTranscript[language] || []).map(p=>`<p>${escapeHTML(p)}</p>`).join('')}</section>`).join('')}</div></details>`;
 }
 // If a supplied raster cannot load, retain the existing local vector as a fallback.
