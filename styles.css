@@ -1728,3 +1728,155 @@ h1, h2, h3 { text-wrap: balance; }
   .editorial-copy h1 { font-size: 36px; }
   .detail-top .detail-title h1 { font-size: 29px; }
 }
+
+
+/* Vintage prangko Nusantara passport: six illustrated stamps, collectible after reading. */
+.passport-section .passport-book {
+  background: #f7f0de;
+  color: #314b40;
+  border: 1px solid #bcab87;
+  border-radius: 6px 18px 18px 6px;
+  box-shadow: 4px 5px 0 #dbc9aa, 8px 11px 23px #443e2c28;
+}
+.passport-section .book-spine {
+  border-left-color: #c6b18b;
+  border-right-color: #ddcfb1;
+}
+.passport-section .book-title {
+  color: #6f6347;
+  border-bottom: 1px solid #d2c2a3;
+}
+.passport-instruction {
+  margin: 13px 0 18px;
+  color: #746b57 !important;
+  max-width: 45ch;
+  font: 12px/1.7 "Lora", Georgia, serif !important;
+}
+.passport-section .stamps {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: stretch;
+  gap: 13px;
+  margin: 20px 0;
+}
+.passport-section .stamp {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  justify-content: start;
+  align-items: center;
+  min-height: 0;
+  min-width: 0;
+  width: 100%;
+  height: auto;
+  aspect-ratio: auto;
+  padding: 6px 4px 11px;
+  border: 1px solid #e0d2b5;
+  background: #fffbf2;
+  border-radius: 5px;
+  color: #365546;
+  text-decoration: none;
+  transform: none;
+  box-shadow: 0 2px 6px #4d442418;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.passport-section .stamp:hover,
+.passport-section .stamp:focus-visible {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px #4d44242a;
+}
+.passport-section .stamp:focus-visible { outline: 3px solid #aa8149; outline-offset: 3px; }
+.stamp-art-wrap {
+  display: block;
+  width: min(100%, 165px);
+  aspect-ratio: 1;
+  overflow: hidden;
+  position: relative;
+}
+.travel-stamp-art {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: filter .2s ease, opacity .2s ease;
+}
+.passport-section .stamp.unearned .travel-stamp-art {
+  filter: grayscale(1);
+  opacity: .24;
+}
+.passport-section .stamp.unearned .stamp-art-wrap::after {
+  content: "?";
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: #7a705c;
+  font: bold 27px Georgia, serif;
+}
+.passport-section .stamp.earned {
+  background: #fffaf0;
+  border: 1px solid #cbb98e;
+}
+.stamp-region {
+  color: #3d564b;
+  font: 600 11px/1.3 "Lora", Georgia, serif;
+  text-align: center;
+}
+.stamp-status {
+  color: #877b66;
+  font: 10px/1.4 Arial, sans-serif;
+  text-align: center;
+}
+.passport-section .stamp.earned .stamp-status { color: #397356; font-weight: 600; }
+.passport-section .progress-copy { color: #615a48; }
+.passport-section progress { accent-color: #538b71; }
+
+.reading-stamp-panel {
+  display: grid;
+  grid-template-columns: minmax(125px, 185px) minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(14px, 2.5vw, 34px);
+  margin: 32px 0 25px;
+  padding: clamp(18px, 2.5vw, 30px);
+  border: 1px solid #c9b993;
+  border-radius: 9px;
+  background: linear-gradient(125deg, #f8eeda 0%, #fffaf0 62%, #edf0df 100%);
+  box-shadow: 4px 5px 0 #e7d6b87a;
+}
+.reading-stamp-preview { width: 100%; max-width: 185px; margin: auto; }
+.reading-stamp-preview .travel-stamp-art { width: 100%; height: auto; aspect-ratio: 1; filter: grayscale(.85); opacity: .45; }
+.reading-stamp-panel.collected .travel-stamp-art { filter: none; opacity: 1; }
+.reading-stamp-copy { min-width: 0; }
+.reading-stamp-copy h3 {
+  font: 600 clamp(24px, 2.4vw, 33px)/1.12 "Cormorant Garamond", Georgia, serif;
+  color: #305b49;
+  margin: 9px 0 10px;
+}
+.reading-stamp-copy > p { color: #5f6c5a; font-size: 13px; line-height: 1.75; }
+.reading-stamp-copy .text-link { display: inline-block; margin-top: 8px; }
+.reading-stamp-copy .collect-stamp-button {
+  white-space: normal;
+  text-align: center;
+  max-width: 100%;
+  font-size: 12px;
+  line-height: 1.5;
+  min-height: 45px;
+}
+.reading-stamp-copy .collect-stamp-button:disabled {
+  cursor: default;
+  opacity: .8;
+  background: #668374;
+}
+.reading-stamp-copy .reading-stamp-status { color: #62795b; font-size: 11px; margin: 8px 0; }
+@media(max-width:760px) {
+  .passport-section .stamps { grid-template-columns: repeat(2, minmax(0,1fr)); gap: 10px; }
+  .passport-section .stamp { padding: 5px 3px 11px; }
+  .stamp-region { font-size: 10px; }
+  .reading-stamp-panel { grid-template-columns: 1fr; text-align: center; gap: 6px; padding: 19px 15px; }
+  .reading-stamp-preview { max-width: 135px; }
+  .reading-stamp-copy h3 { font-size: 29px; }
+  .reading-stamp-copy .collect-stamp-button { width: 100%; }
+}
+@media(prefers-reduced-motion:reduce) {
+  .passport-section .stamp, .travel-stamp-art { transition: none; }
+}
