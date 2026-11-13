@@ -410,3 +410,50 @@ window.REGIONS = [
   'papua':'Ruang cerita berikutnya, menunggu pemilihan dan tinjauan guru.'
  }[r.id]
 }));
+
+
+/* VOICE_MATCHED_STORYBOOK — Konten utama mengikuti naskah narasi siswa.
+   Untuk revisi selanjutnya, edit audioTranscript di tiap daerah; cerita utama
+   Indonesia/English menggunakan teks yang sama. Berkas audio tetap terpisah. */
+const spokenDanauToba = {
+  "id": [
+    "Horas! Selamat datang di Sumatra Utara! Pernahkah kamu membayangkan sebuah danau yang, menurut legenda, terbentuk karena sebuah janji yang dilanggar? Dahulu kala, seorang pemuda bernama Toba menangkap ikan ajaib yang berubah menjadi seorang perempuan cantik.",
+    "Keduanya menikah, tetapi ada satu syarat: Toba tidak boleh mengungkapkan asal-usul istrinya. Mereka memiliki seorang putra bernama Samosir. Suatu hari, Samosir memakan bekal makanan yang seharusnya diberikan kepada ayahnya. Toba pun marah dan menyebut anaknya sebagai keturunan ikan. Janji itu akhirnya dilanggar. Menurut legenda, hujan deras turun dan air bah membentuk Danau Toba.",
+    "Namun, tahukah kamu? Ilmu geografi menjelaskan bahwa Danau Toba terbentuk akibat letusan gunung api purba sekitar 74.000 tahun lalu! Satu tempat, dua cara memahami kisahnya: melalui budaya dan ilmu pengetahuan. Sekarang, bisakah kamu menjelaskan perbedaan keduanya? Horas!"
+  ],
+  "en": [
+    "Horas! Welcome to North Sumatra! Have you ever imagined a beautiful lake that, according to legend, was created because of a broken promise? Long ago, a young man named Toba caught a magical fish that transformed into a beautiful woman.",
+    "They fell in love and got married. But there was one condition: Toba must never reveal his wife's secret. Years later, their son, Samosir, ate the food he was supposed to deliver to his father. Toba became furious and broke his promise. According to the legend, heavy rain began to fall, and a great flood formed what we now know as Lake Toba. But did you know?",
+    "Scientists explain that Lake Toba was formed by a massive volcanic eruption approximately 74,000 years ago! One place, two ways of understanding its story: through cultural traditions and scientific knowledge. Now, can you tell us the difference? Thank you for exploring North Sumatra with us. Horas!"
+  ]
+};
+const recordedEnglishScripts = {
+  "jawa-barat": [
+    "The Legend of Sangkuriang. Wilujeng sumping! Welcome to West Java. Have you seen a mountain shaped like an upside-down boat? The Sundanese people have a legend about Mount Tangkuban Parahu.",
+    "Long ago, Dayang Sumbi lived with her son, Sangkuriang. After a conflict, Sangkuriang left home and returned many years later. Sangkuriang no longer recognized Dayang Sumbi, but she recognized him. When he wanted to marry her, she gave him a difficult task: build a lake and a boat in just one night.",
+    "Before he could finish, dawn arrived. Furious, Sangkuriang kicked the boat until it overturned. And according to the legend, that boat became Mount Tangkuban Parahu.",
+    "But what does science tell us? Tangkuban Parahu is an active volcano shaped by volcanic processes, and it has craters such as Kawah Ratu and Kawah Upas. One place and two ways of understanding it: through cultural tradition and through geography. Could you tell us the difference? Hatur nuhun. Thank you!"
+  ],
+  "sulawesi-selatan": [
+    "The Story of Sawerigading. Tabe! Excuse us, and welcome to South Sulawesi. Have you heard of Sawerigading? He is a central character in La Galigo, a great epic from the Bugis literary tradition. And according to the story, he came from Luwu.",
+    "His twin sister, We Tenriabeng, encouraged him to look for We Cudai in a land called Cina in the story. Sawerigading and his companions prepared a boat and sailed across the sea, facing many challenges along the way. And eventually, he met We Cudai. And they got married. Their son was named La Galigo.",
+    "Did you know? The Luwu region borders the Gulf of Bone. South Sulawesi is also known for its tradition of pinisi boatbuilding, recognized by UNESCO itself.",
+    "Sawerigading's adventure belongs to a mythological epic, not a verified historical travel record. So, why do you think the sea is so important in the story? Thank you for exploring with us!"
+  ],
+  "papua": [
+    "The Story of Queya. Welcome to West Papua! From Fakfak comes the story of Queya, a boy who worked hard to help his family. Sadly, his younger half-siblings became jealous and treated him badly.",
+    "In one version of the legend, Queya spun fibers into wings. Magically, he turned into a bird with beautiful feathers. His heartbroken mother followed him and also became a bird. Their story is remembered as an origin legend of the bird-of-paradise.",
+    "Did you know? In the Iha language of Fakfak, siangga is a word used in the story for a long-plumed male bird-of-paradise.",
+    "In science, birds-of-paradise are real birds living in Papua's forests. Trees give them food and shelter. Why should we protect these forests? Take our Nusantara Challenge!"
+  ]
+};
+window.REGIONS.forEach(region => {
+  if (region.id === 'sumatra-utara') region.audioTranscript = spokenDanauToba;
+  if (recordedEnglishScripts[region.id]) region.audioTranscript.en = recordedEnglishScripts[region.id];
+  // Ejaan pada naskah mengikuti nama yang digunakan narator Papua.
+  if (region.id === 'papua') region.audioTranscript.id = region.audioTranscript.id.map(line => line.replaceAll('Kweiya', 'Queya'));
+  if (region.audioTranscript?.id?.length) region.story = [...region.audioTranscript.id];
+  if (region.audioTranscript?.en?.length && region.translations?.en) {
+    region.translations.en.story = [...region.audioTranscript.en];
+  }
+});
