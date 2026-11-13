@@ -468,3 +468,87 @@ const voiceCredits = {
   "papua": "Kimberly Wongso"
 };
 window.REGIONS.forEach(region => { region.narrator = voiceCredits[region.id] || ''; });
+
+
+/* QUIZ_FEEDBACK_BY_REGION — specific explanations for A/B/C in Indonesia and English.
+   The array index matches the displayed option; it does not alter the answer key. */
+const quizFeedbackByRegion = {
+  "sumatra-utara": {
+    "id": [
+      "Benar! Dalam legenda, janji Toba yang dilanggar memicu peristiwa terbentuknya danau. Ilmu geografi menjelaskan terbentuknya kaldera Danau Toba melalui letusan gunung api purba.",
+      "Ikan ajaib muncul dalam legenda Danau Toba, tetapi bukan penjelasan ilmiah tentang terbentuknya danau. Pertanyaannya meminta kamu membedakan cerita rakyat dan geografi.",
+      "Hujan deras merupakan bagian dari kisah legenda, tetapi bukan satu-satunya penjelasan. Ilmu geografi menjelaskan peristiwa vulkanik purba yang membentuk Danau Toba."
+    ],
+    "en": [
+      "Correct! In the legend, Toba's broken promise leads to the events that form the lake. Geography explains Lake Toba through an ancient volcanic eruption and the caldera it formed.",
+      "The magical fish appears in the folktale, but it is not a scientific explanation for the lake's formation. The question asks you to distinguish folklore from geography.",
+      "Heavy rain is part of the legend, but it is not the whole explanation. Geography describes ancient volcanic activity that formed Lake Toba."
+    ]
+  },
+  "jawa-barat": {
+    "id": [
+      "Jawaban ini tertukar. Perahu yang terbalik berasal dari legenda Sangkuriang, sedangkan proses vulkanisme merupakan penjelasan geografi.",
+      "Tepat! Legenda menghubungkan bentuk Gunung Tangkuban Parahu dengan perahu yang ditendang Sangkuriang. Geografi menjelaskannya melalui aktivitas gunung api.",
+      "Perahu yang berubah menjadi gunung adalah kisah legenda, bukan kesimpulan ilmiah. Penjelasan geografi berkaitan dengan proses terbentuknya gunung api."
+    ],
+    "en": [
+      "These explanations are reversed. The overturned boat belongs to the Sangkuriang legend, while volcanic processes belong to geography.",
+      "Correct! The legend connects Tangkuban Parahu's shape to the boat Sangkuriang kicked over. Geography explains the mountain through volcanic activity.",
+      "A boat becoming a mountain is part of the legend, not a scientific conclusion. Geography explains the mountain through volcanic processes."
+    ]
+  },
+  "kalimantan-barat": {
+    "id": [
+      "Pernyataan ini menjelaskan sifat Darmi, tetapi belum menyebutkan pesan moral dan perbedaan legenda dengan penjelasan ilmiah seperti yang ditanyakan.",
+      "Perjalanan ke pasar memang terjadi dalam cerita, tetapi itu hanya salah satu peristiwa. Pertanyaannya meminta pelajaran yang bisa diambil serta perbedaan jenis penjelasannya.",
+      "Benar! Kisah Darmi mengajarkan kita menghormati orang lain, termasuk keluarga, tanpa memandang penampilan. Perubahan menjadi batu adalah unsur cerita rakyat, bukan penjelasan ilmiah tentang pembentukan batuan."
+    ],
+    "en": [
+      "This describes Darmi's behavior, but it does not explain the moral lesson or the difference between a legend and science asked in the question.",
+      "The trip to the market does happen in the story, but it is only one event. The question asks for the lesson and how the legend differs from science.",
+      "Correct! Darmi's story encourages respect for others, including family, regardless of appearance. Turning into stone is part of the folktale, not a scientific account of rock formation."
+    ]
+  },
+  "sulawesi-selatan": {
+    "id": [
+      "Saran We Tenriabeng memang memulai perjalanan Sawerigading, tetapi pilihan ini belum menjelaskan mengapa laut dan pelayaran berperan penting dalam kisahnya.",
+      "Tepat! Sawerigading melakukan perjalanan dengan perahu melintasi laut. Kisah itu menunjukkan pentingnya jalur laut dan kehidupan maritim bagi masyarakat pesisir.",
+      "Pernikahan dan keluarga Sawerigading merupakan bagian dari akhir kisah, tetapi bukan alasan mengapa laut penting dalam perjalanan dan kehidupan pesisir."
+    ],
+    "en": [
+      "We Tenriabeng's advice helps begin Sawerigading's journey, but this does not explain the importance of the sea and sailing in the story.",
+      "Correct! Sawerigading travels by boat across the sea. His journey highlights the importance of sea routes and maritime life to coastal communities.",
+      "Sawerigading's marriage and family are part of the story, but they do not explain why the sea matters to his journey and coastal life."
+    ]
+  },
+  "nusa-tenggara-barat": {
+    "id": [
+      "Benar! Menurut legenda, nyale dipercaya sebagai jelmaan Putri Mandalika. Secara ilmiah, nyale adalah cacing laut; kemunculannya berhubungan dengan reproduksi dan siklus bulan.",
+      "Letak Pantai Seger merupakan informasi geografi yang berkaitan dengan Lombok, tetapi tidak membedakan makna nyale dalam legenda dan penjelasan ilmiahnya.",
+      "Arti kata bau dan nyale membantu memahami tradisi Bau Nyale, tetapi belum menjelaskan perbedaan antara kisah Putri Mandalika dan sains tentang cacing laut."
+    ],
+    "en": [
+      "Correct! In the legend, nyale are believed to be Princess Mandalika in another form. Scientifically, nyale are marine worms whose mass appearance is linked to reproduction and the lunar cycle.",
+      "Seger Beach's location is useful geographical information about Lombok, but it does not distinguish the legend's meaning of nyale from its scientific explanation.",
+      "The meanings of bau and nyale help explain the Bau Nyale tradition, but they do not compare Princess Mandalika's legend with the science of marine worms."
+    ]
+  },
+  "papua": {
+    "id": [
+      "Perlakuan adik-adik terhadap Queya menjelaskan konflik cerita, tetapi belum membandingkan asal-usul cenderawasih dalam legenda dengan sains dan alasan menjaga hutan.",
+      "Bahasa Iha adalah bagian dari konteks budaya Fakfak, tetapi tidak menjawab perbedaan antara legenda dan penjelasan ilmiah tentang cenderawasih.",
+      "Tepat! Dalam legenda, Queya berubah menjadi burung cenderawasih. Dalam sains, cenderawasih adalah burung nyata yang membutuhkan hutan sebagai sumber makanan dan tempat berlindung; karena itu habitatnya perlu dijaga."
+    ],
+    "en": [
+      "Queya's siblings' behavior explains the conflict, but it does not compare the legend with science or explain why birds-of-paradise need protected forests.",
+      "The Iha language is part of Fakfak's cultural context, but this does not answer the difference between the origin legend and the scientific explanation.",
+      "Correct! In the legend, Queya becomes a bird-of-paradise. In science, birds-of-paradise are real birds that need forests for food and shelter, so their habitat must be protected."
+    ]
+  }
+};
+window.REGIONS.forEach(region => {
+  const feedback = quizFeedbackByRegion[region.id];
+  if (!feedback) return;
+  region.quizExplanations = [...feedback.id];
+  if (region.translations?.en) region.translations.en.quizExplanations = [...feedback.en];
+});
