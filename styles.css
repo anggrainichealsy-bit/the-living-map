@@ -1628,3 +1628,103 @@ h1, h2, h3 { text-wrap: balance; }
   .detail-body .story-pages p { font-size: 17px; line-height: 1.78; }
   .detail-body .story-pages p:first-child:first-letter { font-size: 3em; }
 }
+
+
+/* 2026-11-13 — Fairytale display typography.
+   Real web fonts (not lookalike system fonts), used only where decorative lettering helps.
+   Fallbacks remain for visitors who cannot load Google Fonts. */
+:root {
+  --font-kingdom: "Cinzel Decorative", "Palatino Linotype", Georgia, serif;
+  --font-fairytale: "Cormorant Garamond", "Palatino Linotype", Georgia, serif;
+  --font-readable-story: "Lora", Georgia, serif;
+}
+/* Main gateway — special headline rather than a plain system font. */
+.editorial-copy h1 {
+  font-family: var(--font-kingdom);
+  font-size: clamp(42px, 5vw, 82px);
+  font-weight: 700;
+  line-height: 1.22;
+  letter-spacing: -0.055em;
+  overflow-wrap: normal;
+}
+.editorial-copy h1 em {
+  font-family: var(--font-fairytale);
+  font-weight: 600;
+  font-style: italic;
+  font-size: 1.13em;
+  letter-spacing: -0.045em;
+}
+.editorial-theme { font-family: var(--font-fairytale); font-style: italic; font-size: 1.2em; }
+.atlas-heading h2,
+.collection .section-heading h2,
+.passport-section .passport h2,
+.about .section-heading h2 {
+  font-family: var(--font-fairytale);
+  font-size: clamp(34px, 3.7vw, 54px);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.13;
+}
+.card-content h3,
+.postcard-title > span,
+.map-mobile-heading {
+  font-family: var(--font-fairytale);
+  font-weight: 600;
+  line-height: 1.16;
+}
+.card-content h3 { font-size: clamp(25px, 2.15vw, 34px); }
+.postcard-title > span { letter-spacing: -0.02em; }
+.detail-top .detail-title h1 {
+  font-family: var(--font-kingdom);
+  font-size: clamp(32px, 4.6vw, 68px);
+  font-weight: 700;
+  line-height: 1.22;
+  letter-spacing: -0.05em;
+  overflow-wrap: break-word;
+}
+.detail-top .detail-title > p {
+  font-family: var(--font-fairytale);
+  font-size: clamp(19px, 2.1vw, 29px);
+  font-style: italic;
+  line-height: 1.25;
+}
+.detail-body .story h2 {
+  font-family: var(--font-kingdom);
+  font-size: clamp(26px, 2.75vw, 37px);
+  font-weight: 700;
+  line-height: 1.28;
+  letter-spacing: -0.035em;
+}
+.detail-body .info-card h3,
+.detail-body .quiz h3 {
+  font-family: var(--font-fairytale);
+  font-size: clamp(25px, 2.2vw, 33px);
+  font-weight: 600;
+}
+.detail-body .story-pages p {
+  font-family: var(--font-readable-story);
+  font-size: clamp(16px, 1.26vw, 18px);
+  line-height: 1.88;
+  color: #304e42;
+}
+.detail-body .story-pages p:first-child:first-letter {
+  font-family: var(--font-kingdom);
+  font-size: 3.2em;
+  line-height: .95;
+  color: #9a713c;
+}
+.detail-body .reading-toolbar .eyebrow,
+.detail-sections button {
+  font-family: var(--font-readable-story);
+}
+@media(max-width:760px) {
+  .editorial-copy h1 { font-size: clamp(38px, 8.5vw, 59px); line-height: 1.2; letter-spacing: -0.06em; }
+  .detail-top .detail-title h1 { font-size: clamp(30px, 7vw, 46px); line-height: 1.22; }
+  .detail-body .story h2 { font-size: clamp(24px, 6vw, 34px); }
+  .detail-body .story-pages p { font-size: 16px; line-height: 1.85; }
+  .card-content h3 { font-size: 28px; }
+}
+@media(max-width:360px) {
+  .editorial-copy h1 { font-size: 36px; }
+  .detail-top .detail-title h1 { font-size: 29px; }
+}
