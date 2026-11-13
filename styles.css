@@ -2115,3 +2115,34 @@ h1, h2, h3 { text-wrap: balance; }
 @media(max-width:380px) {
   .narrator-credits-grid {grid-template-columns:minmax(0,1fr)}
 }
+
+/* Quiz answer feedback explanations — readable on desktop and mobile. */
+.detail-body .quiz .feedback.quiz-feedback-correct,
+.detail-body .quiz .feedback.quiz-feedback-incorrect {
+  padding: 14px 17px;
+  border-radius: 5px;
+  font-size: 14px;
+  line-height: 1.78;
+  margin-top: 16px;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+.detail-body .quiz .feedback.quiz-feedback-correct {
+  background: #e7f0e2;
+  color: #315d45;
+  border: 1px solid #91b492;
+  border-left: 4px solid #4b8a62;
+}
+.detail-body .quiz .feedback.quiz-feedback-incorrect {
+  background: #fcf0e4;
+  color: #794e38;
+  border: 1px solid #e3c29f;
+  border-left: 4px solid #bc8354;
+}
+@media(max-width:760px) {
+ .detail-body .quiz .feedback.quiz-feedback-correct,
+ .detail-body .quiz .feedback.quiz-feedback-incorrect {
+   padding: 12px;
+   font-size: 13px;
+ }
+}
